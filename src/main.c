@@ -25,6 +25,7 @@ int	main(int ac, char **av)
 	// 	return (1);
 	get_args(&data);
 	data.map = trunc_map(&data);
+	init_game(&data);
 	//print_args(&data);
 	//print_map(data.map);
 	free_all(&data);

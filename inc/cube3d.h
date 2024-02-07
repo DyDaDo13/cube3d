@@ -101,4 +101,7 @@ size_t	ft_strlen2(char **s);
 size_t	ft_strcpy(char *dst, char *src);
 char	**trunc_map(t_data *data);
 
+//init_game.c
+void	init_game(t_data *data);
+
 #endif
