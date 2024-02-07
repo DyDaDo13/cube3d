@@ -82,7 +82,7 @@ char	**init_map(char *path_map, t_data *data)
 
 	fd = open(path_map, O_RDONLY);
 	if (fd == -1)
-		return (perror("Error: No such file or directory"), NULL);
+		return (perror("Error"), NULL);
 	data->map = get_map(fd, data);
 	return (data->map);
 }

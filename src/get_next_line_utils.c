@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lle-saul <lle-saul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ozone <ozone@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 10:37:46 by dydado13          #+#    #+#             */
-/*   Updated: 2024/02/07 14:33:33 by lle-saul         ###   ########.fr       */
+/*   Updated: 2024/02/07 17:59:25 by ozone            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,16 @@ size_t	ft_strlen(char *s)
 	if (!s)
 		return (0);
 	while (s[j] != '\0')
+		j++;
+	return (j);
+}
+
+size_t	ft_strlen2(char **s)
+{
+	size_t	j;
+
+	j = 0;
+	while (s[j])
 		j++;
 	return (j);
 }

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   functions.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lle-saul <lle-saul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ozone <ozone@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/04 18:06:41 by dylmarti          #+#    #+#             */
-/*   Updated: 2024/02/07 17:42:31 by lle-saul         ###   ########.fr       */
+/*   Created: 2024/02/07 22:25:43 by ozone             #+#    #+#             */
+/*   Updated: 2024/02/07 22:26:02 by ozone            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,18 @@ int	ft_atoi(const char *nptr)
 	nb = nb * sign;
 	return (nb);
 }
-/*
-int	main(void)
+
+size_t	ft_strcpy(char *dst, char *src)
 {
-	printf("%i\n", ft_atoi("  	+12345"));
-	printf("%i", atoi("  	-12345"));
-	return (0);
-}*/
+	size_t	j;
+	size_t	len;
+
+	len = ft_strlen(src);
+	j = -1;
+	while (src[++j])
+		dst[j] = src[j];
+	dst[j] = '\0';
+	return (len);
+}
+
+

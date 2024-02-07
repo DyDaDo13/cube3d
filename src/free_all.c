@@ -3,25 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   free_all.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lle-saul <lle-saul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ozone <ozone@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 14:35:32 by dydado13          #+#    #+#             */
-/*   Updated: 2024/02/07 15:13:14 by lle-saul         ###   ########.fr       */
+/*   Updated: 2024/02/07 22:22:01 by ozone            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cube3d.h"
 
-void	free_map(t_data *data)
+void	free_map(char **map)
 {
 	int		i;
 
 	i = 0;
-	while (data->map[i])
+	while (map[i])
 	{
-		free(data->map[i]);
+		free(map[i]);
 		i++;
 	}
+	free(map);
 }
 
 void	free_list(t_map **map)
@@ -41,7 +42,13 @@ void	free_all(t_data *data)
 {
 	if (data->map)
 	{
-		free_map(data);
-		free(data->map);
+		free_map(data->map);
+		free(data->textures.EA);
+		free(data->textures.WE);
+		free(data->textures.NO);
+		free(data->textures.SO);
+		free(data->textures.C);
+		free(data->textures.F);
+		//free(data->map);
 	}
 }

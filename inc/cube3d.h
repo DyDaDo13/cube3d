@@ -74,7 +74,7 @@ typedef struct s_data
 
 //free_all.c
 /* ************************************************************************** */
-void	free_map(t_data *data);
+void	free_map(char **map);
 void	free_list(t_map **map);
 void	free_all(t_data *data);
 
@@ -92,9 +92,13 @@ void	print_args(t_data *data);
 void	ft_lstadd_back(t_map **lst, t_map *new);
 t_map	*ft_lstlast(t_map *lst);
 t_map	*ft_lstnew(void *content);
-int	ft_lstsize(t_map *lst);
+int		ft_lstsize(t_map *lst);
 
 //functions_plus
-int	ft_atoi(const char *nptr);
+int		ft_atoi(const char *nptr);
+void	get_args(t_data *data);
+size_t	ft_strlen2(char **s);
+size_t	ft_strcpy(char *dst, char *src);
+char	**trunc_map(t_data *data);
 
 #endif
