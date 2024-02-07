@@ -41,6 +41,16 @@
 	
 // }	t_image;
 
+typedef struct s_textures_path
+{
+	char	*NO;
+	char	*SO;
+	char	*WE;
+	char	*EA;
+	int		*F;
+	int		*C;
+}t_textures_path;
+
 typedef struct s_map
 {
 	char			*map_line;
@@ -54,11 +64,12 @@ typedef struct s_pos
 }	t_pos;
 typedef struct s_data
 {
-	char	**map;
-	void	*mlx;
-	void	*win;
-	t_map	*map_char;
-	t_pos	pos;
+	char			**map;
+	void			*mlx;
+	void			*win;
+	t_textures_path	textures;
+	t_map			*map_char;
+	t_pos			pos;
 }	t_data;
 
 //free_all.c
@@ -75,11 +86,15 @@ char	**init_map(char *path_map, t_data *data);
 
 //debug.c
 void	print_map(char **map);
+void	print_args(t_data *data);
 
 //lst_function.c
 void	ft_lstadd_back(t_map **lst, t_map *new);
 t_map	*ft_lstlast(t_map *lst);
 t_map	*ft_lstnew(void *content);
 int	ft_lstsize(t_map *lst);
+
+//functions_plus
+int	ft_atoi(const char *nptr);
 
 #endif
