@@ -6,7 +6,7 @@
 /*   By: ozone <ozone@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 22:26:34 by ozone             #+#    #+#             */
-/*   Updated: 2024/02/07 22:26:43 by ozone            ###   ########.fr       */
+/*   Updated: 2024/02/08 11:50:21 by ozone            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ char	**trunc_map(t_data *data)
 
 	full_size = ft_strlen2(data->map);
 	trunked_size = get_trunc_size(data);
+	if (trunked_size == full_size)
+		return (free_map(data->map), printf("Error: map not found\n"), NULL);
 	new_map = malloc(sizeof(char *) * full_size - trunked_size + 1);
 	new_map[full_size - trunked_size] = NULL;
 	index[1] = 0;

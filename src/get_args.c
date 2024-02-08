@@ -6,7 +6,7 @@
 /*   By: ozone <ozone@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 17:55:15 by ozone             #+#    #+#             */
-/*   Updated: 2024/02/07 17:55:48 by ozone            ###   ########.fr       */
+/*   Updated: 2024/02/08 14:22:31 by ozone            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,12 +59,25 @@ int		find_arg(char c, char **map)
 	return (i);
 }
 
-void	get_args(t_data *data)
+int	get_args(t_data *data)
 {
 	data->textures.NO = get_path(data->map, find_arg('N', data->map));
+	if (!data->textures.NO)
+		return (1);
 	data->textures.SO = get_path(data->map, find_arg('S', data->map));
+	if (!data->textures.SO)
+		return (1);
 	data->textures.WE = get_path(data->map, find_arg('W', data->map));
+	if (!data->textures.WE)
+		return (1);
 	data->textures.EA = get_path(data->map, find_arg('E', data->map));
+	if (!data->textures.EA)
+		return (1);
 	data->textures.C = get_color(data->map, find_arg('C', data->map));
+	if (!data->textures.C)
+		return (1);
 	data->textures.F = get_color(data->map, find_arg('F', data->map));
+	if (!data->textures.F)
+		return (1);
+	return (0);
 }
