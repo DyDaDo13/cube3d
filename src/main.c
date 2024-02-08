@@ -21,13 +21,12 @@ int	main(int ac, char **av)
 	data.map = init_map(av[1], &data);
 	if (data.map == NULL)
 		return (1);
-	// if (validate_file(&data) == 1)
-	// 	return (1);
 	if (get_args(&data) == 1)
 		return (1);
 	data.map = trunc_map(&data);
 	if (data.map == NULL)
 		return (free_all(&data), 1);
+	ft_display(&data);
 	//init_game(&data);
 	//print_args(&data);
 	//print_map(data.map);
