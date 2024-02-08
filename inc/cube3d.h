@@ -14,7 +14,7 @@
 # define CUBE3D_H
 
 # include "get_next_line.h"
-# include "minilibx-linux/mlx.h"
+# include "../minilibx-linux/mlx.h"
 # include <unistd.h>
 # include <time.h>
 # include <stdlib.h>
@@ -63,8 +63,8 @@ typedef struct s_map
 
 typedef struct s_pos
 {
-	float	p_x;
-	float	p_y;
+	double	p_x;
+	double	p_y;
 }	t_pos;
 
 
@@ -87,6 +87,12 @@ typedef struct s_data
 	t_map			*map_char;
 	t_pos			pos;
 }	t_data;
+
+typedef struct s_algo
+{
+	double	rayDir_actX;
+	double	rayDir_actY;
+}	t_algo;
 
 /*free_all.c*/
 /* ************************************************************************** */
@@ -112,12 +118,14 @@ int		ft_lstsize(t_map *lst);
 
 /*functions_plus*/
 int		ft_atoi(const char *nptr);
-int	get_args(t_data *data);
+int		get_args(t_data *data);
 size_t	ft_strlen2(char **s);
 size_t	ft_strcpy(char *dst, char *src);
 char	**trunc_map(t_data *data);
 
 /*display.c*/
-int	ft_display(t_data *data);
+int		ft_display(t_data *data);
+void	ft_init_img(t_data *data);
+void	build_img(t_data *data);
 
 #endif

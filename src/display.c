@@ -46,9 +46,10 @@ int	ft_display(t_data *data)
 	data->win = mlx_new_window(data->mlx, WIN_X, WIN_Y, "Mon Q");
 	if (data->win == NULL)
 		return (mlx_destroy_display(data->mlx), free(data->mlx), 1);
-	ft_ini_image(&data);
+	ft_init_img(data);
+	build_img(data);
 	mlx_hook(data->win, 3, (1L << 0) + (1L << 1), ft_key_check, data);
 	mlx_hook(data->win, 17, 0L, ft_stop, data);
 	mlx_loop(data->mlx);
 	return (0);
-}D
+}

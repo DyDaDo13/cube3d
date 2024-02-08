@@ -26,9 +26,9 @@ int	main(int ac, char **av)
 	data.map = trunc_map(&data);
 	if (data.map == NULL)
 		return (free_all(&data), 1);
-	ft_display(&data);
-	//init_game(&data);
-	//print_args(&data);
-	//print_map(data.map);
+	if (check_map_valid(&data->map) == 1);
+		return (free_all(&data), 1);
+	//ft_display(&data);
+	//un free ici :)
 	return (0);
 }

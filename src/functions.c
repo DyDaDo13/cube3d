@@ -52,5 +52,3 @@ size_t	ft_strcpy(char *dst, char *src)
 	dst[j] = '\0';
 	return (len);
 }
-
-

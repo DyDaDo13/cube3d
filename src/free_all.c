@@ -42,16 +42,16 @@ void	free_all(t_data *data)
 {
 	if (data->map)
 		free_map(data->map);
-	if (data->textures.EA)
-		free(data->textures.EA);
-	if (data->textures.WE)
-		free(data->textures.WE);
-	if (data->textures.NO)
-		free(data->textures.NO);
-	if (data->textures.SO)
-		free(data->textures.SO);
-	if (data->textures.C)
-		free(data->textures.C);
-	if (data->textures.F)
-		free(data->textures.F);
+	if (data->textures_path.EA)
+		free(data->textures_path.EA);
+	if (data->textures_path.WE)
+		free(data->textures_path.WE);
+	if (data->textures_path.NO)
+		free(data->textures_path.NO);
+	if (data->textures_path.SO)
+		free(data->textures_path.SO);
+	if (data->textures_path.C)
+		free(data->textures_path.C);
+	if (data->textures_path.F)
+		free(data->textures_path.F);
 }
