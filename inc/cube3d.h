@@ -14,7 +14,7 @@
 # define CUBE3D_H
 
 # include "get_next_line.h"
-# include "../minilibx-linux/mlx.h"
+# include "minilibx-linux/mlx.h"
 # include <unistd.h>
 # include <time.h>
 # include <stdlib.h>
@@ -36,10 +36,14 @@
 # define WIN_X 1080
 # define WIN_Y 720
 
-// typedef struct s_image
-// {
-	
-// }	t_image;
+typedef struct s_img
+{
+	void	*img_ptr;
+	char	*img_pixels;
+	int		bits_pixel;
+	int		endian;
+	int		len;
+}	t_img;
 
 typedef struct s_textures_path
 {
@@ -59,15 +63,27 @@ typedef struct s_map
 
 typedef struct s_pos
 {
-	float		p_x;
-	float		p_y;
+	float	p_x;
+	float	p_y;
 }	t_pos;
+
+
+typedef struct s_textures
+{
+	t_img	NO;
+	t_img	SO;
+	t_img	WE;
+	t_img	EA;
+}	t_textures;
+
 typedef struct s_data
 {
 	char			**map;
 	void			*mlx;
 	void			*win;
-	t_textures_path	textures;
+	t_img			img_win;
+	t_textures_path	textures_path;
+	t_textures		texture;
 	t_map			*map_char;
 	t_pos			pos;
 }	t_data;
