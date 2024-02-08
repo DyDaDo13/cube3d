@@ -8,7 +8,7 @@ FUNC	= debug.c free_all.c \
 get_next_line.c get_next_line_utils.c \
 init_map.c lst_functions.c main.c \
 get_args.c trunc_map.c functions.c \
-init_game.c \
+display.c \
 #───────────────────────────────╱
 
 #┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓

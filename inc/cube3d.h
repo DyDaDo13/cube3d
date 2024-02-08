@@ -33,8 +33,8 @@
 # include <X11/extensions/XShm.h>
 # include <X11/XKBlib.h>
 
-# define WINDOW_SIZE_X 1080
-# define WINDOW_SIZE_Y 720
+# define WIN_X 1080
+# define WIN_Y 720
 
 // typedef struct s_image
 // {
@@ -72,36 +72,36 @@ typedef struct s_data
 	t_pos			pos;
 }	t_data;
 
-//free_all.c
+/*free_all.c*/
 /* ************************************************************************** */
 void	free_map(char **map);
 void	free_list(t_map **map);
 void	free_all(t_data *data);
 
-//init_map.c
+/*init_map.c*/
 t_map	*init_map_struct(int fd);
 void	remove_newlines(t_data data);
 char	**get_map(int fd, t_data *data);
 char	**init_map(char *path_map, t_data *data);
 
-//debug.c
+/*debug.c*/
 void	print_map(char **map);
 void	print_args(t_data *data);
 
-//lst_function.c
+/*lst_function.c*/
 void	ft_lstadd_back(t_map **lst, t_map *new);
 t_map	*ft_lstlast(t_map *lst);
 t_map	*ft_lstnew(void *content);
 int		ft_lstsize(t_map *lst);
 
-//functions_plus
+/*functions_plus*/
 int		ft_atoi(const char *nptr);
 void	get_args(t_data *data);
 size_t	ft_strlen2(char **s);
 size_t	ft_strcpy(char *dst, char *src);
 char	**trunc_map(t_data *data);
 
-//init_game.c
+/*display.c*/
 void	init_game(t_data *data);
 
 #endif

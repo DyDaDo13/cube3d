@@ -30,14 +30,17 @@ int	ft_key_check(int key, t_data *data)
 	return (0);
 }
 
-void	init_game(t_data *data)
+int	ft_display(t_data *data)
 {
 	data->mlx = mlx_init();
-	data->win = mlx_new_window(data->mlx, WINDOW_SIZE_X, WINDOW_SIZE_Y, "Cube3D");
-
-
+	if (data->mlx == NULL)
+		return (perror("Error"), 1);
+	data->win = mlx_new_window(data->mlx, WIN_X, WIN_Y, "Mon Q");
+	if (data->win == NULL)
+		return (mlx_destroy_display(data->mlx), free(data.mlx), 1);
 	
 	mlx_hook(data->win, 3, (1L << 0) + (1L << 1), ft_key_check, data);
 	mlx_hook(data->win, 17, 0L, ft_stop, data);
 	mlx_loop(data->mlx);
-}
+	return (0);
+}D
