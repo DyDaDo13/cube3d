@@ -49,6 +49,5 @@ size_t	ft_strcpy(char *dst, char *src)
 	j = -1;
 	while (src[++j])
 		dst[j] = src[j];
-	dst[j] = '\0';
 	return (len);
 }

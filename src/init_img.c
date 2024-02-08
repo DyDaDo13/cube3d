@@ -15,7 +15,7 @@
 void	ft_init_img2(t_data *data, int *i, int *j)
 {
 	data->textures.EA.img_ptr = mlx_xpm_file_to_image(data->mlx,
-			data->textures_path.EA, &i, &j);
+			data->textures_path.EA, i, j);
 	data->textures.EA.img_pixels = mlx_get_data_addr(data->mlx,
 			&data->textures.EA.bits_pix, &data->textures.EA.len,
 			&data->textures.EA.endian);
@@ -27,8 +27,8 @@ void	ft_init_img2(t_data *data, int *i, int *j)
 
 void	ft_init_img(t_data *data)
 {
-	int	x;
-	int	y;
+	int	i;
+	int	j;
 
 	j = 64;
 	i = 64;
@@ -47,5 +47,5 @@ void	ft_init_img(t_data *data)
 	data->textures.WE.img_pixels = mlx_get_data_addr(data->mlx,
 			&data->textures.WE.bits_pix, &data->textures.WE.len,
 			&data->textures.WE.endian);
-	ft_init_img2(data, i, j)
+	ft_init_img2(data, &i, &j);
 }

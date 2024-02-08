@@ -47,6 +47,7 @@ char	**trunc_map(t_data *data)
 	index[0] = (trunked_size - 1);
 	while (data->map[++index[0]])
 	{
+		//printf("|%s|", data->map[index[0]]);
 		index[2] = ft_strlen(data->map[index[0]]);
 		new_map[index[1]] = malloc(sizeof(char) * index[2] + 1);
 		new_map[index[1]][index[2]] = '\0';

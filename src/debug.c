@@ -15,6 +15,7 @@
 void	print_map(char **map)
 {
 	int		i;
+	//int		j;
 
 	i = -1;
 	while (map[++i])
@@ -31,4 +32,9 @@ void	print_args(t_data *data)
 		data->textures_path.C[1], data->textures_path.C[2]);
 	printf("F = %i,%i,%i\n", data->textures_path.F[0],
 		data->textures_path.F[1], data->textures_path.F[2]);
+	printf("Player Direction: %c\n", data->pos.c);
+	printf("\e[34mcamX: %f\e[31m\ncamY: %f\n\e[0m",
+		data->pos.dir_camX, data->pos.dir_camY);
+	printf("\e[32mcamX_fov: %f\e[36m\ncamY_fov: %f\n\e[0m",
+		data->pos.norm_camX, data->pos.norm_camY);
 }

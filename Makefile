@@ -7,8 +7,9 @@ NAME	= cube3d
 FUNC	= debug.c free_all.c \
 get_next_line.c get_next_line_utils.c \
 init_map.c lst_functions.c main.c \
-get_args.c trunc_map.c functions.c \
-display.c \
+get_args.c trunc_map.c functions.c check_map_valid.c \
+get_vec.c flood_fill.c map_dup.c \
+#display.c init_img.c build\
 #───────────────────────────────╱
 
 #┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
