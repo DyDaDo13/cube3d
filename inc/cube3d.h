@@ -102,6 +102,6 @@ size_t	ft_strcpy(char *dst, char *src);
 char	**trunc_map(t_data *data);
 
 /*display.c*/
-void	ft_display(t_data *data);
+int	ft_display(t_data *data);
 
 #endif
