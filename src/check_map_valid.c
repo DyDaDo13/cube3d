@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map_valid.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ozone <ozone@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dydado13 <dydado13@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 15:13:58 by ozone             #+#    #+#             */
-/*   Updated: 2024/02/08 18:41:12 by ozone            ###   ########.fr       */
+/*   Updated: 2024/02/09 22:16:58 by dydado13         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	check_player(t_data *data)
 	int	x;
 	int	y;
 	int	player;
-	
+
 	y = -1;
 	player = 0;
 	while (data->map[++y])
@@ -28,8 +28,8 @@ int	check_player(t_data *data)
 			if (data->map[y][x] == 'N'
 				|| data->map[y][x] == 'S'
 				|| data->map[y][x] == 'W'
-				|| data->map[y][x] == 'E')	
-				player++;		
+				|| data->map[y][x] == 'E')
+				player++;
 		}
 	}
 	if (player != 1)
@@ -83,11 +83,10 @@ int	is_path_valid(char **map, t_data *data)
 
 int	check_elements(t_data *data)
 {
-
 	int	x;
 	int	y;
 	int	things;
-	
+
 	y = -1;
 	things = 0;
 	while (data->map[++y])
@@ -101,8 +100,8 @@ int	check_elements(t_data *data)
 				&& data->map[y][x] != 'S'
 				&& data->map[y][x] != 'W'
 				&& data->map[y][x] != 'E'
-				&& data->map[y][x] != 'N')	
-				things++;		
+				&& data->map[y][x] != 'N')
+				things++;
 		}
 	}
 	if (things != 0)

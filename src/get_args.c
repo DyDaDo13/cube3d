@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_args.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ozone <ozone@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dydado13 <dydado13@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 17:55:15 by ozone             #+#    #+#             */
-/*   Updated: 2024/02/08 14:50:12 by ozone            ###   ########.fr       */
+/*   Updated: 2024/02/09 22:19:16 by dydado13         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ unsigned int	get_color_path(char **map, int pos)
 		j++;
 	}
 	res2 = get_color((unsigned char)res[0],
-		(unsigned char)res[1],
+			(unsigned char)res[1],
 			(unsigned char)res[2]);
 	return (free(res), res2);
 }
@@ -99,10 +99,12 @@ int	get_args(t_data *data)
 	data->textures_path.EA = get_path(data->map, find_arg('E', 'A', data->map));
 	if (!data->textures_path.EA)
 		return (printf("Error: arg 'EA' not found\n"), 1);
-	data->textures_path.C = get_color_path(data->map, find_arg('C', ' ', data->map));
+	data->textures_path.C = get_color_path(data->map,
+			find_arg('C', ' ', data->map));
 	if ((int)data->textures_path.C == -1)
 		return (printf("Error: arg 'C' not found\n"), 1);
-	data->textures_path.F = get_color_path(data->map, find_arg('F', ' ', data->map));
+	data->textures_path.F = get_color_path(data->map,
+			find_arg('F', ' ', data->map));
 	if ((int)data->textures_path.F == -1)
 		return (printf("Error: arg 'F' not found\n"), 1);
 	return (0);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_vec.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ozone <ozone@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dydado13 <dydado13@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 18:00:33 by ozone             #+#    #+#             */
-/*   Updated: 2024/02/08 18:01:28 by ozone            ###   ########.fr       */
+/*   Updated: 2024/02/09 22:17:39 by dydado13         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,14 +64,13 @@ void	get_player_vec_camera(t_data *data)
 {
 	int	x;
 	int	y;
-	
+
 	y = -1;
 	while (data->map[++y])
 	{
 		x = -1;
 		while (data->map[y][++x])
 		{
-			
 			if (data->map[y][x] == 'S'
 				|| data->map[y][x] == 'E'
 				|| data->map[y][x] == 'W'

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   trunc_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ozone <ozone@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dydado13 <dydado13@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 22:26:34 by ozone             #+#    #+#             */
-/*   Updated: 2024/02/08 11:50:21 by ozone            ###   ########.fr       */
+/*   Updated: 2024/02/09 22:18:23 by dydado13         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ char	**trunc_map(t_data *data)
 	index[0] = (trunked_size - 1);
 	while (data->map[++index[0]])
 	{
-		//printf("|%s|", data->map[index[0]]);
 		index[2] = ft_strlen(data->map[index[0]]);
 		new_map[index[1]] = malloc(sizeof(char) * index[2] + 1);
 		new_map[index[1]][index[2]] = '\0';
