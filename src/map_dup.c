@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_dup.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lle-saul <lle-saul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ozone <ozone@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 19:19:20 by lle-saul          #+#    #+#             */
-/*   Updated: 2024/02/08 19:19:50 by lle-saul         ###   ########.fr       */
+/*   Updated: 2024/02/09 11:09:33 by ozone            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ char	**map_dup(char **tab)
 	while (tab[++y])
 	{
 		x = -1;
-		while (map[y][++x])
-			cpy[y][x] = map[y][x];
+		while (tab[y][++x])
+			cpy[y][x] = tab[y][x];
 	}
 	return (cpy);
 }
