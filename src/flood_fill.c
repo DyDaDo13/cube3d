@@ -6,7 +6,7 @@
 /*   By: lle-saul <lle-saul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 13:13:55 by dydado13          #+#    #+#             */
-/*   Updated: 2024/02/08 19:03:49 by lle-saul         ###   ########.fr       */
+/*   Updated: 2024/02/09 12:59:16 by lle-saul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	f_fill(char **tab, t_point *size, int row, int col)
 {
-	if (row < 0 || col < 0 || row >= size->y || col >= size->x)
+	if (row < 0 || col < 0 || !tab[row][col])
 		return ;
 	if (tab[row][col] == '.' || tab[row][col] == '1')
 		return ;
@@ -22,7 +22,6 @@ void	f_fill(char **tab, t_point *size, int row, int col)
 	{
 		tab[row][col] = '.';
 		size->i = 1;
-		// return ;
 	}
 	tab[row][col] = '.';
 	f_fill(tab, size, row -1, col);

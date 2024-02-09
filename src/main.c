@@ -40,15 +40,16 @@ int	main(int ac, char **av)
 	if (data.map == NULL)
 		return (1);
 	if (get_args(&data) == 1)
-		return (1);
+		return (free_all(&data), 1);
 	data.map = trunc_map(&data);
 	if (data.map == NULL)
 		return (free_all(&data), 1);
 	if (check_map_valid(&data) == 1)
 		return (free_all(&data), 1);
 	print_args(&data);
-	//ft_display(&data);
-	//un free ici :)
+	print_map(data.map);
+	printf("----------------------------------------\n");
+	ft_display(&data);
 	free_all(&data);
 	return (0);
 }

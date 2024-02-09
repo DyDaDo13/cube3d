@@ -12,6 +12,36 @@
 
 #include "../inc/cube3d.h"
 
+void	draw_pix(t_data *data, int line_to_draw, int side, int x)
+{
+	int	start;
+	int	end;
+	int	i;
+	int	color;
+
+	start = -line_to_draw / 2 + WIN_Y / 2;
+	if (start < 0)
+		start = 0;
+	end = line_to_draw / 2 + WIN_Y / 2;
+	if (end >= WIN_Y)
+		end = WIN_Y - 1;
+	i = 0;
+	if (side == 0)
+		color = 0xff0000;
+	else
+		color = 0xff0000 / 2;
+	while (i < WIN_Y)
+	{
+		if (i <= start)
+			img_pixel_put(&data->img_win, x, i, data->textures_path.C);
+		else if (i > start && i <= end)
+			img_pixel_put(&data->img_win, x, i, color);
+		else
+			img_pixel_put(&data->img_win, x, i, data->textures_path.F);
+		i++;
+	}
+}
+
 void	get_steps(int *stepX, int *stepY, t_algo *algo, t_data *data)
 {
 	if (algo->rayDir_actX < 0)
@@ -40,32 +70,34 @@ void	get_steps(int *stepX, int *stepY, t_algo *algo, t_data *data)
 	}
 }
 
-int	algo_DDA(t_algo *algo, t_data *data, int *wall_dist)
+void	algo_DDA(t_algo *algo, t_data *data, int *wall_dist, int *side)
 {
 	int	stepX;
 	int	stepY;
-	int	side;
 
 	get_steps(&stepX, &stepY, algo, data);
-	while (data->map[algo->map_posY][algo->map_posY] == '0')
+	//printf("deltaX : %f | deltaY : %f\n", algo->rayDir_actX, algo->rayDir_actY);
+	//printf("stepX : %d | stepY : %d\n", stepX, stepY);
+	while (data->map[algo->map_posY][algo->map_posX] != '1')
 	{
 		if (algo->dist_temp_rayX < algo->dist_temp_rayY)
 		{
 			algo->map_posX += stepX;
-			side = 0;
+			*side = 0;
 			algo->dist_temp_rayX += algo->delta_distX;
 		}
 		else
 		{
 			algo->map_posY += stepY;
-			side = 1;
+			*side = 1;
 			algo->dist_temp_rayY += algo->delta_distY;
 		}
 	}
-	if (side == 0)
-		*wall_dist = algo->dist_temp_rayX;
+	if (*side == 0)
+		*wall_dist = algo->dist_temp_rayX - algo->delta_distX;
 	else
-		*wall_dist = algo->dist_temp_rayY;
+		*wall_dist = algo->dist_temp_rayY - algo->delta_distY;
+	//printf("walldist = %d\n", *wall_dist);
 }
 
 void	ft_calc_delta(t_algo *algo)
@@ -92,19 +124,24 @@ void	build_img(t_data *data)
 {
 	int		x;
 	int		wall_dist;
+	int		side;
 	t_algo	algo;
 
-	x = -1;
-	while (++x < WIN_X)
+	x = 0;
+	side = 0;
+	while (x < WIN_X)
 	{
 		algo.Coef_CamX = ((2 * x) / (double)WIN_X) - 1;
 		algo.rayDir_actX = data->pos.dir_camX +
 			(data->pos.norm_camX * algo.Coef_CamX);
 		algo.rayDir_actY = data->pos.dir_camY +
 			(data->pos.norm_camX * algo.Coef_CamX);
-		algo.map_posX = int(data->pos.p_x);
-		algo.map_posY = int(data->pos.p_y);
+		//printf("deltaX : %f | deltaY : %f -> %d\n", algo.rayDir_actX, algo.rayDir_actY, x);
+		algo.map_posX = (int)(data->pos.p_x);
+		algo.map_posY = (int)(data->pos.p_y);
 		ft_calc_delta(&algo);
-		algo_DDA(&algo, data, &wall_dist);
+		algo_DDA(&algo, data, &wall_dist, &side);
+		draw_pix(data, WIN_Y / wall_dist, side, x);
+		x++;
 	}
 }

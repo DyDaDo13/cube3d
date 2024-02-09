@@ -9,7 +9,8 @@ get_next_line.c get_next_line_utils.c \
 init_map.c lst_functions.c main.c \
 get_args.c trunc_map.c functions.c check_map_valid.c \
 get_vec.c flood_fill.c map_dup.c \
-#display.c init_img.c build\
+build_img2.c build_img.c\
+display.c init_img.c move.c 
 #───────────────────────────────╱
 
 #┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
@@ -49,7 +50,7 @@ CC			= gcc
 RM			= rm -rf
 CFLAGS		= -Wall -Wextra -Werror -g
 INCLUDE		= -I.
-MLX_FLAGS	= -lX11 -lXext
+MLX_FLAGS	= -lX11 -lXext -lm
 
 
 #┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓

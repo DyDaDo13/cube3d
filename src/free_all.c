@@ -50,8 +50,8 @@ void	free_all(t_data *data)
 		free(data->textures_path.NO);
 	if (data->textures_path.SO)
 		free(data->textures_path.SO);
-	if (data->textures_path.C)
-		free(data->textures_path.C);
-	if (data->textures_path.F)
-		free(data->textures_path.F);
+	// if (data->textures_path.C)
+	// 	free(data->textures_path.C);
+	// if (data->textures_path.F)
+	// 	free(data->textures_path.F);
 }

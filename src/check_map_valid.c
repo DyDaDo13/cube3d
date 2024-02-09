@@ -37,7 +37,7 @@ int	check_player(t_data *data)
 	return (0);
 }
 
-void	find_p(char **map, t_point *P)
+void	find_p(char **map, t_point *P, t_data *data)
 {
 	int			i;
 	int			j;
@@ -55,8 +55,8 @@ void	find_p(char **map, t_point *P)
 			{
 				P->x = j;
 				P->y = i;
-				// data->p_y = i;
-				// data->p_x = j;
+				data->pos.p_y = i;
+				data->pos.p_x = j;
 				return ;
 			}
 			j++;
@@ -74,7 +74,7 @@ int	is_path_valid(char **map, t_data *data)
 	begin = malloc(sizeof(t_point));
 	if (size == NULL || begin == NULL)
 		return (1);
-	find_p(map, begin);
+	find_p(map, begin, data);
 	flood_fill(map, size, begin, data);
 	if (size->i == 1)
 		return (free(size), free(begin), 1);

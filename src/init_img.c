@@ -19,8 +19,8 @@ void	ft_init_img2(t_data *data, int *i, int *j)
 	data->textures.EA.img_pixels = mlx_get_data_addr(data->mlx,
 			&data->textures.EA.bits_pix, &data->textures.EA.len,
 			&data->textures.EA.endian);
-	data->img_win.img_ptr = mlx_new_image(data->mlx, WIN_Y, WIN_X);
-	data->img_win.img_pixels = mlx_get_data_addr(data->mlx,
+	data->img_win.img_ptr = mlx_new_image(data->mlx, WIN_X, WIN_Y);
+	data->img_win.img_pixels = mlx_get_data_addr(data->img_win.img_ptr,
 			&data->img_win.bits_pix, &data->img_win.len,
 			&data->img_win.endian);
 }

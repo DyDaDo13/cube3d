@@ -24,21 +24,20 @@ void	print_map(char **map)
 
 void	print_args(t_data *data)
 {
-	printf("--------------------------------\n");
-	printf("NO = %s\n", data->textures_path.NO);
-	printf("SO = %s\n", data->textures_path.SO);
-	printf("WE = %s\n", data->textures_path.WE);
-	printf("EA = %s\n", data->textures_path.EA);
-	printf("C = %i,%i,%i\n", data->textures_path.C[0],
-		data->textures_path.C[1], data->textures_path.C[2]);
-	printf("F = %i,%i,%i\n", data->textures_path.F[0],
-		data->textures_path.F[1], data->textures_path.F[2]);
-	printf("--------------------------------\n");
-	printf("Player Direction: %c\n", data->pos.c);
-	printf("--------------------------------\n");
-	printf("\e[34mcamX: \t\t%f\e[31m\ncamY: \t\t%f\n\e[0m",
+	printf("┌───────────────────────────────────────\n");
+	printf("│NO	= %s\n", data->textures_path.NO);
+	printf("│SO	= %s\n", data->textures_path.SO);
+	printf("│WE	= %s\n", data->textures_path.WE);
+	printf("│EA	= %s\n", data->textures_path.EA);
+	printf("│C	= %i\n", data->textures_path.C);
+	printf("│F	= %i\n", data->textures_path.F);
+	printf("├───────────────────────────────────────\n");
+	printf("│Player Direction: %c\n", data->pos.c);
+	printf("│Player Pos: \e[31mX = %f\e[34mY = %f\e[0m\n", data->pos.p_x, data->pos.p_y);
+	printf("├───────────────────────────────────────\n");
+	printf("│\e[34mcamX: \t\t%f\n|\e[31mcamY: \t\t%f\e[0m\n",
 		data->pos.dir_camX, data->pos.dir_camY);
-	printf("\e[32mcamX_normal: \t%f\e[36m\ncamY_normal: \t%f\n\e[0m",
+	printf("│\e[32mcamX_normal: \t%f\n|\e[36mcamY_normal: \t%f\e[0m\n",
 		data->pos.norm_camX, data->pos.norm_camY);
-	printf("--------------------------------\n");
+	printf("└───────────────────────────────────────\n");
 }
