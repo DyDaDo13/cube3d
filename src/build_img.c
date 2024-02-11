@@ -70,7 +70,7 @@ void	get_steps(int *stepX, int *stepY, t_algo *algo, t_data *data)
 	}
 }
 
-void	algo_DDA(t_algo *algo, t_data *data, int *wall_dist, int *side)
+void	algo_DDA(t_algo *algo, t_data *data, double *wall_dist, int *side)
 {
 	int	stepX;
 	int	stepY;
@@ -94,10 +94,10 @@ void	algo_DDA(t_algo *algo, t_data *data, int *wall_dist, int *side)
 		}
 	}
 	if (*side == 0)
-		*wall_dist = algo->dist_temp_rayX - algo->delta_distX;
+		*wall_dist = algo->dist_temp_rayX /*- algo->delta_distX*/;
 	else
-		*wall_dist = algo->dist_temp_rayY - algo->delta_distY;
-	//printf("walldist = %d\n", *wall_dist);
+		*wall_dist = algo->dist_temp_rayY /*- algo->delta_distY*/;
+	//printf("walldist = %f\n", *wall_dist);
 }
 
 void	ft_calc_delta(t_algo *algo)
@@ -122,10 +122,10 @@ void	ft_calc_delta(t_algo *algo)
 
 void	build_img(t_data *data)
 {
-	int		x;
-	int		wall_dist;
-	int		side;
-	t_algo	algo;
+	int			x;
+	double		wall_dist;
+	int			side;
+	t_algo		algo;
 
 	x = 0;
 	side = 0;

@@ -35,7 +35,7 @@ int	ft_key_check(int key, t_data *data)
 		ft_rotation_right(data);
 	else if (key == XK_d)
 		ft_rotation_left(data);
-	//printf("dirx : %f | dirY : %f\n", data->pos.dir_camX, data->pos.dir_camY);	
+	printf("dirx : %f | dirY : %f\n", data->pos.dir_camX, data->pos.dir_camY);	
 	build_img(data);
 	mlx_put_image_to_window(data->mlx, data->win, data->img_win.img_ptr, 0, 0);
 	return (0);

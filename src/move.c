@@ -45,9 +45,9 @@ void	ft_rotation_left(t_data *data)
 		data->pos.dir_camY * sin(ROT_SPEED);
 	data->pos.dir_camY = dirXtemp * sin(ROT_SPEED) +
 		data->pos.dir_camY * cos(ROT_SPEED);
-	data->pos.dir_camX = data->pos.norm_camX * cos(ROT_SPEED) -
+	data->pos.norm_camX = data->pos.norm_camX * cos(ROT_SPEED) -
 		data->pos.norm_camY * sin(ROT_SPEED);
-	data->pos.dir_camY = normXtemp * sin(ROT_SPEED) +
+	data->pos.norm_camY = normXtemp * sin(ROT_SPEED) +
 		data->pos.norm_camY * cos(ROT_SPEED);
 }
 
@@ -62,8 +62,8 @@ void	ft_rotation_right(t_data *data)
 		data->pos.dir_camY * sin(-ROT_SPEED);
 	data->pos.dir_camY = dirXtemp * sin(-ROT_SPEED) +
 		data->pos.dir_camY * cos(-ROT_SPEED);
-	data->pos.dir_camX = data->pos.norm_camX * cos(-ROT_SPEED) -
+	data->pos.norm_camX = data->pos.norm_camX * cos(-ROT_SPEED) -
 		data->pos.norm_camY * sin(-ROT_SPEED);
-	data->pos.dir_camY = normXtemp * sin(-ROT_SPEED) +
+	data->pos.norm_camY = normXtemp * sin(-ROT_SPEED) +
 		data->pos.norm_camY * cos(-ROT_SPEED);
 }
