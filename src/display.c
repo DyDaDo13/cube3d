@@ -35,7 +35,7 @@ int	ft_key_check(int key, t_data *data)
 		ft_rotation_right(data);
 	else if (key == XK_d)
 		ft_rotation_left(data);
-	printf("dirx : %f | dirY : %f\n", data->pos.dir_camX, data->pos.dir_camY);	
+	//printf("dirx : %f | dirY : %f\n", data->pos.dir_camX, data->pos.dir_camY);	
 	build_img(data);
 	mlx_put_image_to_window(data->mlx, data->win, data->img_win.img_ptr, 0, 0);
 	return (0);
@@ -50,10 +50,12 @@ int	ft_display(t_data *data)
 	if (data->win == NULL)
 		return (mlx_destroy_display(data->mlx), free(data->mlx), 1);
 	ft_init_img(data);
+	mlx_mouse_hide(data->mlx, data->win);
 	build_img(data);
 	mlx_put_image_to_window(data->mlx, data->win, data->img_win.img_ptr, 0, 0);
 	mlx_hook(data->win, 3, (1L << 0) + (1L << 1), ft_key_check, data);
 	mlx_hook(data->win, 17, 0L, ft_stop, data);
+	mlx_mouse_hook(data->win, change_fov, data);	
 	mlx_loop(data->mlx);
 	return (0);
 }

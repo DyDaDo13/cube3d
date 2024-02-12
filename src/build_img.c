@@ -12,30 +12,32 @@
 
 #include "../inc/cube3d.h"
 
-void	draw_pix(t_data *data, int line_to_draw, int side, int x)
+void	draw_pix(t_data *data, t_algo *algo, double wall_dist, int x)
 {
 	int	start;
 	int	end;
 	int	i;
 	int	color;
+	int	line_to_draw;
 
+	line_to_draw = WIN_Y / wall_dist;
 	start = -line_to_draw / 2 + WIN_Y / 2;
 	if (start < 0)
 		start = 0;
 	end = line_to_draw / 2 + WIN_Y / 2;
 	if (end >= WIN_Y)
 		end = WIN_Y - 1;
-	i = 0;
-	if (side == 0)
+	if (algo->side == 0)
 		color = 0xff0000;
 	else
 		color = 0xff0000 / 2;
+	i = 0;
 	while (i < WIN_Y)
 	{
 		if (i <= start)
 			img_pixel_put(&data->img_win, x, i, data->textures_path.C);
 		else if (i > start && i <= end)
-			img_pixel_put(&data->img_win, x, i, color);
+			img_pixel_put(&data->img_win, x, i, /*pix_texture(data, algo, i, wall_dist)*/color);
 		else
 			img_pixel_put(&data->img_win, x, i, data->textures_path.F);
 		i++;
@@ -70,7 +72,8 @@ void	get_steps(int *stepX, int *stepY, t_algo *algo, t_data *data)
 	}
 }
 
-void	algo_DDA(t_algo *algo, t_data *data, double *wall_dist, int *side)
+/*algo->side == 1 -> wall in y | algo->side == 0 -> wall in x*/
+void	algo_DDA(t_algo *algo, t_data *data, double *wall_dist)
 {
 	int	stepX;
 	int	stepY;
@@ -83,20 +86,21 @@ void	algo_DDA(t_algo *algo, t_data *data, double *wall_dist, int *side)
 		if (algo->dist_temp_rayX < algo->dist_temp_rayY)
 		{
 			algo->map_posX += stepX;
-			*side = 0;
+			algo->side = 0;
 			algo->dist_temp_rayX += algo->delta_distX;
 		}
 		else
 		{
 			algo->map_posY += stepY;
-			*side = 1;
+			algo->side = 1;
 			algo->dist_temp_rayY += algo->delta_distY;
 		}
 	}
-	if (*side == 0)
+	if (algo->side == 0)
 		*wall_dist = algo->dist_temp_rayX - algo->delta_distX;
 	else
 		*wall_dist = algo->dist_temp_rayY - algo->delta_distY;
+	get_texture(algo, stepX, stepY);
 	//printf("walldist = %f\n", *wall_dist);
 }
 
@@ -124,11 +128,10 @@ void	build_img(t_data *data)
 {
 	int			x;
 	double		wall_dist;
-	int			side;
 	t_algo		algo;
 
 	x = 0;
-	side = 0;
+	algo.side = 0;
 	while (x < WIN_X)
 	{
 		algo.Coef_CamX = ((2 * x) / (double)WIN_X) - 1;
@@ -140,8 +143,8 @@ void	build_img(t_data *data)
 		algo.map_posX = (int)(data->pos.p_x);
 		algo.map_posY = (int)(data->pos.p_y);
 		ft_calc_delta(&algo);
-		algo_DDA(&algo, data, &wall_dist, &side);
-		draw_pix(data, WIN_Y / wall_dist, side, x);
+		algo_DDA(&algo, data, &wall_dist);
+		draw_pix(data, &algo, wall_dist, x);
 		x++;
 	}
 }

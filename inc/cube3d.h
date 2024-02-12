@@ -39,6 +39,7 @@
 # define FOV	1
 # define MOVE_SPEED	0.1
 # define ROT_SPEED	0.06
+# define TEXT_SIZE	256
 
 typedef struct s_img
 {
@@ -117,6 +118,8 @@ typedef struct s_algo
 	double	delta_distY;
 	double	dist_temp_rayX;
 	double	dist_temp_rayY;
+	int		side;
+	int		texture;
 }	t_algo;
 
 /*free_all.c*/
@@ -170,10 +173,12 @@ void			build_img(t_data *data);
 /*build_img2.c*/
 unsigned int	get_color(unsigned char R, unsigned char G, unsigned char B);
 void			img_pixel_put(t_img *img, int x, int y, int color);
+void			get_texture(t_algo *algo, int stepX, int stepY);
 
 /*move.c*/
 void			ft_move(t_data *data, int dir);
 void			ft_rotation_left(t_data *data);
 void			ft_rotation_right(t_data *data);
+int				change_fov(int key, t_data *data);
 
 #endif

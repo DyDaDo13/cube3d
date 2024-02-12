@@ -1,7 +1,7 @@
-EA ./textures/Brick_Grey.xpm
+EA ./textures/Concrete_Lines_Grey.xpm
 NO ./textures/Brick_Grey.xpm
 SO ./textures/Brick_Grey.xpm
-WE ./textures/Brick_Grey.xpm
+WE ./textures/Concrete_Lines_Grey.xpm
 
 F 128,183,255
 C 128,255,190
