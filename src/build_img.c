@@ -12,32 +12,24 @@
 
 #include "../inc/cube3d.h"
 
-void	draw_pix(t_data *data, t_algo *algo, double wall_dist, int x)
+void	draw_pix(t_data *data, t_algo *algo, int line_to_draw, int x)
 {
-	int	start;
-	int	end;
 	int	i;
-	int	color;
-	int	line_to_draw;
 
-	line_to_draw = WIN_Y / wall_dist;
-	start = -line_to_draw / 2 + WIN_Y / 2;
-	if (start < 0)
-		start = 0;
-	end = line_to_draw / 2 + WIN_Y / 2;
-	if (end >= WIN_Y)
-		end = WIN_Y - 1;
-	if (algo->side == 0)
-		color = 0xff0000;
-	else
-		color = 0xff0000 / 2;
+	algo->start = -line_to_draw / 2 + WIN_Y / 2;
+	if (algo->start < 0)
+		algo->start = 0;
+	algo->end = line_to_draw / 2 + WIN_Y / 2;
+	if (algo->end >= WIN_Y)
+		algo->end = WIN_Y - 1;
 	i = 0;
+	algo->x = x;
 	while (i < WIN_Y)
 	{
-		if (i <= start)
+		if (i <= algo->start)
 			img_pixel_put(&data->img_win, x, i, data->textures_path.C);
-		else if (i > start && i <= end)
-			img_pixel_put(&data->img_win, x, i, /*pix_texture(data, algo, i, wall_dist)*/color);
+		else if (i > algo->start && i <= algo->end)
+			pix_texture(data, algo, &i);
 		else
 			img_pixel_put(&data->img_win, x, i, data->textures_path.F);
 		i++;
@@ -73,14 +65,12 @@ void	get_steps(int *stepX, int *stepY, t_algo *algo, t_data *data)
 }
 
 /*algo->side == 1 -> wall in y | algo->side == 0 -> wall in x*/
-void	algo_DDA(t_algo *algo, t_data *data, double *wall_dist)
+void	algo_DDA(t_algo *algo, t_data *data)
 {
 	int	stepX;
 	int	stepY;
 
 	get_steps(&stepX, &stepY, algo, data);
-	//printf("deltaX : %f | deltaY : %f\n", algo->rayDir_actX, algo->rayDir_actY);
-	//printf("stepX : %d | stepY : %d\n", stepX, stepY);
 	while (data->map[algo->map_posY][algo->map_posX] != '1')
 	{
 		if (algo->dist_temp_rayX < algo->dist_temp_rayY)
@@ -97,11 +87,10 @@ void	algo_DDA(t_algo *algo, t_data *data, double *wall_dist)
 		}
 	}
 	if (algo->side == 0)
-		*wall_dist = algo->dist_temp_rayX - algo->delta_distX;
+		algo->wall_dist = algo->dist_temp_rayX - algo->delta_distX;
 	else
-		*wall_dist = algo->dist_temp_rayY - algo->delta_distY;
+		algo->wall_dist = algo->dist_temp_rayY - algo->delta_distY;
 	get_texture(algo, stepX, stepY);
-	//printf("walldist = %f\n", *wall_dist);
 }
 
 void	ft_calc_delta(t_algo *algo)
@@ -127,24 +116,23 @@ void	ft_calc_delta(t_algo *algo)
 void	build_img(t_data *data)
 {
 	int			x;
-	double		wall_dist;
 	t_algo		algo;
 
 	x = 0;
 	algo.side = 0;
 	while (x < WIN_X)
 	{
+		//printf("--------------------------------------\n");
 		algo.Coef_CamX = ((2 * x) / (double)WIN_X) - 1;
 		algo.rayDir_actX = data->pos.dir_camX +
 			(data->pos.norm_camX * algo.Coef_CamX);
 		algo.rayDir_actY = data->pos.dir_camY +
 			(data->pos.norm_camY * algo.Coef_CamX);
-		//printf("deltaX : %f | deltaY : %f -> %d\n", algo.rayDir_actX, algo.rayDir_actY, x);
 		algo.map_posX = (int)(data->pos.p_x);
 		algo.map_posY = (int)(data->pos.p_y);
 		ft_calc_delta(&algo);
-		algo_DDA(&algo, data, &wall_dist);
-		draw_pix(data, &algo, wall_dist, x);
+		algo_DDA(&algo, data);
+		draw_pix(data, &algo, WIN_Y / algo.wall_dist, x);
 		x++;
 	}
 }

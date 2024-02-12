@@ -27,6 +27,16 @@ int	ft_key_check(int key, t_data *data)
 {
 	if (key == XK_Escape)
 		ft_stop(data);
+	if (key == 61)
+	{
+		data->pos.norm_camX = data->pos.norm_camX * 0.99;
+		data->pos.norm_camY = data->pos.norm_camY * 0.99;
+	}
+	if (key == 45)
+	{
+		data->pos.norm_camX = data->pos.norm_camX * 1.01;
+		data->pos.norm_camY = data->pos.norm_camY * 1.01;
+	}
 	else if (key == XK_w)
 		ft_move(data, 0);
 	else if (key == XK_s)
@@ -55,7 +65,6 @@ int	ft_display(t_data *data)
 	mlx_put_image_to_window(data->mlx, data->win, data->img_win.img_ptr, 0, 0);
 	mlx_hook(data->win, 3, (1L << 0) + (1L << 1), ft_key_check, data);
 	mlx_hook(data->win, 17, 0L, ft_stop, data);
-	mlx_mouse_hook(data->win, change_fov, data);	
 	mlx_loop(data->mlx);
 	return (0);
 }

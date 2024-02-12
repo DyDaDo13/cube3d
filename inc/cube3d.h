@@ -36,7 +36,7 @@
 
 # define WIN_X	1080
 # define WIN_Y	720
-# define FOV	1
+# define FOV	0.66
 # define MOVE_SPEED	0.1
 # define ROT_SPEED	0.06
 # define TEXT_SIZE	256
@@ -120,6 +120,10 @@ typedef struct s_algo
 	double	dist_temp_rayY;
 	int		side;
 	int		texture;
+	double	wall_dist;
+	int		x;
+	int		start;
+	int		end;
 }	t_algo;
 
 /*free_all.c*/
@@ -174,6 +178,7 @@ void			build_img(t_data *data);
 unsigned int	get_color(unsigned char R, unsigned char G, unsigned char B);
 void			img_pixel_put(t_img *img, int x, int y, int color);
 void			get_texture(t_algo *algo, int stepX, int stepY);
+void			pix_texture(t_data *data, t_algo *algo, int *y);
 
 /*move.c*/
 void			ft_move(t_data *data, int dir);

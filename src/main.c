@@ -29,27 +29,28 @@
 int	main(int ac, char **av)
 {
 	int		fd;
-	t_data	data;
+	t_data	*data;
 
+	data = malloc(sizeof(t_data));
 	if (ac != 2)
 		return (printf("Error: Too Many or Less Arguments\n"), 1);
 	fd = open(av[1], O_RDONLY);
 	if (fd == -1)
 		return (perror("Error: fd not_open"), 1);
-	data.map = init_map(fd, &data);
-	if (data.map == NULL)
+	data->map = init_map(fd, data);
+	if (data->map == NULL)
 		return (1);
-	if (get_args(&data) == 1)
-		return (free_all(&data), 1);
-	data.map = trunc_map(&data);
-	if (data.map == NULL)
-		return (free_all(&data), 1);
-	if (check_map_valid(&data) == 1)
-		return (free_all(&data), 1);
-	print_args(&data);
-	print_map(data.map);
+	if (get_args(data) == 1)
+		return (free_all(data), 1);
+	data->map = trunc_map(data);
+	if (data->map == NULL)
+		return (free_all(data), 1);
+	if (check_map_valid(data) == 1)
+		return (free_all(data), 1);
+	print_args(data);
+	print_map(data->map);
 	printf("----------------------------------------\n");
-	ft_display(&data);
-	free_all(&data);
+	ft_display(data);
+	free_all(data);
 	return (0);
 }

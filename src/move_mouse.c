@@ -25,13 +25,19 @@ int	change_fov(int key, t_data *data)
 	printf("key = %i\n", key);
 	if (key == 4)
 	{
-		data->pos.norm_camX = data->pos.norm_camX * 0.99;
-		data->pos.norm_camY = data->pos.norm_camY * 0.99;
+		data->i = 1;
+		// if (!data->pos.norm_camX)
+		// 	printf("hey\n");
+		// data->pos.norm_camX = data->pos.norm_camX * 1;
+		// data->pos.norm_camY = data->pos.norm_camY * 1;
+		printf("coucou\n");
 	}
 	else if (key == 5)
 	{
-		data->pos.norm_camX = data->pos.norm_camX * 1.01;
-		data->pos.norm_camY = data->pos.norm_camY * 1.01;
+		data->i = 2;
+		printf("aurevoir\n");
+		// data->pos.norm_camX = data->pos.norm_camX * 1;
+		// data->pos.norm_camY = data->pos.norm_camY * 1;
 	}
 	return (0);
 }
