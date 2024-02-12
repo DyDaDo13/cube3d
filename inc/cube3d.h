@@ -36,7 +36,7 @@
 
 # define WIN_X	1080
 # define WIN_Y	720
-# define FOV	0.66
+# define FOV	1
 # define MOVE_SPEED	0.1
 # define ROT_SPEED	0.06
 

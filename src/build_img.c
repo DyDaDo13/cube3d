@@ -94,9 +94,9 @@ void	algo_DDA(t_algo *algo, t_data *data, double *wall_dist, int *side)
 		}
 	}
 	if (*side == 0)
-		*wall_dist = algo->dist_temp_rayX /*- algo->delta_distX*/;
+		*wall_dist = algo->dist_temp_rayX - algo->delta_distX;
 	else
-		*wall_dist = algo->dist_temp_rayY /*- algo->delta_distY*/;
+		*wall_dist = algo->dist_temp_rayY - algo->delta_distY;
 	//printf("walldist = %f\n", *wall_dist);
 }
 
@@ -135,7 +135,7 @@ void	build_img(t_data *data)
 		algo.rayDir_actX = data->pos.dir_camX +
 			(data->pos.norm_camX * algo.Coef_CamX);
 		algo.rayDir_actY = data->pos.dir_camY +
-			(data->pos.norm_camX * algo.Coef_CamX);
+			(data->pos.norm_camY * algo.Coef_CamX);
 		//printf("deltaX : %f | deltaY : %f -> %d\n", algo.rayDir_actX, algo.rayDir_actY, x);
 		algo.map_posX = (int)(data->pos.p_x);
 		algo.map_posY = (int)(data->pos.p_y);
