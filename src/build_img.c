@@ -122,7 +122,6 @@ void	build_img(t_data *data)
 	algo.side = 0;
 	while (x < WIN_X)
 	{
-		//printf("--------------------------------------\n");
 		algo.Coef_CamX = ((2 * x) / (double)WIN_X) - 1;
 		algo.rayDir_actX = data->pos.dir_camX +
 			(data->pos.norm_camX * algo.Coef_CamX);

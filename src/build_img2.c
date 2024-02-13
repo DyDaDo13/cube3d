@@ -67,17 +67,17 @@ void	pix_texture(t_data *data, t_algo *algo, int *y)
 	int		textY;
 
 	if (algo->side == 0)
-		wallX = data->pos.p_y + algo->wall_dist * algo->dist_temp_rayY;
+		wallX = data->pos.p_y + algo->wall_dist * algo->rayDir_actY;
 	else
-		wallX = data->pos.p_x + algo->wall_dist * algo->dist_temp_rayX;
+		wallX = data->pos.p_x + algo->wall_dist * algo->rayDir_actX;
 	wallX -= floor((wallX));
 	textX = (int)(wallX * (double)(TEXT_SIZE));
-	if (algo->side == 0 && algo->dist_temp_rayX > 0)
+	if (algo->side == 0 && algo->rayDir_actX < 0)
 		textX = TEXT_SIZE - textX - 1;
-	if (algo->side == 1 && algo->dist_temp_rayY < 0)
+	if (algo->side == 1 && algo->rayDir_actY > 0)
 		textX = TEXT_SIZE - textX - 1;
-	step = 1.0 * TEXT_SIZE / (WIN_Y / algo->wall_dist);
-	textpos = (algo->start - WIN_Y / 2 + (WIN_Y / algo->wall_dist) / 2) * step;
+	step = 1.0 * TEXT_SIZE / (int)(WIN_Y / algo->wall_dist);
+	textpos = (algo->start - WIN_Y / 2 + (int)(WIN_Y / algo->wall_dist) / 2) * step;
 	while (*y < algo->end)
 	{
 		textY = (int)textpos & (TEXT_SIZE - 1);
