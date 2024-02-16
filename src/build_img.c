@@ -131,6 +131,11 @@ void	build_img(t_data *data)
 		algo.map_posY = (int)(data->pos.p_y);
 		ft_calc_delta(&algo);
 		algo_DDA(&algo, data);
+		if (algo.Coef_CamX != 0)
+			algo.wall_dist *= sin(atan2(algo.rayDir_actY, algo.rayDir_actX) - atan2(data->pos.norm_camY * algo.Coef_CamX, data->pos.norm_camX * algo.Coef_CamX));
+		if (algo.wall_dist < 0)
+			algo.wall_dist *= -1;
+		//printf("walldist : %f\n", algo.wall_dist);
 		draw_pix(data, &algo, WIN_Y / algo.wall_dist, x);
 		x++;
 	}
