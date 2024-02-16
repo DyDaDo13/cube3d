@@ -1,20 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_game.c                                        :+:      :+:    :+:   */
+/*   display.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ozone <ozone@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 22:36:29 by ozone             #+#    #+#             */
-/*   Updated: 2024/02/07 22:45:24 by ozone            ###   ########.fr       */
+/*   Updated: 2024/02/16 12:05:40 by ozone            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cube3d.h"
 
+void	destroy_all_images(t_data *data)
+{
+	mlx_destroy_image(data->mlx, data->textures.EA.img_ptr);
+	mlx_destroy_image(data->mlx, data->textures.WE.img_ptr);
+	mlx_destroy_image(data->mlx, data->textures.NO.img_ptr);
+	mlx_destroy_image(data->mlx, data->textures.SO.img_ptr);
+}
+
 int	ft_stop(t_data *data)
 {
-	//destroy_all_images(data);
+	destroy_all_images(data);
 	mlx_destroy_window(data->mlx, data->win);
 	mlx_destroy_display(data->mlx);
 	free(data->mlx);
