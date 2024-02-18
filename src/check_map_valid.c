@@ -118,5 +118,7 @@ int	check_map_valid(t_data *data)
 	if (is_path_valid(data->map, data) == 1)
 		return (printf("Error: invalid object in map 'WALLS'\n"), 1);
 	get_player_vec_camera(data);
+	data->map_lenX = ft_strlen(data->map[0]);
+	data->map_lenY = ft_strlen2(data->map);
 	return (0);
 }

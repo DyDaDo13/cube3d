@@ -12,25 +12,6 @@
 
 #include "../inc/cube3d.h"
 
-void	destroy_all_images(t_data *data)
-{
-	mlx_destroy_image(data->mlx, data->textures.EA.img_ptr);
-	mlx_destroy_image(data->mlx, data->textures.WE.img_ptr);
-	mlx_destroy_image(data->mlx, data->textures.NO.img_ptr);
-	mlx_destroy_image(data->mlx, data->textures.SO.img_ptr);
-}
-
-int	ft_stop(t_data *data)
-{
-	destroy_all_images(data);
-	mlx_destroy_window(data->mlx, data->win);
-	mlx_destroy_display(data->mlx);
-	free(data->mlx);
-	free_all(data);
-	exit(0);
-	return (0);
-}
-
 int	ft_key_check(int key, t_data *data)
 {
 	if (key == XK_Escape)

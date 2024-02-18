@@ -40,6 +40,8 @@
 # define MOVE_SPEED	0.1
 # define ROT_SPEED	0.06
 # define TEXT_SIZE	256
+# define MINI_MAP_SIZE	10
+# define MINI_MAP_COEF_LEN	10
 
 typedef struct s_img
 {
@@ -97,6 +99,8 @@ typedef struct s_point
 typedef struct s_data
 {
 	char			**map;
+	int				map_lenX;
+	int				map_lenY;
 	void			*mlx;
 	void			*win;
 	int				i;
@@ -157,6 +161,7 @@ char			**trunc_map(t_data *data);
 int				check_map_valid(t_data *data);
 void			flood_fill(char **tab, t_point *size, t_point *begin, t_data *data);
 char			**map_dup(char **tab);
+void			change_dis(t_point *dis, t_pos start, t_data *data, int cases);
 
 /*get_vec.c*/
 void			get_player_vec_camera(t_data *data);
@@ -164,6 +169,8 @@ void			get_fov(char c, t_data *data);
 void			get_pos(char c, t_data *data);
 
 /*display.c*/
+void			trace_line(t_img *img, t_pos start, t_point dis, int color);
+int				take_pix(t_img *img, int x, int y);
 int				ft_display(t_data *data);
 int				ft_stop(t_data *data);
 int				ft_key_check(int key, t_data *data);
@@ -186,4 +193,7 @@ void			ft_rotation_left(t_data *data);
 void			ft_rotation_right(t_data *data);
 int				change_fov(int key, t_data *data);
 
+/*mini_map.c*/
+void			show_map(t_data *data);
+unsigned int	ft_mix_color(int color1, int color2, float pourcent);
 #endif

@@ -118,9 +118,10 @@ void	build_img(t_data *data)
 	int			x;
 	t_algo		algo;
 
-	x = 0;
+	x = -1;
 	algo.side = 0;
-	while (x < WIN_X)
+	algo.wall_dist = 0;
+	while (++x < WIN_X)
 	{
 		algo.Coef_CamX = ((2 * x) / (double)WIN_X) - 1;
 		algo.rayDir_actX = data->pos.dir_camX +
@@ -135,8 +136,7 @@ void	build_img(t_data *data)
 			algo.wall_dist *= sin(atan2(algo.rayDir_actY, algo.rayDir_actX) - atan2(data->pos.norm_camY * algo.Coef_CamX, data->pos.norm_camX * algo.Coef_CamX));
 		if (algo.wall_dist < 0)
 			algo.wall_dist *= -1;
-		//printf("walldist : %f\n", algo.wall_dist);
 		draw_pix(data, &algo, WIN_Y / algo.wall_dist, x);
-		x++;
 	}
+	show_map(data);
 }

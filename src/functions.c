@@ -51,3 +51,32 @@ size_t	ft_strcpy(char *dst, char *src)
 		dst[j] = src[j];
 	return (len);
 }
+
+void	change_dis(t_point *dis, t_pos start, t_data *data, int cases)
+{
+	int	i;
+
+	i = 2;
+	if (cases == 0)
+	{
+		while (sqrt((dis->x * dis->x) + (dis->y * dis->y)) < 20)
+		{
+			dis->x = (((((MINI_MAP_SIZE * MINI_MAP_COEF_LEN) / 2) + 20)
+				+ (data->pos.dir_camX * i)) + (data->pos.norm_camX * i)) - start.p_x;
+			dis->y = (((((MINI_MAP_SIZE * MINI_MAP_COEF_LEN) / 2) + 20)
+				+ (data->pos.dir_camY * i)) + (data->pos.norm_camY * i)) - start.p_y;
+			i++;
+		}
+	}
+	else
+	{
+		while (sqrt((dis->x * dis->x) + (dis->y * dis->y)) < 20)
+		{
+			dis->x = (((((MINI_MAP_SIZE * MINI_MAP_COEF_LEN) / 2) + 20)
+				+ (data->pos.dir_camX * i)) - (data->pos.norm_camX * i)) - start.p_x;
+			dis->y = (((((MINI_MAP_SIZE * MINI_MAP_COEF_LEN) / 2) + 20)
+				+ (data->pos.dir_camY * i)) - (data->pos.norm_camY * i)) - start.p_y;
+			i++;
+		}
+	}
+}
