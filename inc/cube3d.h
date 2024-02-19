@@ -126,7 +126,7 @@ typedef	struct s_anim_nothing
 	t_img	s2;
 	t_img	s3;
 	t_img	s4;
-}	t_anim_nothing
+}	t_anim_nothing;
 
 typedef struct s_anim_walk
 {
@@ -135,7 +135,7 @@ typedef struct s_anim_walk
 	t_img	s1;
 	t_img	s2;
 	t_img	s3;
-	t_algo	s4;
+	t_img	s4;
 }t_anim_walk;
 
 typedef struct s_anim_run
@@ -167,6 +167,7 @@ typedef struct s_data
 	t_anim_slash	p_slash;
 	t_anim_nothing	p_noth;
 	t_anim_walk		p_walk;
+	t_anim_run		p_run;
 
 }	t_data;
 
@@ -233,6 +234,7 @@ int				take_pix(t_img *img, int x, int y);
 int				ft_display(t_data *data);
 int				ft_stop(t_data *data);
 int				ft_key_check(int key, t_data *data);
+int				is_door_valid(char **map);
 
 /*init_img.c*/
 void			ft_init_img(t_data *data);

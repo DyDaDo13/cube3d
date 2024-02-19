@@ -6,7 +6,7 @@
 /*   By: ozone <ozone@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 15:13:58 by ozone             #+#    #+#             */
-/*   Updated: 2024/02/19 13:42:17 by ozone            ###   ########.fr       */
+/*   Updated: 2024/02/19 17:12:31 by ozone            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,8 @@ int	check_elements(t_data *data)
 				&& data->map[y][x] != 'S'
 				&& data->map[y][x] != 'W'
 				&& data->map[y][x] != 'E'
-				&& data->map[y][x] != 'N')
+				&& data->map[y][x] != 'N'
+				&& data->map[y][x] != 'D')
 				things++;
 		}
 	}
@@ -117,6 +118,8 @@ int	check_map_valid(t_data *data)
 		return (printf("Error: invalid object in map 'PLAYER'\n"), 1);
 	if (is_path_valid(data->map, data) == 1)
 		return (printf("Error: invalid object in map 'WALLS'\n"), 1);
+	if (is_door_valid(data->map) == 1)
+		return (printf("Error: doors incorect position\n"), 1);
 	get_player_vec_camera(data);
 	data->move_speed = MOVE_SPEED;
 	data->map_lenX = ft_strlen(data->map[0]);
