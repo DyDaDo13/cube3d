@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map_valid.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dydado13 <dydado13@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ozone <ozone@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 15:13:58 by ozone             #+#    #+#             */
-/*   Updated: 2024/02/09 22:16:58 by dydado13         ###   ########.fr       */
+/*   Updated: 2024/02/19 13:42:17 by ozone            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,7 @@ int	check_map_valid(t_data *data)
 	if (is_path_valid(data->map, data) == 1)
 		return (printf("Error: invalid object in map 'WALLS'\n"), 1);
 	get_player_vec_camera(data);
+	data->move_speed = MOVE_SPEED;
 	data->map_lenX = ft_strlen(data->map[0]);
 	data->map_lenY = ft_strlen2(data->map);
 	return (0);

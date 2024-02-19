@@ -107,6 +107,7 @@ typedef struct s_point
 typedef struct s_data
 {
 	char			**map;
+	double			move_speed;
 	int				map_lenX;
 	int				map_lenY;
 	void			*mlx;

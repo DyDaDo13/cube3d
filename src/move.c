@@ -6,7 +6,7 @@
 /*   By: ozone <ozone@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 12:44:24 by lle-saul          #+#    #+#             */
-/*   Updated: 2024/02/19 13:13:04 by ozone            ###   ########.fr       */
+/*   Updated: 2024/02/19 13:43:30 by ozone            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,20 +17,20 @@ void	ft_move2(t_data *data, int dir)
 	if (dir == 2)
 	{
 		if (data->map[(int)(data->pos.p_y + (data->pos.norm_camY *
-				MOVE_SPEED))][(int)(data->pos.p_x)] != '1')
-			data->pos.p_y += data->pos.norm_camY * MOVE_SPEED;
+			 data->move_speed))][(int)(data->pos.p_x)] != '1')
+			data->pos.p_y += data->pos.norm_camY * data->move_speed;
 		if (data->map[(int)(data->pos.p_y)][(int)(data->pos.p_x +
-				(data->pos.norm_camX * MOVE_SPEED))] != '1')
-			data->pos.p_x += data->pos.norm_camX * MOVE_SPEED;
+				(data->pos.norm_camX * data->move_speed))] != '1')
+			data->pos.p_x += data->pos.norm_camX * data->move_speed;
 	}
 	else if (dir == 3)
 	{
 		if (data->map[(int)(data->pos.p_y - (data->pos.norm_camY *
-				MOVE_SPEED))][(int)(data->pos.p_x)] != '1')
-			data->pos.p_y -= data->pos.norm_camY * MOVE_SPEED;
+			 data->move_speed))][(int)(data->pos.p_x)] != '1')
+			data->pos.p_y -= data->pos.norm_camY * data->move_speed;
 		if (data->map[(int)(data->pos.p_y)][(int)(data->pos.p_x -
-				(data->pos.norm_camX * MOVE_SPEED))] != '1')
-			data->pos.p_x -= data->pos.norm_camX * MOVE_SPEED;
+				(data->pos.norm_camX * data->move_speed))] != '1')
+			data->pos.p_x -= data->pos.norm_camX * data->move_speed;
 	}
 }
 
@@ -39,20 +39,20 @@ void	ft_move(t_data *data, int dir)
 	if (dir == 0)
 	{
 		if (data->map[(int)(data->pos.p_y + (data->pos.dir_camY *
-				MOVE_SPEED))][(int)(data->pos.p_x)] != '1')
-			data->pos.p_y += data->pos.dir_camY * MOVE_SPEED;
+			 data->move_speed))][(int)(data->pos.p_x)] != '1')
+			data->pos.p_y += data->pos.dir_camY * data->move_speed;
 		if (data->map[(int)(data->pos.p_y)][(int)(data->pos.p_x +
-				(data->pos.dir_camX * MOVE_SPEED))] != '1')
-			data->pos.p_x += data->pos.dir_camX * MOVE_SPEED;
+				(data->pos.dir_camX * data->move_speed))] != '1')
+			data->pos.p_x += data->pos.dir_camX * data->move_speed;
 	}
 	else if (dir == 1)
 	{
 		if (data->map[(int)(data->pos.p_y - (data->pos.dir_camY *
-				MOVE_SPEED))][(int)(data->pos.p_x)] != '1')
-			data->pos.p_y -= data->pos.dir_camY * MOVE_SPEED;
+			 data->move_speed))][(int)(data->pos.p_x)] != '1')
+			data->pos.p_y -= data->pos.dir_camY * data->move_speed;
 		if (data->map[(int)(data->pos.p_y)][(int)(data->pos.p_x -
-				(data->pos.dir_camX * MOVE_SPEED))] != '1')
-			data->pos.p_x -= data->pos.dir_camX * MOVE_SPEED;
+				(data->pos.dir_camX * data->move_speed))] != '1')
+			data->pos.p_x -= data->pos.dir_camX * data->move_speed;
 	}
 	else
 		ft_move2(data, dir);
