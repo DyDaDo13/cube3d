@@ -6,7 +6,7 @@
 /*   By: ozone <ozone@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 12:44:24 by lle-saul          #+#    #+#             */
-/*   Updated: 2024/02/19 10:37:53 by ozone            ###   ########.fr       */
+/*   Updated: 2024/02/19 13:03:49 by ozone            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,24 @@ void	ft_rotation(t_data *data, double coef)
 		data->pos.norm_camY * sin(coef);
 	data->pos.norm_camY = normXtemp * sin(coef) +
 		data->pos.norm_camY * cos(coef);
+}
+
+void	ft_rotation(t_data *data, double rot_coef)
+{
+	double	dirXtemp;
+	double	normXtemp;
+
+	dirXtemp = data->pos.dir_camX;
+	normXtemp = data->pos.norm_camX;
+	data->pos.dir_camX = data->pos.dir_camX * cos(rot_coef) -
+		data->pos.dir_camY * sin(rot_coef);
+	data->pos.dir_camY = dirXtemp * sin(rot_coef) +
+		data->pos.dir_camY * cos(rot_coef);
+	data->pos.norm_camX = data->pos.norm_camX * cos(rot_coef) -
+		data->pos.norm_camY * sin(rot_coef);
+	data->pos.norm_camY = normXtemp * sin(rot_coef) +
+		data->pos.norm_camY * cos(rot_coef);
+	//printf("%f | %f | %f | %f | %f\n", rot_coef, data->pos.dir_camX, data->pos.dir_camY, data->pos.norm_camX, data->pos.norm_camY);
 }
 
 void	ft_rotation_left(t_data *data)

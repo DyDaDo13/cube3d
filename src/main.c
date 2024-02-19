@@ -26,6 +26,14 @@
 // 	return (open(av, O_RDONLY));
 // }
 
+// #include "mlx.h"
+// #include <stdio.h>
+
+// typedef struct s_data {
+//     void *mlx;
+//     void *win;
+// }              t_data;
+
 int	main(int ac, char **av)
 {
 	int		fd;

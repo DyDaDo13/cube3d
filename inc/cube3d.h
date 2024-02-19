@@ -42,6 +42,7 @@
 # define TEXT_SIZE	256
 # define MINI_MAP_SIZE	10
 # define MINI_MAP_COEF_LEN	10
+# define SENSIVITY 1000
 
 typedef struct s_img
 {
@@ -80,6 +81,13 @@ typedef struct s_pos
 	double	angle;
 }	t_pos;
 
+typedef struct s_mouse
+{
+	int		origin_x;
+	int		origin_y;
+	int		move_x;
+	int		move_y;
+}	t_mousse;
 
 typedef struct s_textures
 {
@@ -109,6 +117,7 @@ typedef struct s_data
 	t_textures		textures;
 	t_map			*map_char;
 	t_pos			pos;
+	t_mousse		mouse;
 }	t_data;
 
 typedef struct s_algo
@@ -180,6 +189,7 @@ void			ft_init_img(t_data *data);
 
 /*build_img.c*/
 void			build_img(t_data *data);
+int				mouse_move(int x, int y, t_data *data);
 
 /*build_img2.c*/
 unsigned int	get_color(unsigned char R, unsigned char G, unsigned char B);
@@ -197,4 +207,6 @@ int				change_fov(int key, t_data *data);
 /*mini_map.c*/
 void			show_map(t_data *data);
 unsigned int	ft_mix_color(int color1, int color2, float pourcent);
+int				set_mouse_center_screen(t_data *data);
+void	ft_rotation(t_data *data, double rot_coef);
 #endif
