@@ -104,6 +104,51 @@ typedef struct s_point
 	int		i;
 }t_point;
 
+typedef struct s_anim_slash
+{
+	int		i;
+	t_img	s0;
+	t_img	s1;
+	t_img	s2;
+	t_img	s3;
+	t_img	s4;
+	t_img	s5;
+	t_img	s6;
+	t_img	s7;
+	t_img	s8;
+}	t_anim_slash;
+
+typedef	struct s_anim_nothing
+{
+	int		i;
+	t_img	s0;
+	t_img	s1;
+	t_img	s2;
+	t_img	s3;
+	t_img	s4;
+}	t_anim_nothing
+
+typedef struct s_anim_walk
+{
+	int		i;
+	t_img	s0;
+	t_img	s1;
+	t_img	s2;
+	t_img	s3;
+	t_algo	s4;
+}t_anim_walk;
+
+typedef struct s_anim_run
+{
+	int		i;
+	t_img	s0;
+	t_img	s1;
+	t_img	s2;
+	t_img	s3;
+	t_img	s4;
+	t_img	s5;
+}	t_anim_run;
+
 typedef struct s_data
 {
 	char			**map;
@@ -119,6 +164,10 @@ typedef struct s_data
 	t_map			*map_char;
 	t_pos			pos;
 	t_mousse		mouse;
+	t_anim_slash	p_slash;
+	t_anim_nothing	p_noth;
+	t_anim_walk		p_walk;
+
 }	t_data;
 
 typedef struct s_algo
