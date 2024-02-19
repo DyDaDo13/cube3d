@@ -34,14 +34,14 @@
 # include <X11/extensions/XShm.h>
 # include <X11/XKBlib.h>
 
-# define WIN_X	1080
-# define WIN_Y	720
+# define WIN_X	1920
+# define WIN_Y	1080
 # define FOV	0.66
 # define MOVE_SPEED	0.1
 # define ROT_SPEED	0.06
 # define TEXT_SIZE	256
-# define MINI_MAP_SIZE	10
-# define MINI_MAP_COEF_LEN	10
+# define MINI_MAP_SIZE	20
+# define MINI_MAP_COEF_LEN	12
 # define SENSIVITY 1000
 
 typedef struct s_img
