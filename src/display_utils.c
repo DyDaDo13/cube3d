@@ -23,6 +23,7 @@ void	destroy_all_images(t_data *data)
 
 int	ft_stop(t_data *data)
 {
+	mlx_mouse_show(data->mlx, data->win);
 	destroy_all_images(data);
 	mlx_destroy_window(data->mlx, data->win);
 	mlx_destroy_display(data->mlx);

@@ -59,7 +59,7 @@ void	change_dis(t_point *dis, t_pos start, t_data *data, int cases)
 	i = 2;
 	if (cases == 0)
 	{
-		while (sqrt((dis->x * dis->x) + (dis->y * dis->y)) < 20)
+		while (sqrt((dis->x * dis->x) + (dis->y * dis->y)) < 40)
 		{
 			dis->x = (((((MINI_MAP_SIZE * MINI_MAP_COEF_LEN) / 2) + 20)
 				+ (data->pos.dir_camX * i)) + (data->pos.norm_camX * i)) - start.p_x;
@@ -70,7 +70,7 @@ void	change_dis(t_point *dis, t_pos start, t_data *data, int cases)
 	}
 	else
 	{
-		while (sqrt((dis->x * dis->x) + (dis->y * dis->y)) < 20)
+		while (sqrt((dis->x * dis->x) + (dis->y * dis->y)) < 40)
 		{
 			dis->x = (((((MINI_MAP_SIZE * MINI_MAP_COEF_LEN) / 2) + 20)
 				+ (data->pos.dir_camX * i)) - (data->pos.norm_camX * i)) - start.p_x;

@@ -50,11 +50,11 @@ void	show_map2(t_data *data, int x, int y, t_pos *pos_map)
 			(&data->img_win, x, y), 0x433D37, 0.5));
 	else
 	{
-		if (x >= middle - 3 && y >= middle - 3 && x < middle + 3 && y <
-		middle + 3)
+		if (x >= middle - 5 && y >= middle - 5 && x < middle + 5 && y <
+		middle + 5)
 			img_pixel_put(&data->img_win, x, y, 0xFA5D00);
 		else if ((pos_map->p_x >= 0 && pos_map->p_y >= 0) &&
-			(pos_map->p_x < data->map_lenX&& pos_map->p_y < data->map_lenY)
+			(pos_map->p_x < data->map_lenX && pos_map->p_y < data->map_lenY)
 			&& data->map[(int)pos_map->p_y][(int)pos_map->p_x] == '1')
 			img_pixel_put(&data->img_win, x, y, ft_mix_color(take_pix
 				(&data->img_win, x, y), 0xF03A1A, 0.5));
@@ -95,8 +95,8 @@ void	show_map(t_data *data)
 	t_pos	pos_map;
 
 	y = 20;
-	Xstart = data->pos.p_x - (double)((MINI_MAP_COEF_LEN / 2) - 1) - 0.4;
-	pos_map.p_y = data->pos.p_y - (double)((MINI_MAP_COEF_LEN / 2) - 1) - 0.4;
+	Xstart = data->pos.p_x - (double)((MINI_MAP_COEF_LEN / 2) - 1) - 0.7;
+	pos_map.p_y = data->pos.p_y - (double)((MINI_MAP_COEF_LEN / 2) - 1) - 0.7;
 	pos_map.angle = (double)1 / (double)MINI_MAP_SIZE;
 	while (y < (MINI_MAP_SIZE * MINI_MAP_COEF_LEN) + 20)
 	{
