@@ -6,7 +6,7 @@
 /*   By: ozone <ozone@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 12:44:24 by lle-saul          #+#    #+#             */
-/*   Updated: 2024/02/09 12:47:12 by ozone            ###   ########.fr       */
+/*   Updated: 2024/02/19 10:37:53 by ozone            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	ft_move(t_data *data, int dir)
 				(data->pos.dir_camX * MOVE_SPEED))] != '1')
 			data->pos.p_x += data->pos.dir_camX * MOVE_SPEED;
 	}
-	else
+	else if (dir == 1)
 	{
 		if (data->map[(int)(data->pos.p_y - (data->pos.dir_camY *
 				MOVE_SPEED))][(int)(data->pos.p_x)] != '1')
@@ -31,6 +31,24 @@ void	ft_move(t_data *data, int dir)
 		if (data->map[(int)(data->pos.p_y)][(int)(data->pos.p_x -
 				(data->pos.dir_camX * MOVE_SPEED))] != '1')
 			data->pos.p_x -= data->pos.dir_camX * MOVE_SPEED;
+	}
+	else if (dir == 2)
+	{
+		if (data->map[(int)(data->pos.p_y + (data->pos.dir_camY *
+				MOVE_SPEED))][(int)(data->pos.p_x)] != '1')
+			data->pos.p_x -= data->pos.dir_camY * MOVE_SPEED;
+		if (data->map[(int)(data->pos.p_y)][(int)(data->pos.p_x +
+				(data->pos.dir_camX * MOVE_SPEED))] != '1')
+			data->pos.p_y += data->pos.dir_camX * MOVE_SPEED;
+	}
+	else if (dir == 3)
+	{
+		if (data->map[(int)(data->pos.p_y - (data->pos.dir_camY *
+				MOVE_SPEED))][(int)(data->pos.p_x)] != '1')
+			data->pos.p_x += data->pos.dir_camY * MOVE_SPEED;
+		if (data->map[(int)(data->pos.p_y)][(int)(data->pos.p_x -
+				(data->pos.dir_camX * MOVE_SPEED))] != '1')
+			data->pos.p_y -= data->pos.dir_camX * MOVE_SPEED;
 	}
 }
 

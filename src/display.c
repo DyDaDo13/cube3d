@@ -6,7 +6,7 @@
 /*   By: ozone <ozone@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 22:36:29 by ozone             #+#    #+#             */
-/*   Updated: 2024/02/16 12:05:40 by ozone            ###   ########.fr       */
+/*   Updated: 2024/02/19 10:24:55 by ozone            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,13 @@ int	ft_key_check(int key, t_data *data)
 		ft_move(data, 0);
 	else if (key == XK_s)
 		ft_move(data, 1);
-	else if (key == XK_a)
-		ft_rotation_right(data);
 	else if (key == XK_d)
+		ft_move(data, 2);
+	else if (key == XK_a)
+		ft_move(data, 3);
+	else if (key == XK_Left)
+		ft_rotation_right(data);
+	else if (key == XK_Right)
 		ft_rotation_left(data);
 	//printf("dirx : %f | dirY : %f\n", data->pos.dir_camX, data->pos.dir_camY);	
 	build_img(data);

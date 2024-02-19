@@ -3,17 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   flood_fill.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lle-saul <lle-saul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ozone <ozone@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 13:13:55 by dydado13          #+#    #+#             */
-/*   Updated: 2024/02/09 12:59:16 by lle-saul         ###   ########.fr       */
+/*   Updated: 2024/02/19 11:12:18 by ozone            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cube3d.h"
 
+int	check_around(char **tab, int row, int col)
+{
+	if (tab[row][col] && tab[row][col] == '0')
+	{
+		if (!tab[row][col + 1] || !tab[row][col - 1])
+			return (1);
+		if (!tab[row + 1][col] || !tab[row - 1][col])
+			return (1);
+	}
+	return (0);
+}
+
 void	f_fill(char **tab, t_point *size, int row, int col)
 {
+	if (check_around(tab, row, col) == 1)
+		size->i = 1;
 	if (row < 0 || col < 0 || !tab[row][col])
 		return ;
 	if (tab[row][col] == '.' || tab[row][col] == '1')
