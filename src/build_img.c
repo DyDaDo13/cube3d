@@ -6,7 +6,7 @@
 /*   By: ozone <ozone@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 15:16:32 by lle-saul          #+#    #+#             */
-/*   Updated: 2024/02/08 18:22:26 by ozone            ###   ########.fr       */
+/*   Updated: 2024/02/19 13:17:46 by ozone            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,15 +93,22 @@ void	algo_DDA(t_algo *algo, t_data *data)
 	get_texture(algo, stepX, stepY);
 }
 
-void	ft_calc_delta(t_algo *algo)
+void	ft_calc_delta(t_algo *algo, t_data *data, int x)
 {
+	algo->Coef_CamX = ((2 * x) / (double)WIN_X) - 1;
+	algo->rayDir_actX = data->pos.dir_camX +
+		(data->pos.norm_camX * algo->Coef_CamX);
+	algo->rayDir_actY = data->pos.dir_camY +
+		(data->pos.norm_camY * algo->Coef_CamX);
+	algo->map_posX = (int)(data->pos.p_x);
+	algo->map_posY = (int)(data->pos.p_y);
 	algo->delta_distX = sqrt(1 + ((algo->rayDir_actY * algo->rayDir_actY) /
 		(algo->rayDir_actX * algo->rayDir_actX)));
 	algo->delta_distY = sqrt(((algo->rayDir_actX * algo->rayDir_actX) /
 		(algo->rayDir_actY * algo->rayDir_actY)) + 1);
 }
 
-void	build_img(t_data *data)
+int	build_img(t_data *data)
 {
 	int			x;
 	t_algo		algo;
@@ -111,14 +118,7 @@ void	build_img(t_data *data)
 	algo.wall_dist = 0;
 	while (++x < WIN_X)
 	{
-		algo.Coef_CamX = ((2 * x) / (double)WIN_X) - 1;
-		algo.rayDir_actX = data->pos.dir_camX +
-			(data->pos.norm_camX * algo.Coef_CamX);
-		algo.rayDir_actY = data->pos.dir_camY +
-			(data->pos.norm_camY * algo.Coef_CamX);
-		algo.map_posX = (int)(data->pos.p_x);
-		algo.map_posY = (int)(data->pos.p_y);
-		ft_calc_delta(&algo);
+		ft_calc_delta(&algo, data, x);
 		algo_DDA(&algo, data);
 		if (algo.Coef_CamX != 0)
 			algo.wall_dist *= sin(atan2(algo.rayDir_actY, algo.rayDir_actX) - atan2(data->pos.norm_camY * algo.Coef_CamX, data->pos.norm_camX * algo.Coef_CamX));
@@ -127,4 +127,6 @@ void	build_img(t_data *data)
 		draw_pix(data, &algo, WIN_Y / algo.wall_dist, x);
 	}
 	show_map(data);
+	mlx_put_image_to_window(data->mlx, data->win, data->img_win.img_ptr, 0, 0);
+	return (0);
 }

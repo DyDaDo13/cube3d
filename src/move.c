@@ -6,7 +6,7 @@
 /*   By: ozone <ozone@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 12:44:24 by lle-saul          #+#    #+#             */
-/*   Updated: 2024/02/19 13:03:49 by ozone            ###   ########.fr       */
+/*   Updated: 2024/02/19 13:13:04 by ozone            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,23 +56,6 @@ void	ft_move(t_data *data, int dir)
 	}
 	else
 		ft_move2(data, dir);
-}
-
-void	ft_rotation(t_data *data, double coef)
-{
-	double	dirXtemp;
-	double	normXtemp;
-
-	dirXtemp = data->pos.dir_camX;
-	normXtemp = data->pos.norm_camX;
-	data->pos.dir_camX = data->pos.dir_camX * cos(coef) -
-		data->pos.dir_camY * sin(coef);
-	data->pos.dir_camY = dirXtemp * sin(coef) +
-		data->pos.dir_camY * cos(coef);
-	data->pos.norm_camX = data->pos.norm_camX * cos(coef) -
-		data->pos.norm_camY * sin(coef);
-	data->pos.norm_camY = normXtemp * sin(coef) +
-		data->pos.norm_camY * cos(coef);
 }
 
 void	ft_rotation(t_data *data, double rot_coef)

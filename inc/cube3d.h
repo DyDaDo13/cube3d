@@ -188,7 +188,7 @@ int				ft_key_check(int key, t_data *data);
 void			ft_init_img(t_data *data);
 
 /*build_img.c*/
-void			build_img(t_data *data);
+int				build_img(t_data *data);
 int				mouse_move(int x, int y, t_data *data);
 
 /*build_img2.c*/
@@ -198,7 +198,7 @@ void			get_texture(t_algo *algo, int stepX, int stepY);
 void			pix_texture(t_data *data, t_algo *algo, int *y);
 
 /*move.c*/
-void			ft_move2(t_data *data, int dir)
+void			ft_move2(t_data *data, int dir);
 void			ft_move(t_data *data, int dir);
 void			ft_rotation_left(t_data *data);
 void			ft_rotation_right(t_data *data);

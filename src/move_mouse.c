@@ -15,7 +15,8 @@ int	mouse_move(int x, int y, t_data *data)
 	//printf("rot_coef = %f | x_distance = %i | SENSITIVITY = %i\n", rot_coef, x_distance, SENSIVITY);
 	ft_rotation(data, rot_coef);
 	set_mouse_center_screen(data);
-	build_img(data);
+	//build_img(data);
+	//mlx_put_image_to_window(data->mlx, data->win, data->img_win.img_ptr, 0, 0);
 	return (0);
 }
 
