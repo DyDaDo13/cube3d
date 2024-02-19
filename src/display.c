@@ -6,7 +6,7 @@
 /*   By: ozone <ozone@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 22:36:29 by ozone             #+#    #+#             */
-/*   Updated: 2024/02/19 14:33:47 by ozone            ###   ########.fr       */
+/*   Updated: 2024/02/19 14:38:58 by ozone            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ int	set_mouse_center_screen(t_data *data)
 
 int	sprint_off(int key, t_data *data)
 {
-	printf("test\n");
 	if (key == XK_Shift_L)
 		if (data->move_speed != MOVE_SPEED)
 			data->move_speed = MOVE_SPEED;

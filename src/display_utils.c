@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   display_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lle-saul <lle-saul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ozone <ozone@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 16:30:56 by lle-saul          #+#    #+#             */
-/*   Updated: 2024/02/17 16:30:56 by lle-saul         ###   ########.fr       */
+/*   Updated: 2024/02/19 14:41:31 by ozone            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	destroy_all_images(t_data *data)
 	mlx_destroy_image(data->mlx, data->textures.WE.img_ptr);
 	mlx_destroy_image(data->mlx, data->textures.NO.img_ptr);
 	mlx_destroy_image(data->mlx, data->textures.SO.img_ptr);
+	mlx_destroy_image(data->mlx, data->img_win.img_ptr);
 }
 
 int	ft_stop(t_data *data)
