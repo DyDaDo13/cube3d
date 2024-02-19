@@ -95,22 +95,10 @@ void	algo_DDA(t_algo *algo, t_data *data)
 
 void	ft_calc_delta(t_algo *algo)
 {
-	if (algo->rayDir_actX == 0)
-	{
-		algo->delta_distX = sqrt(1 + ((algo->rayDir_actY * algo->rayDir_actY) /
-				1e30));
-	}
-	else
-		algo->delta_distX = sqrt(1 + ((algo->rayDir_actY * algo->rayDir_actY) /
-				(algo->rayDir_actX * algo->rayDir_actX)));
-	if (algo->rayDir_actY == 0)
-	{
-		algo->delta_distY = sqrt(((algo->rayDir_actX * algo->rayDir_actX) /
-			1e30) + 1);
-	}
-	else
-		algo->delta_distY = sqrt(((algo->rayDir_actX * algo->rayDir_actX) /
-			(algo->rayDir_actY * algo->rayDir_actY)) + 1);
+	algo->delta_distX = sqrt(1 + ((algo->rayDir_actY * algo->rayDir_actY) /
+		(algo->rayDir_actX * algo->rayDir_actX)));
+	algo->delta_distY = sqrt(((algo->rayDir_actX * algo->rayDir_actX) /
+		(algo->rayDir_actY * algo->rayDir_actY)) + 1);
 }
 
 void	build_img(t_data *data)
