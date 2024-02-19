@@ -6,7 +6,7 @@
 /*   By: ozone <ozone@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 22:36:29 by ozone             #+#    #+#             */
-/*   Updated: 2024/02/19 14:38:58 by ozone            ###   ########.fr       */
+/*   Updated: 2024/02/19 14:57:30 by ozone            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int	ft_display(t_data *data)
 	if (data->win == NULL)
 		return (mlx_destroy_display(data->mlx), free(data->mlx), 1);
 	ft_init_img(data);
-	mlx_mouse_hide(data->mlx, data->win);
+	//mlx_mouse_hide(data->mlx, data->win);
 	mlx_put_image_to_window(data->mlx, data->win, data->img_win.img_ptr, 0, 0);
 	mlx_loop_hook(data->mlx, build_img, data);
 	mlx_hook(data->win, 6, 1L<<6, mouse_move, data);
