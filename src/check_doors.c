@@ -6,7 +6,7 @@
 /*   By: ozone <ozone@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 17:11:46 by ozone             #+#    #+#             */
-/*   Updated: 2024/02/20 16:25:12 by ozone            ###   ########.fr       */
+/*   Updated: 2024/02/20 17:07:28 by ozone            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,17 +52,24 @@ int	is_door_valid(char **map, t_data *data)
 {
 	int	y;
 	int	x;
+	int	is_d;
 
 	y = -1;
+	is_d = 0;
 	while (map[++y])
 	{
 		x = -1;
 		while (map[y][++x])
+		{
 			if (map[y][x] == 'D')
+			{
 				if (check_around1(map, x, y) == 1)
 					return (1);
+				is_d = 1;
+			}
+		}
 	}
-	if (!data->textures_path.DO)
-		return (1);
+	if (is_d == 1 && !data->textures_path.DO)
+		return (printf("texture not found\n"), 1);
 	return (0);
 }
