@@ -23,6 +23,14 @@ void	ft_init_img2(t_data *data, int *i, int *j)
 	data->img_win.img_pixels = mlx_get_data_addr(data->img_win.img_ptr,
 			&data->img_win.bits_pix, &data->img_win.len,
 			&data->img_win.endian);
+	if (data->textures_path.DO)
+	{
+		data->textures.DO.img_ptr = mlx_xpm_file_to_image(data->mlx,
+			data->textures_path.DO, i, j);
+		data->textures.DO.img_pixels = mlx_get_data_addr(data->textures.DO.img_ptr,
+			&data->textures.DO.bits_pix, &data->textures.DO.len,
+			&data->textures.DO.endian);
+	}
 }
 
 void	ft_init_img(t_data *data)

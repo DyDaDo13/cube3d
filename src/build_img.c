@@ -6,7 +6,7 @@
 /*   By: ozone <ozone@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 15:16:32 by lle-saul          #+#    #+#             */
-/*   Updated: 2024/02/20 16:32:00 by ozone            ###   ########.fr       */
+/*   Updated: 2024/02/20 16:33:55 by ozone            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,26 @@ void	get_steps(int *stepX, int *stepY, t_algo *algo, t_data *data)
 		algo->dist_temp_rayY = ((algo->map_posY + 1.0) - data->pos.p_y) *
 			algo->delta_distY;
 	}
+}
+
+int	door_check(t_data *data, t_algo *algo)
+{
+	if (data->map[algo->map_posY][algo->map_posX] == 'D')
+	{
+		if (algo->side == 0 && algo->dist_temp_rayY > algo->dist_temp_rayX - (algo->delta_distX * 0.5))
+		{
+			algo->texture = 4;
+			algo->dist_temp_rayX += (algo->delta_distX * 0.5);
+			return (1);
+		}
+		else if (algo->dist_temp_rayX > algo->dist_temp_rayY - (algo->delta_distY * 0.5))
+		{
+			algo->texture = 4;
+			algo->dist_temp_rayY += (algo->delta_distY * 0.5);
+			return (1);
+		}
+	}
+	return (0);
 }
 
 /*algo->side == 1 -> wall in y | algo->side == 0 -> wall in x*/
