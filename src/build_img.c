@@ -6,7 +6,7 @@
 /*   By: ozone <ozone@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 15:16:32 by lle-saul          #+#    #+#             */
-/*   Updated: 2024/02/20 15:39:28 by ozone            ###   ########.fr       */
+/*   Updated: 2024/02/20 16:32:00 by ozone            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,28 +64,6 @@ void	get_steps(int *stepX, int *stepY, t_algo *algo, t_data *data)
 	}
 }
 
-int	door_check(t_data *data, t_algo *algo)
-{
-	if (data->map[algo->map_posY][algo->map_posX] == 'D')
-	{
-		if (algo->side == 0 && algo->dist_temp_rayY > algo->dist_temp_rayX - (algo->delta_distX * 0.5))
-		{
-			algo->texture = 4;
-			algo->dist_temp_rayX -= (algo->delta_distX * 0.5);
-			algo->side = 3;
-			return (1);
-		}
-		else if (algo->dist_temp_rayX > algo->dist_temp_rayY - (algo->delta_distY * 0.5))
-		{
-			algo->texture = 4;
-			algo->dist_temp_rayY -= (algo->delta_distY * 0.5);
-			algo->side = 3;
-			return (1);
-		}
-	}
-	return (0);
-}
-
 /*algo->side == 1 -> wall in y | algo->side == 0 -> wall in x*/
 void	algo_DDA(t_algo *algo, t_data *data)
 {
@@ -93,7 +71,7 @@ void	algo_DDA(t_algo *algo, t_data *data)
 	int	stepY;
 
 	get_steps(&stepX, &stepY, algo, data);
-	while (data->map[algo->map_posY][algo->map_posX] != '1'&& door_check(data, algo) == 0)
+	while (data->map[algo->map_posY][algo->map_posX] != '1')
 	{
 		if (algo->dist_temp_rayX < algo->dist_temp_rayY)
 		{
@@ -110,7 +88,7 @@ void	algo_DDA(t_algo *algo, t_data *data)
 	}
 	if (algo->side == 0)
 		algo->wall_dist = algo->dist_temp_rayX - algo->delta_distX;
-	else if (algo->side == 1)
+	else
 		algo->wall_dist = algo->dist_temp_rayY - algo->delta_distY;
 	get_texture(algo, stepX, stepY);
 }
@@ -130,7 +108,7 @@ void	ft_calc_delta(t_algo *algo, t_data *data, int x)
 		(algo->rayDir_actY * algo->rayDir_actY)) + 1);
 }
 
-void	build_img(t_data *data)
+int	build_img(t_data *data)
 {
 	int			x;
 	t_algo		algo;
@@ -140,15 +118,18 @@ void	build_img(t_data *data)
 	algo.wall_dist = 0;
 	while (++x < WIN_X)
 	{
-		algo.texture = -1;
+		
 		ft_calc_delta(&algo, data, x);
 		algo_DDA(&algo, data);
 		if (algo.Coef_CamX != 0)
-			algo.wall_dist *= sin(atan2(algo.rayDir_actY, algo.rayDir_actX) - atan2(data->pos.norm_camY * algo.Coef_CamX, data->pos.norm_camX * algo.Coef_CamX));
+			algo.wall_dist *= sin(atan2(algo.rayDir_actY, algo.rayDir_actX)
+				- atan2(data->pos.norm_camY * algo.Coef_CamX,
+					data->pos.norm_camX * algo.Coef_CamX));
 		if (algo.wall_dist < 0)
 			algo.wall_dist *= -1;
 		draw_pix(data, &algo, WIN_Y / algo.wall_dist, x);
 	}
 	show_map(data);
 	mlx_put_image_to_window(data->mlx, data->win, data->img_win.img_ptr, 0, 0);
+	return (0);
 }
