@@ -16,6 +16,7 @@
 # include "get_next_line.h"
 # include "../minilibx-linux/mlx.h"
 # include <math.h>
+# include <time.h>
 # include <unistd.h>
 # include <time.h>
 # include <stdlib.h>
@@ -110,6 +111,8 @@ typedef struct s_data
 {
 	char			**map;
 	int				hardmode;
+	int				map_width;
+	int				map_height;
 	int				door;
 	double			move_speed;
 	int				key_move;
@@ -223,5 +226,6 @@ double			sqr(double nb);
 void			put_info_on_screen(t_data *data);
 char			*ft_itoa(int n);
 void			put_info_on_screen(t_data *data);
+void			placing_enemis(t_data *data);
 
 #endif

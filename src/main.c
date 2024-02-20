@@ -55,6 +55,8 @@ int	main(int ac, char **av)
 		return (free_all(&data), 1);
 	if (check_map_valid(&data) == 1)
 		return (free_all(&data), 1);
+	if (data.hardmode == 1)
+		placing_enemis(&data);
 	print_args(&data);
 	print_map(data.map);
 	printf("----------------------------------------\n");
