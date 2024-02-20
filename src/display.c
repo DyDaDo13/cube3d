@@ -6,7 +6,7 @@
 /*   By: ozone <ozone@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 22:36:29 by ozone             #+#    #+#             */
-/*   Updated: 2024/02/20 13:02:46 by ozone            ###   ########.fr       */
+/*   Updated: 2024/02/20 17:23:06 by ozone            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,35 @@ void	move_diag(t_data *data)
 	}
 }
 
+void	replace_before_door(t_data *data)
+{
+	int		x;
+	int		y;
+
+	y = -1;	
+	while (data->map[++y])
+	{
+		x = -1;
+		while (data->map[y][++x])
+			if (data->map[y][x] == 'O')
+				data->map[y][x] = 'D';
+	}
+}
+
+void	check_door_spot(t_data *data)
+{
+	if (data->map[(int)data->pos.p_y][(int)data->pos.p_x] == 'D' && data->door == 0)
+	{
+		data->map[(int)data->pos.p_y][(int)data->pos.p_x] = 'O';
+		data->door = 1;
+	}
+	if (data->map[(int)data->pos.p_y][(int)data->pos.p_x] != 'O' && data->door == 1)
+	{
+		replace_before_door(data);
+		data->door = 0;
+	}
+}
+
 int	ft_key_moves(t_data *data)
 {
 	if (data->key_move == 1)
@@ -115,6 +144,7 @@ int	ft_key_moves(t_data *data)
 		ft_rotation_left(data);
 	else
 		move_diag(data);
+	check_door_spot(data);
 	build_img(data);
 	return (0);
 }

@@ -109,6 +109,7 @@ typedef struct s_point
 typedef struct s_data
 {
 	char			**map;
+	int				door;
 	double			move_speed;
 	int				key_move;
 	int				map_lenX;
