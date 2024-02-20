@@ -4,6 +4,8 @@ SO ./textures/Brick_Grey.xpm
 WE ./textures/Concrete_Lines_Grey.xpm
 DO ./textures/concrete_double_door.xpm
 
+V
+
 F 100,100,100
 C 128,255,190
 

@@ -47,6 +47,7 @@ int	main(int ac, char **av)
 	data.map = init_map(fd, &data);
 	if (data.map == NULL)
 		return (1);
+	data.hardmode = 0;
 	if (get_args(&data) == 1)
 		return (free_all(&data), 1);
 	data.map = trunc_map(&data);
@@ -61,3 +62,4 @@ int	main(int ac, char **av)
 	free_all(&data);
 	return (0);
 }
+

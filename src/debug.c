@@ -32,8 +32,12 @@ void	print_args(t_data *data)
 	printf("│F	= %i\n", data->textures_path.F);
 	printf("├───────────────────────────────────────\n");
 	printf("│Player Direction: %c\n", data->pos.c);
-	printf("│Player Pos: \e[31mX = %f\e[34mY = %f\e[0m\n",
+	printf("│Player Pos: \e[31mX = %f\e[34m Y = %f\e[0m\n",
 		data->pos.p_x, data->pos.p_y);
+	if (data->hardmode == 1)
+		printf("│HARDCORE MODE \e[31mON\e[0m\n");
+	else
+		printf("│HARDCORE MODE \e[32mOFF\e[0m\n");
 	printf("├───────────────────────────────────────\n");
 	printf("│\e[34mcamX: \t\t%f\n|\e[31mcamY: \t\t%f\e[0m\n",
 		data->pos.dir_camX, data->pos.dir_camY);

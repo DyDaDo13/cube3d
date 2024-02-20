@@ -6,7 +6,7 @@
 /*   By: ozone <ozone@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 22:36:29 by ozone             #+#    #+#             */
-/*   Updated: 2024/02/20 17:23:06 by ozone            ###   ########.fr       */
+/*   Updated: 2024/02/20 17:36:01 by ozone            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	ft_key_check(int key, t_data *data)
 		data->key_move += 200;
 	else if (key == XK_Shift_L)
 		if (data->move_speed == MOVE_SPEED)
-			data->move_speed *= 1.5;	
+			data->move_speed *= 2;	
 	//printf("key = %i\n", data->key_move);
 	return (0);
 }

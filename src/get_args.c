@@ -6,7 +6,7 @@
 /*   By: ozone <ozone@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 17:55:15 by ozone             #+#    #+#             */
-/*   Updated: 2024/02/20 16:43:23 by ozone            ###   ########.fr       */
+/*   Updated: 2024/02/20 17:50:14 by ozone            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,5 +111,7 @@ int	get_args(t_data *data)
 			find_arg('F', ' ', data->map));
 	if ((int)data->textures_path.F == -1)
 		return (printf("Error: arg 'F' not found\n"), 1);
+	if (find_arg('V', '\0', data->map) != -1)
+		data->hardmode = 1;
 	return (0);
 }

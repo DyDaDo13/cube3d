@@ -37,7 +37,7 @@
 # define WIN_X	1080
 # define WIN_Y	720
 # define FOV	0.66
-# define MOVE_SPEED	0.02
+# define MOVE_SPEED	0.05
 # define ROT_SPEED	0.05
 # define TEXT_SIZE	256
 # define MINI_MAP_SIZE	20
@@ -109,6 +109,7 @@ typedef struct s_point
 typedef struct s_data
 {
 	char			**map;
+	int				hardmode;
 	int				door;
 	double			move_speed;
 	int				key_move;
@@ -219,5 +220,6 @@ void			ft_rotation(t_data *data, double rot_coef);
 double			sqr(double nb);
 void			put_info_on_screen(t_data *data);
 char			*ft_itoa(int n);
+void			put_info_on_screen(t_data *data);
 
 #endif
