@@ -59,6 +59,7 @@ typedef struct s_textures_path
 	char			*SO;
 	char			*WE;
 	char			*EA;
+	char			*DO;
 	unsigned int	F;
 	unsigned int	C;
 }	t_textures_path;
@@ -95,6 +96,7 @@ typedef struct s_textures
 	t_img	SO;
 	t_img	WE;
 	t_img	EA;
+	t_img	DO;
 }	t_textures;
 
 typedef struct s_point

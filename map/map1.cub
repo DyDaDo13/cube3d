@@ -2,6 +2,7 @@ EA ./textures/Concrete_Lines_Grey.xpm
 NO ./textures/Brick_Grey.xpm
 SO ./textures/Brick_Grey.xpm
 WE ./textures/Concrete_Lines_Grey.xpm
+DO ./textures/Wood.xpm
 
 F 100,100,100
 C 128,255,190
