@@ -6,7 +6,7 @@
 /*   By: ozone <ozone@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 22:36:29 by ozone             #+#    #+#             */
-/*   Updated: 2024/02/19 14:57:30 by ozone            ###   ########.fr       */
+/*   Updated: 2024/02/20 12:49:29 by ozone            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,21 +26,22 @@ int	ft_key_check(int key, t_data *data)
 		data->pos.norm_camX = data->pos.norm_camX * 1.01;
 		data->pos.norm_camY = data->pos.norm_camY * 1.01;
 	}
-	else if (key == XK_w)
-		ft_move(data, 0);
+	if (key == XK_w)
+		data->key_move += 1;
 	else if (key == XK_s)
-		ft_move(data, 1);
+		data->key_move += 2;
 	else if (key == XK_d)
-		ft_move(data, 2);
+		data->key_move += 4;
 	else if (key == XK_a)
-		ft_move(data, 3);
+		data->key_move += 7;
 	else if (key == XK_Left)
-		ft_rotation_right(data);
+		data->key_move = 100;
 	else if (key == XK_Right)
-		ft_rotation_left(data);
+		data->key_move = 200;
 	else if (key == XK_Shift_L)
 		if (data->move_speed == MOVE_SPEED)
-			data->move_speed *= 3;
+			data->move_speed *= 1.5;	
+	printf("key = %i\n", data->key_move);
 	return (0);
 }
 
@@ -55,8 +56,64 @@ int	set_mouse_center_screen(t_data *data)
 int	sprint_off(int key, t_data *data)
 {
 	if (key == XK_Shift_L)
+	{
 		if (data->move_speed != MOVE_SPEED)
 			data->move_speed = MOVE_SPEED;
+	}
+	else if (key == XK_w)
+		data->key_move -= 1;
+	else if (key == XK_s)
+		data->key_move -= 2;
+	else if (key == XK_d)
+		data->key_move -= 4;
+	else if (key == XK_a)
+		data->key_move -= 7;
+	else if (key == XK_Left || key == XK_Right)
+		data->key_move = 0;
+	return (0);
+}
+
+void	move_diag(t_data *data)
+{
+	if (data->key_move == 5)
+	{
+		ft_move(data, 0);
+		ft_move(data, 2);
+	}
+	else if (data->key_move == 8)
+	{
+		ft_move(data, 0);
+		ft_move(data, 3);
+	}
+	else if (data->key_move == 6)
+	{
+		ft_move(data, 1);
+		ft_move(data, 2);
+	}
+	else if (data->key_move == 9)
+	{
+		ft_move(data, 1);
+		ft_move(data, 3);
+	}
+}
+
+int	ft_key_moves(t_data *data)
+{
+	if (data->key_move == 1)
+		ft_move(data, 0);
+	else if (data->key_move == 2)
+		ft_move(data, 1);
+	else if (data->key_move == 4)
+		ft_move(data, 2);
+	else if (data->key_move == 7)
+		ft_move(data, 3);
+	else if (data->key_move == 100)
+		ft_rotation_right(data);
+	else if (data->key_move == 200)
+		ft_rotation_left(data);
+	else
+		move_diag(data);
+	build_img(data);
 	return (0);
 }
 
@@ -68,12 +125,12 @@ int	ft_display(t_data *data)
 	data->win = mlx_new_window(data->mlx, WIN_X, WIN_Y, "Mon Q");
 	if (data->win == NULL)
 		return (mlx_destroy_display(data->mlx), free(data->mlx), 1);
+	data->key_move = 0;
 	ft_init_img(data);
-	//mlx_mouse_hide(data->mlx, data->win);
 	mlx_put_image_to_window(data->mlx, data->win, data->img_win.img_ptr, 0, 0);
-	mlx_loop_hook(data->mlx, build_img, data);
-	mlx_hook(data->win, 6, 1L<<6, mouse_move, data);
-	mlx_hook(data->win, 2, (1L << 0) + (1L << 1), ft_key_check, data);
+	mlx_loop_hook(data->mlx, ft_key_moves, data);
+	mlx_hook(data->win, 6, (1L << 6), mouse_move, data);
+	mlx_hook(data->win, 2, (1L << 0), ft_key_check, data);
 	mlx_hook(data->win, 3, (1L << 1), sprint_off, data);
 	mlx_hook(data->win, 17, 0L, ft_stop, data);
 	mlx_loop(data->mlx);

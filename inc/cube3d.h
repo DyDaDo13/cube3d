@@ -34,8 +34,8 @@
 # include <X11/extensions/XShm.h>
 # include <X11/XKBlib.h>
 
-# define WIN_X	1920
-# define WIN_Y	1080
+# define WIN_X	1080
+# define WIN_Y	720
 # define FOV	0.66
 # define MOVE_SPEED	0.1
 # define ROT_SPEED	0.06
@@ -108,6 +108,7 @@ typedef struct s_data
 {
 	char			**map;
 	double			move_speed;
+	int				key_move;
 	int				map_lenX;
 	int				map_lenY;
 	void			*mlx;
