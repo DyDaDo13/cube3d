@@ -6,7 +6,7 @@
 /*   By: ozone <ozone@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 18:16:14 by ozone             #+#    #+#             */
-/*   Updated: 2024/02/20 19:25:41 by ozone            ###   ########.fr       */
+/*   Updated: 2024/02/20 22:44:42 by ozone            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,33 +38,45 @@ int	check_pos(char pos)
 	return (0);
 }
 
+int	get_pos_enemy(t_data *data, int y, int moy, int stat_moy)
+{
+	int	x;
+	int	rand_x;
+	int	rand_y;
+
+	x = -1;
+	while (data->map[y][++x])
+	{
+		rand_x = (rand() % data->map_width);
+		rand_y = (rand() % data->map_height);
+		if (check_pos(data->map[rand_y][rand_x]) == 0 && moy > 0)
+		{
+			data->map[rand_y][rand_x] = 'V';
+			data->enemi.enemi_pos_x[stat_moy - moy] = rand_x;
+			data->enemi.enemi_pos_y[stat_moy - moy] = rand_y;
+			moy--;
+		}
+	}
+	return (moy);
+}
+
 void	placing_enemis(t_data *data)
 {
 	int		y;
-	int		x;
-	int		rand_x;
-	int		rand_y;
 	int		moy;
+	int		stat_moy;
 	
 	srand(time(NULL));
 	get_size_map(data);
 	moy = ((data->map_width + data->map_height) / 6);
+	data->nb_enemis = moy;
+	stat_moy = moy;
+	data->enemi.enemi_pos_x = malloc(sizeof(double) * moy);
+	data->enemi.enemi_pos_y = malloc(sizeof(double) * moy);
 	while (moy > 0)
 	{
 		y = -1;
 		while (data->map[++y])
-		{
-			x = -1;
-			while (data->map[y][++x])
-			{
-				rand_x = (rand() % data->map_width);
-				rand_y = (rand() % data->map_height);
-				if (check_pos(data->map[rand_y][rand_x]) == 0 && moy > 0)
-				{
-					data->map[rand_y][rand_x] = 'V';
-					moy--;
-				}
-			}
-		}
+			moy = get_pos_enemy(data, y, moy, stat_moy);
 	}
 }

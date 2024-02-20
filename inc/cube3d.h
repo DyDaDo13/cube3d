@@ -107,10 +107,17 @@ typedef struct s_point
 	int		i;
 }t_point;
 
+typedef struct s_enemis
+{
+	double		*enemi_pos_x;
+	double		*enemi_pos_y;
+}t_enemis;
+
 typedef struct s_data
 {
 	char			**map;
 	int				hardmode;
+	int				nb_enemis;
 	int				map_width;
 	int				map_height;
 	int				door;
@@ -127,6 +134,7 @@ typedef struct s_data
 	t_map			*map_char;
 	t_pos			pos;
 	t_mousse		mouse;
+	t_enemis		enemi;
 }	t_data;
 
 typedef struct s_algo

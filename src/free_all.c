@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_all.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dydado13 <dydado13@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ozone <ozone@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 14:35:32 by dydado13          #+#    #+#             */
-/*   Updated: 2024/02/09 22:18:01 by dydado13         ###   ########.fr       */
+/*   Updated: 2024/02/20 22:46:50 by ozone            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,12 @@ void	free_all(t_data *data)
 		free(data->textures_path.NO);
 	if (data->textures_path.SO)
 		free(data->textures_path.SO);
+	if (data->textures_path.DO)
+		free(data->textures_path.DO);
+	if (data->enemi.enemi_pos_x)
+		free(data->enemi.enemi_pos_x);
+	if (data->enemi.enemi_pos_y)
+		free(data->enemi.enemi_pos_y);
 }
 	// if (data->textures_path.C)
 	// 	free(data->textures_path.C);

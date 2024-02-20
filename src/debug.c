@@ -59,6 +59,7 @@ void	print_args(t_data *data)
 		printf("│HARDCORE MODE \e[1;91mON\e[0m\n");
 	else
 		printf("│HARDCORE MODE \e[1;92mOFF\e[0m\n");
+	printf("│NB enemi: %i\n", data->nb_enemis);
 	printf("├───────────────────────────────────────\n");
 	printf("│\e[1;93mcamX_dir:\t%f\t| \e[1;91mcamY_dir:\t%f\e[0m\n",
 		data->pos.dir_camX, data->pos.dir_camY);
