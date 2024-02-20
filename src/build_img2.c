@@ -39,6 +39,8 @@ unsigned int	img_take_color(t_data *data, int x, int y, int texture)
 		img = &data->textures.WE;
 	else if (texture == 2)
 		img = &data->textures.SO;
+	else if (texture == 4)
+		img = &data->textures.DO;
 	else
 		img = &data->textures.EA;
 	offset = (img->len * y) + (x * (img->bits_pix / 8));
