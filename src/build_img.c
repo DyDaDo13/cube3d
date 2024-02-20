@@ -91,7 +91,7 @@ void	algo_DDA(t_algo *algo, t_data *data)
 	int	stepY;
 
 	get_steps(&stepX, &stepY, algo, data);
-	while (data->map[algo->map_posY][algo->map_posX] != '1')
+	while (data->map[algo->map_posY][algo->map_posX] != '1' && door_check(data, algo) == 0)
 	{
 		if (algo->dist_temp_rayX < algo->dist_temp_rayY)
 		{
