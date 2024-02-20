@@ -6,7 +6,7 @@
 /*   By: ozone <ozone@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 15:16:32 by lle-saul          #+#    #+#             */
-/*   Updated: 2024/02/20 16:34:51 by ozone            ###   ########.fr       */
+/*   Updated: 2024/02/20 16:44:43 by ozone            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,7 +138,7 @@ void	build_img(t_data *data)
 	algo.wall_dist = 0;
 	while (++x < WIN_X)
 	{
-		
+		algo.texture = -1;
 		ft_calc_delta(&algo, data, x);
 		algo_DDA(&algo, data);
 		if (algo.Coef_CamX != 0)

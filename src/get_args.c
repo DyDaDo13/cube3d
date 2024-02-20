@@ -6,7 +6,7 @@
 /*   By: ozone <ozone@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 17:55:15 by ozone             #+#    #+#             */
-/*   Updated: 2024/02/20 15:45:03 by ozone            ###   ########.fr       */
+/*   Updated: 2024/02/20 16:43:23 by ozone            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ char	*get_path(char **map, int pos)
 	i--;
 	while (map[pos][++i])
 		path[++j] = map[pos][i];
+	if (access(path, F_OK) != 0)
+		return (printf("texture not found\n"), NULL);
 	return (path);
 }
 
