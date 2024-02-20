@@ -91,7 +91,7 @@ void	algo_DDA(t_algo *algo, t_data *data)
 	int	stepY;
 
 	get_steps(&stepX, &stepY, algo, data);
-	while (data->map[algo->map_posY][algo->map_posX] != '1')
+	while (data->map[algo->map_posY][algo->map_posX] != '1' && door_check(data, algo) == 0)
 	{
 		if (algo->dist_temp_rayX < algo->dist_temp_rayY)
 		{
@@ -138,7 +138,7 @@ void	build_img(t_data *data)
 	algo.wall_dist = 0;
 	while (++x < WIN_X)
 	{
-		
+		algo.texture = -1;
 		ft_calc_delta(&algo, data, x);
 		algo_DDA(&algo, data);
 		if (algo.Coef_CamX != 0)
