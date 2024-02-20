@@ -64,6 +64,28 @@ void	get_steps(int *stepX, int *stepY, t_algo *algo, t_data *data)
 	}
 }
 
+int	door_check(t_data *data, t_algo *algo)
+{
+	if (data->map[algo->map_posY][algo->map_posX] == 'D')
+	{
+		if (algo->side == 0 && algo->dist_temp_rayY > algo->dist_temp_rayX - (algo->delta_distX * 0.5))
+		{
+			algo->texture = 4;
+			algo->dist_temp_rayX -= (algo->delta_distX * 0.5);
+			algo->side = 3;
+			return (1);
+		}
+		else if (algo->dist_temp_rayX > algo->dist_temp_rayY - (algo->delta_distY * 0.5))
+		{
+			algo->texture = 4;
+			algo->dist_temp_rayY -= (algo->delta_distY * 0.5);
+			algo->side = 3;
+			return (1);
+		}
+	}
+	return (0);
+}
+
 /*algo->side == 1 -> wall in y | algo->side == 0 -> wall in x*/
 void	algo_DDA(t_algo *algo, t_data *data)
 {
@@ -71,7 +93,7 @@ void	algo_DDA(t_algo *algo, t_data *data)
 	int	stepY;
 
 	get_steps(&stepX, &stepY, algo, data);
-	while (data->map[algo->map_posY][algo->map_posX] != '1')
+	while (data->map[algo->map_posY][algo->map_posX] != '1'&& door_check(data, algo) == 0)
 	{
 		if (algo->dist_temp_rayX < algo->dist_temp_rayY)
 		{
@@ -88,7 +110,7 @@ void	algo_DDA(t_algo *algo, t_data *data)
 	}
 	if (algo->side == 0)
 		algo->wall_dist = algo->dist_temp_rayX - algo->delta_distX;
-	else
+	else if (algo->side == 1)
 		algo->wall_dist = algo->dist_temp_rayY - algo->delta_distY;
 	get_texture(algo, stepX, stepY);
 }
@@ -108,7 +130,7 @@ void	ft_calc_delta(t_algo *algo, t_data *data, int x)
 		(algo->rayDir_actY * algo->rayDir_actY)) + 1);
 }
 
-int	build_img(t_data *data)
+void	build_img(t_data *data)
 {
 	int			x;
 	t_algo		algo;
@@ -128,5 +150,4 @@ int	build_img(t_data *data)
 	}
 	show_map(data);
 	mlx_put_image_to_window(data->mlx, data->win, data->img_win.img_ptr, 0, 0);
-	return (0);
 }

@@ -48,14 +48,17 @@ unsigned int	img_take_color(t_data *data, int x, int y, int texture)
 /*NO = 0 | WE = 1 | SO = 2 | EA = 3*/
 void	get_texture(t_algo *algo, int stepX, int stepY)
 {
-	if (algo->side == 1 && stepX == 1)
-		algo->texture = 1;
-	else if (algo->side == 1 && stepX == -1)
-		algo->texture = 3;
-	else if (algo->side == 0 && stepY == -1)
-		algo->texture = 0;
-	else
-		algo->texture = 2;
+	if (algo->texture < 0)
+	{
+		if (algo->side == 1 && stepX == 1)
+			algo->texture = 1;
+		else if (algo->side == 1 && stepX == -1)
+			algo->texture = 3;
+		else if (algo->side == 0 && stepY == -1)
+			algo->texture = 0;
+		else
+			algo->texture = 2;
+	}
 }
 
 void	pix_texture(t_data *data, t_algo *algo, int *y)

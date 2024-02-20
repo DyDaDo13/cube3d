@@ -34,11 +34,11 @@
 # include <X11/extensions/XShm.h>
 # include <X11/XKBlib.h>
 
-# define WIN_X	1080
-# define WIN_Y	720
+# define WIN_X	1920
+# define WIN_Y	1080
 # define FOV	0.66
-# define MOVE_SPEED	0.1
-# define ROT_SPEED	0.06
+# define MOVE_SPEED	0.02
+# define ROT_SPEED	0.01
 # define TEXT_SIZE	256
 # define MINI_MAP_SIZE	20
 # define MINI_MAP_COEF_LEN	12
@@ -191,7 +191,7 @@ int				is_door_valid(char **map);
 void			ft_init_img(t_data *data);
 
 /*build_img.c*/
-int				build_img(t_data *data);
+void			build_img(t_data *data);
 int				mouse_move(int x, int y, t_data *data);
 
 /*build_img2.c*/

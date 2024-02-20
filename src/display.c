@@ -41,7 +41,7 @@ int	ft_key_check(int key, t_data *data)
 	else if (key == XK_Shift_L)
 		if (data->move_speed == MOVE_SPEED)
 			data->move_speed *= 1.5;	
-	printf("key = %i\n", data->key_move);
+	//printf("key = %i\n", data->key_move);
 	return (0);
 }
 
