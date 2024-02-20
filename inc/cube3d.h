@@ -34,11 +34,11 @@
 # include <X11/extensions/XShm.h>
 # include <X11/XKBlib.h>
 
-# define WIN_X	1920
-# define WIN_Y	1080
+# define WIN_X	1080
+# define WIN_Y	720
 # define FOV	0.66
 # define MOVE_SPEED	0.02
-# define ROT_SPEED	0.01
+# define ROT_SPEED	0.05
 # define TEXT_SIZE	256
 # define MINI_MAP_SIZE	20
 # define MINI_MAP_COEF_LEN	12
@@ -187,8 +187,7 @@ int				take_pix(t_img *img, int x, int y);
 int				ft_display(t_data *data);
 int				ft_stop(t_data *data);
 int				ft_key_check(int key, t_data *data);
-int				is_door_valid(char **map);
-
+int				is_door_valid(char **map, t_data *data);
 /*init_img.c*/
 void			ft_init_img(t_data *data);
 
@@ -213,5 +212,11 @@ int				change_fov(int key, t_data *data);
 void			show_map(t_data *data);
 unsigned int	ft_mix_color(int color1, int color2, float pourcent);
 int				set_mouse_center_screen(t_data *data);
-void	ft_rotation(t_data *data, double rot_coef);
+void			ft_rotation(t_data *data, double rot_coef);
+
+/*maths*/
+double			sqr(double nb);
+void			put_info_on_screen(t_data *data);
+char			*ft_itoa(int n);
+
 #endif

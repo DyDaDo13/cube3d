@@ -6,7 +6,7 @@
 /*   By: ozone <ozone@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 17:11:46 by ozone             #+#    #+#             */
-/*   Updated: 2024/02/19 17:12:20 by ozone            ###   ########.fr       */
+/*   Updated: 2024/02/20 16:25:12 by ozone            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	check_around1(char **map, int x, int y)
 	return (1);
 }
 
-int	is_door_valid(char **map)
+int	is_door_valid(char **map, t_data *data)
 {
 	int	y;
 	int	x;
@@ -62,5 +62,7 @@ int	is_door_valid(char **map)
 				if (check_around1(map, x, y) == 1)
 					return (1);
 	}
+	if (!data->textures_path.DO)
+		return (1);
 	return (0);
 }
