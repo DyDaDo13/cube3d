@@ -6,7 +6,7 @@
 /*   By: ozone <ozone@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 15:16:32 by lle-saul          #+#    #+#             */
-/*   Updated: 2024/02/20 16:33:55 by ozone            ###   ########.fr       */
+/*   Updated: 2024/02/20 16:34:51 by ozone            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,7 +128,7 @@ void	ft_calc_delta(t_algo *algo, t_data *data, int x)
 		(algo->rayDir_actY * algo->rayDir_actY)) + 1);
 }
 
-int	build_img(t_data *data)
+void	build_img(t_data *data)
 {
 	int			x;
 	t_algo		algo;
@@ -151,5 +151,4 @@ int	build_img(t_data *data)
 	}
 	show_map(data);
 	mlx_put_image_to_window(data->mlx, data->win, data->img_win.img_ptr, 0, 0);
-	return (0);
 }
