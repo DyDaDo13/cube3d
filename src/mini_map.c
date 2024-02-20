@@ -53,14 +53,8 @@ void	show_map2(t_data *data, int x, int y, t_pos *pos_map)
 		if (x >= middle - 5 && y >= middle - 5 && x < middle + 5 && y <
 		middle + 5)
 			img_pixel_put(&data->img_win, x, y, 0xFA5D00);
-		else if ((pos_map->p_x >= 0 && pos_map->p_y >= 0) &&
-			(pos_map->p_x < data->map_lenX && pos_map->p_y < data->map_lenY)
-			&& data->map[(int)pos_map->p_y][(int)pos_map->p_x] == '1')
-			img_pixel_put(&data->img_win, x, y, ft_mix_color(take_pix
-				(&data->img_win, x, y), 0xF03A1A, 0.5));
 		else
-			img_pixel_put(&data->img_win, x, y, ft_mix_color(take_pix
-				(&data->img_win, x, y), 0xC3C0BD, 0.5));
+			draw_mini_map_pix(data, x, y, pos_map);
 		pos_map->p_x += pos_map->angle;
 	}
 }

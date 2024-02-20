@@ -74,7 +74,7 @@ int	door_check(t_data *data, t_algo *algo)
 			algo->dist_temp_rayX += (algo->delta_distX * 0.5);
 			return (1);
 		}
-		else if (algo->dist_temp_rayX > algo->dist_temp_rayY - (algo->delta_distY * 0.5))
+		else if (algo->side == 1 && algo->dist_temp_rayX > algo->dist_temp_rayY - (algo->delta_distY * 0.5))
 		{
 			algo->texture = 4;
 			algo->dist_temp_rayY += (algo->delta_distY * 0.5);

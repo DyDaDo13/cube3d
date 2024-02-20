@@ -66,3 +66,20 @@ void	trace_line(t_img *img, t_pos start, t_point dis, int color)
 		i++;
 	}
 }
+
+void	draw_mini_map_pix(t_data *data, int x, int y, t_pos *pos_map)
+{
+	if ((pos_map->p_x >= 0 && pos_map->p_y >= 0) &&
+		(pos_map->p_x < data->map_lenX && pos_map->p_y < data->map_lenY)
+		&& data->map[(int)pos_map->p_y][(int)pos_map->p_x] == '1')
+		img_pixel_put(&data->img_win, x, y, ft_mix_color(take_pix
+			(&data->img_win, x, y), 0xF03A1A, 0.5));
+	if ((pos_map->p_x >= 0 && pos_map->p_y >= 0) &&
+		(pos_map->p_x < data->map_lenX && pos_map->p_y < data->map_lenY)
+		&& data->map[(int)pos_map->p_y][(int)pos_map->p_x] == 'D')
+		img_pixel_put(&data->img_win, x, y, ft_mix_color(take_pix
+			(&data->img_win, x, y), 0x5D83F5, 0.5));
+	else
+		img_pixel_put(&data->img_win, x, y, ft_mix_color(take_pix
+			(&data->img_win, x, y), 0xC3C0BD, 0.5));
+}

@@ -189,6 +189,8 @@ int				ft_display(t_data *data);
 int				ft_stop(t_data *data);
 int				ft_key_check(int key, t_data *data);
 int				is_door_valid(char **map, t_data *data);
+void			draw_mini_map_pix(t_data *data, int x, int y, t_pos *pos_map);
+
 /*init_img.c*/
 void			ft_init_img(t_data *data);
 
