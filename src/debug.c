@@ -52,6 +52,8 @@ void	print_args(t_data *data)
 	printf("│F	= %i\n", data->textures_path.F);
 	printf("│DO	= %s\n", data->textures_path.DO);
 	printf("├───────────────────────────────────────\n");
+	printf("│Map height = \e[1;94m%i\e[0m\n", data->map_height);
+	printf("│Map wifth = \e[1;91m%i\e[0m\n", data->map_width);
 	printf("│Player Direction: %c\n", data->pos.c);
 	printf("│Player Pos: \e[1;91mX = %f\e[1;94m Y = %f\e[0m\n",
 		data->pos.p_x, data->pos.p_y);

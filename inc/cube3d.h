@@ -39,6 +39,7 @@
 # define WIN_Y	720
 # define FOV	0.66
 # define MOVE_SPEED	0.05
+# define ENEMY_MOVE_SPEED 0.05;
 # define ROT_SPEED	0.05
 # define TEXT_SIZE	256
 # define MINI_MAP_SIZE	20
@@ -109,8 +110,9 @@ typedef struct s_point
 
 typedef struct s_enemis
 {
-	double		*enemi_pos_x;
-	double		*enemi_pos_y;
+	double		enemi_pos_x;
+	double		enemi_pos_y;
+	int			texture;
 }t_enemis;
 
 typedef struct s_data
@@ -134,7 +136,7 @@ typedef struct s_data
 	t_map			*map_char;
 	t_pos			pos;
 	t_mousse		mouse;
-	t_enemis		enemi;
+	t_enemis		*enemi;
 }	t_data;
 
 typedef struct s_algo
@@ -235,5 +237,6 @@ void			put_info_on_screen(t_data *data);
 char			*ft_itoa(int n);
 void			put_info_on_screen(t_data *data);
 void			placing_enemis(t_data *data);
+void			enemy_AI(t_data *data);
 
 #endif

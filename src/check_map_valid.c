@@ -6,7 +6,7 @@
 /*   By: ozone <ozone@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 15:13:58 by ozone             #+#    #+#             */
-/*   Updated: 2024/02/20 17:45:50 by ozone            ###   ########.fr       */
+/*   Updated: 2024/02/21 11:33:59 by ozone            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,8 @@ void	find_p(char **map, t_point *P, t_data *data)
 			{
 				P->x = j;
 				P->y = i;
-				data->pos.p_y = i;
-				data->pos.p_x = j;
+				data->pos.p_y = i + 0.5;
+				data->pos.p_x = j + 0.5;
 				return ;
 			}
 			j++;

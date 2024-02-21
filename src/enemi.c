@@ -6,7 +6,7 @@
 /*   By: ozone <ozone@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 18:16:14 by ozone             #+#    #+#             */
-/*   Updated: 2024/02/20 22:44:42 by ozone            ###   ########.fr       */
+/*   Updated: 2024/02/21 12:24:30 by ozone            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,8 @@ int	get_pos_enemy(t_data *data, int y, int moy, int stat_moy)
 		if (check_pos(data->map[rand_y][rand_x]) == 0 && moy > 0)
 		{
 			data->map[rand_y][rand_x] = 'V';
-			data->enemi.enemi_pos_x[stat_moy - moy] = rand_x;
-			data->enemi.enemi_pos_y[stat_moy - moy] = rand_y;
+			data->enemi[stat_moy - moy].enemi_pos_x = rand_x;
+			data->enemi[stat_moy - moy].enemi_pos_y = rand_y;
 			moy--;
 		}
 	}
@@ -71,8 +71,8 @@ void	placing_enemis(t_data *data)
 	moy = ((data->map_width + data->map_height) / 6);
 	data->nb_enemis = moy;
 	stat_moy = moy;
-	data->enemi.enemi_pos_x = malloc(sizeof(double) * moy);
-	data->enemi.enemi_pos_y = malloc(sizeof(double) * moy);
+	data->enemi = malloc(sizeof(t_enemis) * moy);
+	data->enemi = malloc(sizeof(t_enemis) * moy);
 	while (moy > 0)
 	{
 		y = -1;
