@@ -6,7 +6,7 @@
 /*   By: ozone <ozone@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 18:16:14 by ozone             #+#    #+#             */
-/*   Updated: 2024/02/21 12:24:30 by ozone            ###   ########.fr       */
+/*   Updated: 2024/02/21 12:29:07 by ozone            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,6 @@ void	placing_enemis(t_data *data)
 	moy = ((data->map_width + data->map_height) / 6);
 	data->nb_enemis = moy;
 	stat_moy = moy;
-	data->enemi = malloc(sizeof(t_enemis) * moy);
 	data->enemi = malloc(sizeof(t_enemis) * moy);
 	while (moy > 0)
 	{
