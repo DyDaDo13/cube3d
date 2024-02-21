@@ -6,7 +6,7 @@
 /*   By: ozone <ozone@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 22:36:29 by ozone             #+#    #+#             */
-/*   Updated: 2024/02/21 12:43:34 by ozone            ###   ########.fr       */
+/*   Updated: 2024/02/21 12:47:25 by ozone            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,7 +162,6 @@ int	ft_display(t_data *data)
 		return (mlx_destroy_display(data->mlx), free(data->mlx), 1);
 	data->key_move = 0;
 	data->mouse.mouse_lock = 1;
-	data->enemi = NULL;
 	ft_init_img(data);
 	mlx_put_image_to_window(data->mlx, data->win, data->img_win.img_ptr, 0, 0);
 	mlx_loop_hook(data->mlx, ft_key_moves, data);
