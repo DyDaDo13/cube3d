@@ -115,6 +115,8 @@ void	algo_DDA(t_algo *algo, t_data *data)
 
 void	ft_calc_delta(t_algo *algo, t_data *data, int x)
 {
+	algo->side = 0;
+	algo->wall_dist = 0;
 	algo->Coef_CamX = ((2 * x) / (double)WIN_X) - 1;
 	algo->rayDir_actX = data->pos.dir_camX +
 		(data->pos.norm_camX * algo->Coef_CamX);
@@ -131,6 +133,7 @@ void	ft_calc_delta(t_algo *algo, t_data *data, int x)
 void	build_img(t_data *data)
 {
 	int			x;
+	double		dis_wall[WIN_X];
 	t_algo		algo;
 
 	x = -1;
@@ -148,7 +151,9 @@ void	build_img(t_data *data)
 		if (algo.wall_dist < 0)
 			algo.wall_dist *= -1;
 		draw_pix(data, &algo, WIN_Y / algo.wall_dist, x);
+		dis_wall[x] = algo.wall_dist;
 	}
+	build_sprite(data, dis_wall);
 	show_map(data);
 	mlx_put_image_to_window(data->mlx, data->win, data->img_win.img_ptr, 0, 0);
 	put_info_on_screen(data);
