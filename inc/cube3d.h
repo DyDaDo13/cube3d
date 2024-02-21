@@ -213,6 +213,7 @@ void			ft_init_img(t_data *data);
 /*build_img.c*/
 void			build_img(t_data *data);
 int				mouse_move(int x, int y, t_data *data);
+void			build_sprite(t_data *data, double *dis_wall);
 
 /*build_img2.c*/
 unsigned int	get_color(unsigned char R, unsigned char G, unsigned char B);
