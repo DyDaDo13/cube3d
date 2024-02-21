@@ -90,6 +90,7 @@ typedef struct s_mouse
 	int		origin_y;
 	int		move_x;
 	int		move_y;
+	int		mouse_lock;
 }	t_mousse;
 
 typedef struct s_textures

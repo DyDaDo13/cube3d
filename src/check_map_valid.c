@@ -6,7 +6,7 @@
 /*   By: ozone <ozone@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 15:13:58 by ozone             #+#    #+#             */
-/*   Updated: 2024/02/21 11:33:59 by ozone            ###   ########.fr       */
+/*   Updated: 2024/02/21 12:39:29 by ozone            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,7 +121,7 @@ int	check_map_valid(t_data *data)
 	if (is_door_valid(data->map, data) == 1)
 		return (printf("Error: doors incorect position\n"), 1);
 	get_player_vec_camera(data);
-	data->move_speed = MOVE_SPEED;\
+	data->move_speed = MOVE_SPEED;
 	data->door = 0;
 	data->map_lenX = ft_strlen(data->map[0]);
 	data->map_lenY = ft_strlen2(data->map);

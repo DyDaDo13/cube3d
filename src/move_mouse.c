@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move_mouse.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lle-saul <lle-saul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ozone <ozone@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 15:24:26 by lle-saul          #+#    #+#             */
-/*   Updated: 2024/02/19 15:24:26 by lle-saul         ###   ########.fr       */
+/*   Updated: 2024/02/21 12:40:28 by ozone            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,11 @@ int	mouse_move(int x, int y, t_data *data)
 	else if (x > (WIN_X / 2))
 		x_distance = x - (WIN_X / 2);
 	rot_coef = (double)x_distance / (double)SENSIVITY;
-	ft_rotation(data, rot_coef);
-	set_mouse_center_screen(data);
+	if (data->mouse.mouse_lock == 1)
+	{
+		ft_rotation(data, rot_coef);
+		set_mouse_center_screen(data);
+	}
 	return (0);
 }
 

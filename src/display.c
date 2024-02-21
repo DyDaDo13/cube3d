@@ -6,7 +6,7 @@
 /*   By: ozone <ozone@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 22:36:29 by ozone             #+#    #+#             */
-/*   Updated: 2024/02/21 12:27:15 by ozone            ###   ########.fr       */
+/*   Updated: 2024/02/21 12:39:58 by ozone            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,8 @@ int	sprint_off(int key, t_data *data)
 		data->key_move -= 100;
 	else if (key == XK_Right)
 		data->key_move -= 200;
+	else if (key == XK_space)
+		data->mouse.mouse_lock *= -1;
 	return (0);
 }
 
@@ -159,6 +161,7 @@ int	ft_display(t_data *data)
 	if (data->win == NULL)
 		return (mlx_destroy_display(data->mlx), free(data->mlx), 1);
 	data->key_move = 0;
+	data->mouse.mouse_lock = 1;
 	ft_init_img(data);
 	mlx_put_image_to_window(data->mlx, data->win, data->img_win.img_ptr, 0, 0);
 	mlx_loop_hook(data->mlx, ft_key_moves, data);
