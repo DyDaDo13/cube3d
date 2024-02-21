@@ -6,7 +6,7 @@
 /*   By: ozone <ozone@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 14:35:32 by dydado13          #+#    #+#             */
-/*   Updated: 2024/02/21 12:27:59 by ozone            ###   ########.fr       */
+/*   Updated: 2024/02/21 13:43:21 by ozone            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,8 @@ void	free_all(t_data *data)
 		free(data->textures_path.SO);
 	if (data->textures_path.DO)
 		free(data->textures_path.DO);
-	if (data->enemi)
-		free(data->enemi);
+	if (data->enemy)
+		free(data->enemy);
 }
 	// if (data->textures_path.C)
 	// 	free(data->textures_path.C);

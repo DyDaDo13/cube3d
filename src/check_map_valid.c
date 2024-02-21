@@ -6,7 +6,7 @@
 /*   By: ozone <ozone@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 15:13:58 by ozone             #+#    #+#             */
-/*   Updated: 2024/02/21 12:48:16 by ozone            ###   ########.fr       */
+/*   Updated: 2024/02/21 13:43:21 by ozone            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,7 @@ int	check_map_valid(t_data *data)
 	get_player_vec_camera(data);
 	data->move_speed = MOVE_SPEED;
 	data->door = 0;
-	data->enemi = NULL;
+	data->enemy = NULL;
 	data->map_lenX = ft_strlen(data->map[0]);
 	data->map_lenY = ft_strlen2(data->map);
 	return (0);

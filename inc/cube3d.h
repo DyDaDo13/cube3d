@@ -39,7 +39,7 @@
 # define WIN_Y	720
 # define FOV	0.66
 # define MOVE_SPEED	0.05
-# define ENEMY_MOVE_SPEED 0.05;
+# define ENEMY_MOVE_SPEED 0.05
 # define ROT_SPEED	0.05
 # define TEXT_SIZE	256
 # define MINI_MAP_SIZE	20
@@ -109,18 +109,18 @@ typedef struct s_point
 	int		i;
 }t_point;
 
-typedef struct s_enemis
+typedef struct s_enemy
 {
-	double		enemi_pos_x;
-	double		enemi_pos_y;
+	double		enemy_pos_x;
+	double		enemy_pos_y;
 	int			texture;
-}t_enemis;
+}t_enemy;
 
 typedef struct s_data
 {
 	char			**map;
 	int				hardmode;
-	int				nb_enemis;
+	int				nb_enemy;
 	int				map_width;
 	int				map_height;
 	int				door;
@@ -137,7 +137,7 @@ typedef struct s_data
 	t_map			*map_char;
 	t_pos			pos;
 	t_mousse		mouse;
-	t_enemis		*enemi;
+	t_enemy		*enemy;
 }	t_data;
 
 typedef struct s_algo
@@ -174,6 +174,7 @@ char			**init_map(int fd, t_data *data);
 /*debug.c*/
 void			print_map(char **map);
 void			print_args(t_data *data);
+void			print_enemy_movement(t_data *data, int actual_enemy);
 
 /*lst_function.c*/
 void			ft_lstadd_back(t_map **lst, t_map *new);
@@ -237,7 +238,7 @@ double			sqr(double nb);
 void			put_info_on_screen(t_data *data);
 char			*ft_itoa(int n);
 void			put_info_on_screen(t_data *data);
-void			placing_enemis(t_data *data);
-void			enemy_AI(t_data *data);
+void			placing_enemy(t_data *data);
+void			enemy_move(t_data *data);
 
 #endif
