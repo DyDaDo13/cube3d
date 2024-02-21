@@ -6,7 +6,7 @@
 /*   By: ozone <ozone@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 16:30:56 by lle-saul          #+#    #+#             */
-/*   Updated: 2024/02/19 16:12:42 by ozone            ###   ########.fr       */
+/*   Updated: 2024/02/21 08:27:48 by ozone            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	destroy_all_images(t_data *data)
 	mlx_destroy_image(data->mlx, data->textures.WE.img_ptr);
 	mlx_destroy_image(data->mlx, data->textures.NO.img_ptr);
 	mlx_destroy_image(data->mlx, data->textures.SO.img_ptr);
+	if (data->textures_path.DO)
+		mlx_destroy_image(data->mlx, data->textures.DO.img_ptr);
 	mlx_destroy_image(data->mlx, data->img_win.img_ptr);
 }
 
