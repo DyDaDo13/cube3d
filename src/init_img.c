@@ -31,6 +31,11 @@ void	ft_init_img2(t_data *data, int *i, int *j)
 			&data->textures.DO.bits_pix, &data->textures.DO.len,
 			&data->textures.DO.endian);
 	}
+	data->textures.enemy1.img_ptr = mlx_xpm_file_to_image(data->mlx,
+			"textures/Orange.xpm", i, j);
+	data->textures.enemy1.img_pixels = mlx_get_data_addr(data->textures.enemy1.img_ptr,
+			&data->textures.enemy1.bits_pix, &data->textures.enemy1.len,
+			&data->textures.enemy1.endian);
 }
 
 void	ft_init_img(t_data *data)

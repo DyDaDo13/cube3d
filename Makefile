@@ -9,7 +9,7 @@ get_next_line.c get_next_line_utils.c \
 init_map.c lst_functions.c main.c \
 get_args.c trunc_map.c functions.c check_map_valid.c \
 get_vec.c flood_fill.c map_dup.c \
-build_img2.c build_img.c display_utils.c build_sprite.c \
+build_img2.c build_img.c display_utils.c build_sprite.c build_sprite2.c\
 display.c init_img.c move.c move_mouse.c mini_map.c check_doors.c \
 maths.c put_info_to_screen.c ft_itoa.c enemy.c enemy_moves.c
 #───────────────────────────────╱
@@ -49,7 +49,7 @@ MLXS	= $(addprefix $(MLX_DIR), $(MLX))
 
 CC			= gcc
 RM			= rm -rf
-CFLAGS		= -Wall -Wextra -Werror -g
+CFLAGS		= -Wall -Wextra -Werror -g -fsanitize=address
 INCLUDE		= -I.
 MLX_FLAGS	= -lX11 -lXext -lm
 

@@ -39,6 +39,8 @@ int	take_pix(t_img *img, int x, int y)
 {
 	int	offset;
 	
+	if (x < 0 || y < 0)
+		return (0);
 	offset = (img->len * y) + (x * (img->bits_pix / 8));
 	return (*((unsigned int *)(offset + img->img_pixels)));
 }
