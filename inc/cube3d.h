@@ -213,8 +213,7 @@ void			ft_init_img(t_data *data);
 /*build_img.c*/
 void			build_img(t_data *data);
 int				mouse_move(int x, int y, t_data *data);
-void			build_sprite(t_data *data, double *dis_wall);
-
+void			build_sprite(t_data *data);
 /*build_img2.c*/
 unsigned int	get_color(unsigned char R, unsigned char G, unsigned char B);
 void			img_pixel_put(t_img *img, int x, int y, int color);
@@ -241,5 +240,6 @@ char			*ft_itoa(int n);
 void			put_info_on_screen(t_data *data);
 void			placing_enemy(t_data *data);
 void			enemy_move(t_data *data);
+
 
 #endif

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   build_sprite.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lle-saul <lle-saul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ozone <ozone@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 12:04:22 by lle-saul          #+#    #+#             */
-/*   Updated: 2024/02/21 12:04:22 by lle-saul         ###   ########.fr       */
+/*   Updated: 2024/02/23 09:21:41 by ozone            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cube3d.h"
 
-int	ft_max(double *dis, double *max, int enemies)
+int	ft_max(double *dis, double *max, int enemyes)
 {
 	int		i;
 	double	max2;
@@ -21,7 +21,7 @@ int	ft_max(double *dis, double *max, int enemies)
 	i = 0;
 	index = 0;
 	max2 = 1.797693e+308;
-	while (i < enemies)
+	while (i < enemyes)
 	{
 		if (max2 > dis[i] && *max < dis[i])
 		{
@@ -52,30 +52,31 @@ void	sort_sprite(t_data *data, int **order, double **dis)
 
 	i = -1;
 	max = 0;
-	temp_order = malloc(sizeof(int) * data->nb_enemis);
-	temp_dis = malloc(sizeof(double) * data->nb_enemis);
-	while (++i < data->nb_enemis)
+	temp_order = malloc(sizeof(int) * data->nb_enemy);
+	temp_dis = malloc(sizeof(double) * data->nb_enemy);
+	while (++i < data->nb_enemy)
 	{
 		(*order)[i] = i;
-		(*dis)[i] = (sqr(data->pos.p_x - data->enemi[i].enemi_pos_x)
-			+ sqr(data->pos.p_y - data->enemi[i].enemi_pos_y));
+		(*dis)[i] = (sqr(data->pos.p_x - data->enemy[i].enemy_pos_x)
+			+ sqr(data->pos.p_y - data->enemy[i].enemy_pos_y));
 	}
 	while (--i >= 0)
 	{
-		index = ft_max(*dis, &max, data->nb_enemis);
+		index = ft_max(*dis, &max, data->nb_enemy);
 		temp_order[i] = (*order)[index];
 		temp_dis[i] = (*dis)[index];
 	}
 	free_sort_sprite(temp_order, temp_dis, order, dis);
 }
 
-void	build_sprite(t_data *data, double *dis_wall)
+//double dist_wall--------------v
+void	build_sprite(t_data *data)
 {
 	int		*order_sprite;
 	double	*dis_sprite;
 	
-	order_sprite = malloc(sizeof(int) * data->nb_enemis);
-	dis_sprite = malloc(sizeof(double) * data->nb_enemis);
+	order_sprite = malloc(sizeof(int) * data->nb_enemy);
+	dis_sprite = malloc(sizeof(double) * data->nb_enemy);
 	sort_sprite(data, &order_sprite, &dis_sprite);
 	
 }
