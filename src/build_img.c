@@ -6,7 +6,7 @@
 /*   By: ozone <ozone@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 15:16:32 by lle-saul          #+#    #+#             */
-/*   Updated: 2024/02/20 17:34:41 by ozone            ###   ########.fr       */
+/*   Updated: 2024/02/23 09:55:35 by ozone            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,6 +130,23 @@ void	ft_calc_delta(t_algo *algo, t_data *data, int x)
 		(algo->rayDir_actY * algo->rayDir_actY)) + 1);
 }
 
+void	draw_crossair(t_data *data)
+{
+	mlx_pixel_put(data->mlx, data->win, (WIN_X / 2), (WIN_Y / 2) - 3, 0xffffff);
+	mlx_pixel_put(data->mlx, data->win, (WIN_X / 2), (WIN_Y / 2) - 2, 0xffffff);
+	mlx_pixel_put(data->mlx, data->win, (WIN_X / 2), (WIN_Y / 2) - 1, 0xffffff);
+	mlx_pixel_put(data->mlx, data->win, (WIN_X / 2) - 1, (WIN_Y / 2), 0xffffff);
+	mlx_pixel_put(data->mlx, data->win, (WIN_X / 2) - 2, (WIN_Y / 2), 0xffffff);
+	mlx_pixel_put(data->mlx, data->win, (WIN_X / 2) - 3, (WIN_Y / 2), 0xffffff);
+	mlx_pixel_put(data->mlx, data->win, WIN_X / 2, WIN_Y / 2, 0xffffff);
+	mlx_pixel_put(data->mlx, data->win, (WIN_X / 2) + 1, (WIN_Y / 2), 0xffffff);
+	mlx_pixel_put(data->mlx, data->win, (WIN_X / 2) + 2, (WIN_Y / 2), 0xffffff);
+	mlx_pixel_put(data->mlx, data->win, (WIN_X / 2) + 3, (WIN_Y / 2), 0xffffff);
+	mlx_pixel_put(data->mlx, data->win, (WIN_X / 2), (WIN_Y / 2) + 1, 0xffffff);
+	mlx_pixel_put(data->mlx, data->win, (WIN_X / 2), (WIN_Y / 2) + 2, 0xffffff);
+	mlx_pixel_put(data->mlx, data->win, (WIN_X / 2), (WIN_Y / 2) + 3, 0xffffff);
+}
+
 void	build_img(t_data *data)
 {
 	int			x;
@@ -153,8 +170,11 @@ void	build_img(t_data *data)
 		draw_pix(data, &algo, WIN_Y / algo.wall_dist, x);
 		dis_wall[x] = algo.wall_dist;
 	}
-	build_sprite(data, dis_wall);
+	(void)dis_wall;
+	//dist_wall------v
+	build_sprite(data);
 	show_map(data);
 	mlx_put_image_to_window(data->mlx, data->win, data->img_win.img_ptr, 0, 0);
+	draw_crossair(data);
 	put_info_on_screen(data);
 }
