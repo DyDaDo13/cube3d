@@ -52,13 +52,8 @@ int	get_pos_enemy(t_data *data, int y, int moy, int stat_moy)
 		if (check_pos(data->map[rand_y][rand_x]) == 0 && moy > 0)
 		{
 			data->map[rand_y][rand_x] = 'V';
-<<<<<<< HEAD:src/enemi.c
-			data->enemi[stat_moy - moy].x = rand_x;
-			data->enemi[stat_moy - moy].y = rand_y;
-=======
-			data->enemy[stat_moy - moy].enemy_pos_x = rand_x;
-			data->enemy[stat_moy - moy].enemy_pos_y = rand_y;
->>>>>>> 003f9c1d81732adae1c8b1fadfc5ab686b8cc383:src/enemy.c
+			data->enemy[stat_moy - moy].x = rand_x;
+			data->enemy[stat_moy - moy].y = rand_y;
 			moy--;
 		}
 	}

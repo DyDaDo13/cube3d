@@ -171,8 +171,7 @@ void	build_img(t_data *data)
 		dis_wall[x] = algo.wall_dist;
 	}
 	(void)dis_wall;
-	//dist_wall------v
-	build_sprite(data);
+	build_sprite(data, dis_wall);
 	show_map(data);
 	mlx_put_image_to_window(data->mlx, data->win, data->img_win.img_ptr, 0, 0);
 	draw_crossair(data);

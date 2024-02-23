@@ -41,8 +41,8 @@ xx0000000
 // 	int		x;
 // 	int		y;
 	
-// 	x = data->enemy[actual_enemy].enemy_pos_x;
-// 	y = data->enemy[actual_enemy].enemy_pos_y;
+// 	x = data->enemy[actual_enemy].x;
+// 	y = data->enemy[actual_enemy].y;
 	
 // 	//data->map[y][x];
 // 	//printf("%c | x = %i | y = %i\n", data->map[y][x], x, y);
@@ -51,8 +51,8 @@ xx0000000
 
 // move_enemy_up(t_data *data, int actual_enemy)
 // {
-// 	if (data->map[(int)data->enemy[actual_enemy].enemy_pos_y][(int)data->enemy[actual_enemy].enemy_pos_x] != '1')
-// 			data->enemy[actual_enemy].enemy_pos_y -= ENEMY_MOVE_SPEED;
+// 	if (data->map[(int)data->enemy[actual_enemy].y][(int)data->enemy[actual_enemy].x] != '1')
+// 			data->enemy[actual_enemy].y -= ENEMY_MOVE_SPEED;
 // }
 
 // void	random_movements(t_data *data, int actual_enemy)
@@ -100,14 +100,14 @@ void	enemy_move_dir(t_data *data, int actual_enemy)
 	double	cord_dist_x;
 	double	cord_dist_y;
 
-	cord_dist_x = (data->pos.p_x - data->enemy[actual_enemy].enemy_pos_x);
-	cord_dist_y = (data->pos.p_y - data->enemy[actual_enemy].enemy_pos_y);
+	cord_dist_x = (data->pos.p_x - data->enemy[actual_enemy].x);
+	cord_dist_y = (data->pos.p_y - data->enemy[actual_enemy].y);
 	coef = sqrt(sqr(ENEMY_MOVE_SPEED) / (sqr(cord_dist_x) + sqr(cord_dist_y)));
-	//printf("m_x = %f\nm_y = %f\ncoef = %f\n", (data->enemy[0].enemy_pos_x - (cord_dist_x * coef)), (data->enemy[0].enemy_pos_y - (cord_dist_y * coef)), coef);
-	if (data->map[(int)((cord_dist_y * coef) + data->enemy[actual_enemy].enemy_pos_y)][(int)data->enemy[actual_enemy].enemy_pos_x] != '1')
-		data->enemy[actual_enemy].enemy_pos_y += (cord_dist_y * coef);
-	if (data->map[(int)data->enemy[actual_enemy].enemy_pos_y][(int)((cord_dist_x * coef) + data->enemy[actual_enemy].enemy_pos_x)] != '1')
-		data->enemy[actual_enemy].enemy_pos_x += (cord_dist_x * coef);
+	//printf("m_x = %f\nm_y = %f\ncoef = %f\n", (data->enemy[0].x - (cord_dist_x * coef)), (data->enemy[0].y - (cord_dist_y * coef)), coef);
+	if (data->map[(int)((cord_dist_y * coef) + data->enemy[actual_enemy].y)][(int)data->enemy[actual_enemy].x] != '1')
+		data->enemy[actual_enemy].y += (cord_dist_y * coef);
+	if (data->map[(int)data->enemy[actual_enemy].y][(int)((cord_dist_x * coef) + data->enemy[actual_enemy].x)] != '1')
+		data->enemy[actual_enemy].x += (cord_dist_x * coef);
 }
 
 void	enemy_move(t_data *data)

@@ -113,13 +113,8 @@ typedef struct s_point
 
 typedef struct s_enemy
 {
-<<<<<<< HEAD
 	double		x;
 	double		y;
-=======
-	double		enemy_pos_x;
-	double		enemy_pos_y;
->>>>>>> 003f9c1d81732adae1c8b1fadfc5ab686b8cc383
 	int			texture;
 }t_enemy;
 
@@ -220,7 +215,7 @@ void			ft_init_img(t_data *data);
 /*build_img.c*/
 void			build_img(t_data *data);
 int				mouse_move(int x, int y, t_data *data);
-void			build_sprite(t_data *data);
+//void			build_sprite(t_data *data, dist wall);
 /*build_img2.c*/
 unsigned int	get_color(unsigned char R, unsigned char G, unsigned char B);
 void			img_pixel_put(t_img *img, int x, int y, int color);

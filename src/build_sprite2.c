@@ -32,7 +32,7 @@ void	draw_sprite(t_data *data, t_point *draw, t_algo *spr, double *dis_wall)
 				dis = (Ydraw) * 256 - WIN_Y * 128 + spr->side * 128;
 				texY = ((dis * TEXT_SIZE) / spr->side) / 256;
 				//printf("xdraw : %d | Ydraw : %d textX : %d | textY: %d\n", Xdraw, Ydraw, texX, texY);
-				if (take_pix(&data->textures.enemy1, texX, texY) != 0xFFFFFF)
+				if (take_pix(&data->textures.enemy1, texX, texY) != 0x000000)
 					img_pixel_put(&data->img_win, Xdraw, Ydraw, take_pix(&data->textures.enemy1, texX, texY));
 				Ydraw++;
 			}

@@ -57,13 +57,8 @@ void	sort_sprite(t_data *data, int **order, double **dis)
 	while (++i < data->nb_enemy)
 	{
 		(*order)[i] = i;
-<<<<<<< HEAD
-		(*dis)[i] = (sqr(data->pos.p_x - data->enemi[i].x)
-			+ sqr(data->pos.p_y - data->enemi[i].y));
-=======
-		(*dis)[i] = (sqr(data->pos.p_x - data->enemy[i].enemy_pos_x)
-			+ sqr(data->pos.p_y - data->enemy[i].enemy_pos_y));
->>>>>>> 003f9c1d81732adae1c8b1fadfc5ab686b8cc383
+		(*dis)[i] = (sqr(data->pos.p_x - data->enemy[i].x)
+			+ sqr(data->pos.p_y - data->enemy[i].y));
 	}
 	while (--i >= 0)
 	{
@@ -74,7 +69,6 @@ void	sort_sprite(t_data *data, int **order, double **dis)
 	free_sort_sprite(temp_order, temp_dis, order, dis);
 }
 
-<<<<<<< HEAD
 /*draw.y : drawStartY | draw.i : drawEndY | spr->side : spriteHeight
 draw.x : drawStartX | draw.j : drawEndX | spr->side : spriteWidth*/
 void	build_spitre2(t_data *data, t_algo *spr, double *dis_wall)
@@ -100,10 +94,6 @@ void	build_spitre2(t_data *data, t_algo *spr, double *dis_wall)
 /*ray_dirX & Y : Sprite_posX & Y | Coef_camX : coef matrix
 dist_temp_rayX & Y : Sprite_pos X & Y trans | spr.end : spriteScreenX*/
 void	build_sprite(t_data *data, double *dis_wall)
-=======
-//double dist_wall--------------v
-void	build_sprite(t_data *data)
->>>>>>> 003f9c1d81732adae1c8b1fadfc5ab686b8cc383
 {
 	int		*order_sprite;
 	double	*dis_sprite;
@@ -113,14 +103,15 @@ void	build_sprite(t_data *data)
 	dis_sprite = malloc(sizeof(double) * data->nb_enemy);
 	sort_sprite(data, &order_sprite, &dis_sprite);
 	spr.x = -1;
-	while (++spr.x < data->nb_enemis)
+	while (++spr.x < data->nb_enemy)
 	{
-		spr.rayDir_actX = data->enemi[order_sprite[spr.x]].x - data->pos.p_x;
-		spr.rayDir_actY = data->enemi[order_sprite[spr.x]].y - data->pos.p_x;
+		//printf("sprposX : %f | sprposY : %f | X : %d\n", data->enemy[order_sprite[spr.x]].x, data->enemy[order_sprite[spr.x]].y, spr.x);
+		spr.rayDir_actX = data->enemy[order_sprite[spr.x]].x - data->pos.p_x;
+		spr.rayDir_actY = data->enemy[order_sprite[spr.x]].y - data->pos.p_y;
 		spr.Coef_CamX = 1.0 / (data->pos.norm_camX * data->pos.dir_camY
 			- data->pos.dir_camX * data->pos.norm_camY);
-		spr.dist_temp_rayX = spr.Coef_CamX * (data->pos.dir_camY * spr.rayDir_actX - data->pos.dir_camX * spr.rayDir_actY);
-		spr.dist_temp_rayY = spr.Coef_CamX * (-data->pos.dir_camY * spr.rayDir_actX + data->pos.dir_camX * spr.rayDir_actY);
+		spr.dist_temp_rayX = spr.Coef_CamX * ((data->pos.dir_camY * spr.rayDir_actX) - (data->pos.dir_camX * spr.rayDir_actY));
+		spr.dist_temp_rayY = spr.Coef_CamX * ((-data->pos.norm_camY * spr.rayDir_actX) + (data->pos.norm_camX * spr.rayDir_actY));
 		spr.end = (int)((WIN_X / 2) * (1 + spr.dist_temp_rayX / spr.dist_temp_rayY));
 		build_spitre2(data, &spr, dis_wall);
 	}
