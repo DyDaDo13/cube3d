@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   enemi.c                                            :+:      :+:    :+:   */
+/*   enemy.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ozone <ozone@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 18:16:14 by ozone             #+#    #+#             */
-/*   Updated: 2024/02/21 12:29:07 by ozone            ###   ########.fr       */
+/*   Updated: 2024/02/23 09:20:44 by ozone            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,15 +52,20 @@ int	get_pos_enemy(t_data *data, int y, int moy, int stat_moy)
 		if (check_pos(data->map[rand_y][rand_x]) == 0 && moy > 0)
 		{
 			data->map[rand_y][rand_x] = 'V';
+<<<<<<< HEAD:src/enemi.c
 			data->enemi[stat_moy - moy].x = rand_x;
 			data->enemi[stat_moy - moy].y = rand_y;
+=======
+			data->enemy[stat_moy - moy].enemy_pos_x = rand_x;
+			data->enemy[stat_moy - moy].enemy_pos_y = rand_y;
+>>>>>>> 003f9c1d81732adae1c8b1fadfc5ab686b8cc383:src/enemy.c
 			moy--;
 		}
 	}
 	return (moy);
 }
 
-void	placing_enemis(t_data *data)
+void	placing_enemy(t_data *data)
 {
 	int		y;
 	int		moy;
@@ -69,9 +74,9 @@ void	placing_enemis(t_data *data)
 	srand(time(NULL));
 	get_size_map(data);
 	moy = ((data->map_width + data->map_height) / 6);
-	data->nb_enemis = moy;
+	data->nb_enemy = moy;
 	stat_moy = moy;
-	data->enemi = malloc(sizeof(t_enemis) * moy);
+	data->enemy = malloc(sizeof(t_enemy) * moy);
 	while (moy > 0)
 	{
 		y = -1;

@@ -12,6 +12,35 @@
 
 #include "../inc/cube3d.h"
 
+void	print_enemy_movement(t_data *data, int actual_enemy)
+{
+	int	x;
+	int	y;
+
+	y = -1;
+	while (data->map[++y])
+	{
+		x = -1;
+		while (data->map[y][++x])
+		{
+			if (y == (int)data->pos.p_y
+				&& x == (int)data->pos.p_x)
+			{
+				printf("\e[1;92mP\e[0m");
+			}
+			else if (y == (int)data->enemy[actual_enemy].enemy_pos_y
+				&& x == (int)data->enemy[actual_enemy].enemy_pos_x)
+			{
+				printf("\e[1;91mV\e[0m");
+			}
+			else
+				printf("%c", data->map[y][x]);
+		}
+		printf("\n");
+	}
+	printf("\n");
+}
+
 void	print_map(char **map)
 {
 	int		y;
@@ -61,7 +90,7 @@ void	print_args(t_data *data)
 		printf("│HARDCORE MODE \e[1;91mON\e[0m\n");
 	else
 		printf("│HARDCORE MODE \e[1;92mOFF\e[0m\n");
-	printf("│NB enemi: %i\n", data->nb_enemis);
+	printf("│NB enemy: %i\n", data->nb_enemy);
 	printf("├───────────────────────────────────────\n");
 	printf("│\e[1;93mcamX_dir:\t%f\t| \e[1;91mcamY_dir:\t%f\e[0m\n",
 		data->pos.dir_camX, data->pos.dir_camY);

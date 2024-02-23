@@ -6,7 +6,7 @@
 /*   By: ozone <ozone@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 22:36:29 by ozone             #+#    #+#             */
-/*   Updated: 2024/02/21 12:47:25 by ozone            ###   ########.fr       */
+/*   Updated: 2024/02/21 17:13:38 by ozone            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,7 +146,9 @@ int	ft_key_moves(t_data *data)
 		ft_rotation_left(data);
 	else
 		move_diag(data);
-	//enemy_AI(data);
+	if (data->hardmode == 1)
+		enemy_move(data);	
+	//print_enemy_movement(data, 0);
 	check_door_spot(data);
 	build_img(data);
 	return (0);
