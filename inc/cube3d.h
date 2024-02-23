@@ -100,6 +100,7 @@ typedef struct s_textures
 	t_img	WE;
 	t_img	EA;
 	t_img	DO;
+	t_img	enemy1;
 }	t_textures;
 
 typedef struct s_point
@@ -107,12 +108,13 @@ typedef struct s_point
 	int		x;
 	int		y;
 	int		i;
+	int		j;
 }t_point;
 
 typedef struct s_enemis
 {
-	double		enemi_pos_x;
-	double		enemi_pos_y;
+	double		x;
+	double		y;
 	int			texture;
 }t_enemis;
 
@@ -219,6 +221,10 @@ unsigned int	get_color(unsigned char R, unsigned char G, unsigned char B);
 void			img_pixel_put(t_img *img, int x, int y, int color);
 void			get_texture(t_algo *algo, int stepX, int stepY);
 void			pix_texture(t_data *data, t_algo *algo, int *y);
+
+/*build_sprite.c*/
+void			build_sprite(t_data *data, double *dis_wall);
+void			draw_sprite(t_data *data, t_point *draw, t_algo *spr, double *dis_wall);
 
 /*move.c*/
 void			ft_move2(t_data *data, int dir);
