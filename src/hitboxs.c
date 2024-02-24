@@ -6,7 +6,7 @@
 /*   By: ozone <ozone@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 18:54:10 by ozone             #+#    #+#             */
-/*   Updated: 2024/02/24 14:55:33 by ozone            ###   ########.fr       */
+/*   Updated: 2024/02/24 15:07:59 by ozone            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,8 @@
 
 int	is_player_hitbox_touched(t_data *data, int actual_enemy, int x, int y)
 {
-	double	coef;
-	double	cord_dist_x;
-	double	cord_dist_y;
 	double	distance_sp_x;
 	double	distance_sp_y;
-	
-	cord_dist_y = (data->enemy[actual_enemy].y - data->pos.p_y);
-	cord_dist_x = (data->enemy[actual_enemy].x - data->pos.p_x);
-	coef = sqrt(sqr(HITBOX) / (sqr(cord_dist_x) + sqr(cord_dist_y)));
 	distance_sp_x = (data->pos.p_x - data->enemy[actual_enemy].x) * 2;
 	distance_sp_y = (data->pos.p_y - data->enemy[actual_enemy].y) * 2;
 	if (distance_sp_x < 0)
@@ -44,10 +37,14 @@ int	is_player_hitbox_touched(t_data *data, int actual_enemy, int x, int y)
 	if (distance_sp_y < 0)
 		distance_sp_y *= -1;
 	if (x == 0)
+	{
 		if (distance_sp_y <= HITBOX)
 			return (1);
+	}
 	else if (y == 0)
+	{
 		if (distance_sp_x <= HITBOX)
 			return (1);
+	}
 	return (0);
 }
