@@ -6,7 +6,7 @@
 /*   By: ozone <ozone@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 12:04:22 by lle-saul          #+#    #+#             */
-/*   Updated: 2024/02/23 16:00:00 by ozone            ###   ########.fr       */
+/*   Updated: 2024/02/23 16:50:41 by ozone            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	sort_sprite(t_data *data, int **order, double **dis)
 
 /*draw.y : drawStartY | draw.i : drawEndY | spr->side : spriteHeight
 draw.x : drawStartX | draw.j : drawEndX | spr->side : spriteWidth*/
-void	build_spitre2(t_data *data, t_algo *spr, double *dis_wall)
+void	build_sprite2(t_data *data, t_algo *spr, double *dis_wall)
 {
 	t_point	draw;
 
@@ -114,7 +114,7 @@ void	build_sprite(t_data *data, double *dis_wall)
 		spr.dist_temp_rayX = spr.Coef_CamX * ((data->pos.dir_camY * spr.rayDir_actX) - (data->pos.dir_camX * spr.rayDir_actY));
 		spr.dist_temp_rayY = spr.Coef_CamX * ((-data->pos.norm_camY * spr.rayDir_actX) + (data->pos.norm_camX * spr.rayDir_actY));
 		spr.end = (int)((WIN_X / 2) * (1 + spr.dist_temp_rayX / spr.dist_temp_rayY));
-		build_spitre2(data, &spr, dis_wall);
+		build_sprite2(data, &spr, dis_wall);
 	}
 	free(order_sprite);
 	free(dis_sprite);

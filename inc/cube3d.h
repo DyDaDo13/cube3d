@@ -40,6 +40,7 @@
 # define FOV	0.66
 # define MOVE_SPEED	0.05
 # define ENEMY_MOVE_SPEED 0.05
+# define HITBOX 5
 # define ROT_SPEED	0.05
 # define TEXT_SIZE	256
 # define MINI_MAP_SIZE	20
@@ -247,5 +248,7 @@ void			put_info_on_screen(t_data *data);
 void			placing_enemy(t_data *data);
 void			enemy_move(t_data *data);
 
+/*hitbox*/
+int	is_player_hitbox_touched(t_data *data, int actual_enemy, int x, int y);
 
 #endif
