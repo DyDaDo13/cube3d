@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hitboxs.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ozone <ozone@student.42.fr>                +#+  +:+       +#+        */
+/*   By: lle-saul <lle-saul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 18:54:10 by ozone             #+#    #+#             */
-/*   Updated: 2024/02/24 15:07:59 by ozone            ###   ########.fr       */
+/*   Updated: 2024/03/05 17:19:32 by lle-saul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,13 @@
 
 // p_x -> s_x | p_y -> s_x
 
-int	is_player_hitbox_touched(t_data *data, int actual_enemy, int x, int y)
+/*int	is_player_hitbox_touched(t_data *data, int actual_enemy, int x, int y)
 {
 	double	distance_sp_x;
 	double	distance_sp_y;
-	distance_sp_x = (data->pos.p_x - data->enemy[actual_enemy].x) * 2;
-	distance_sp_y = (data->pos.p_y - data->enemy[actual_enemy].y) * 2;
+
+	distance_sp_x = (data->enemy[actual_enemy].x - data->pos.p_x);
+	distance_sp_y = (data->enemy[actual_enemy].y - data->pos.p_y);
 	if (distance_sp_x < 0)
 		distance_sp_x *= -1;
 	if (distance_sp_y < 0)
@@ -47,4 +48,14 @@ int	is_player_hitbox_touched(t_data *data, int actual_enemy, int x, int y)
 			return (1);
 	}
 	return (0);
+}*/
+
+int	is_player_hitbox_touched(t_data *data, int actual_enemy)
+{
+	double	dist_sp;
+
+	dist_sp = sqrt(sqr(data->enemy[actual_enemy].x - data->pos.p_x) + sqr(data->enemy[actual_enemy].y - data->pos.p_y));
+	if (dist_sp <= HITBOX)
+		return (1);
+	return(0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   enemy_moves.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ozone <ozone@student.42.fr>                +#+  +:+       +#+        */
+/*   By: lle-saul <lle-saul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 08:41:37 by ozone             #+#    #+#             */
-/*   Updated: 2024/02/24 14:52:31 by ozone            ###   ########.fr       */
+/*   Updated: 2024/03/05 17:23:22 by lle-saul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,12 +104,16 @@ void	enemy_move_dir(t_data *data, int actual_enemy)
 	cord_dist_y = (data->pos.p_y - data->enemy[actual_enemy].y);
 	coef = sqrt(sqr(ENEMY_MOVE_SPEED) / (sqr(cord_dist_x) + sqr(cord_dist_y)));
 	//printf("m_x = %f\nm_y = %f\ncoef = %f\n", (data->enemy[0].x - (cord_dist_x * coef)), (data->enemy[0].y - (cord_dist_y * coef)), coef);
-	if (data->map[(int)((cord_dist_y * coef) + data->enemy[actual_enemy].y)][(int)data->enemy[actual_enemy].x] != '1' && is_player_hitbox_touched(data, actual_enemy, 0, 1) == 0)
-		data->enemy[actual_enemy].y += (cord_dist_y * coef);
+	if (is_player_hitbox_touched(data, actual_enemy) == 0)
+	{
+		if (data->map[(int)((cord_dist_y * coef) + data->enemy[actual_enemy].y)][(int)data->enemy[actual_enemy].x] != '1')
+			data->enemy[actual_enemy].y += (cord_dist_y * coef);
+		if (data->map[(int)data->enemy[actual_enemy].y][(int)((cord_dist_x * coef) + data->enemy[actual_enemy].x)] != '1')
+			data->enemy[actual_enemy].x += (cord_dist_x * coef);	
+	}
 	// else if (data->map[-((int)((cord_dist_y * coef) + data->enemy[actual_enemy].y))][(int)data->enemy[actual_enemy].x] != '1' && is_player_hitbox_touched(data, actual_enemy, 0, 1) == 1)
 	// 	data->enemy[actual_enemy].y -= (cord_dist_y * coef);
-	if (data->map[(int)data->enemy[actual_enemy].y][(int)((cord_dist_x * coef) + data->enemy[actual_enemy].x)] != '1' && is_player_hitbox_touched(data, actual_enemy, 1, 0) == 0)
-		data->enemy[actual_enemy].x += (cord_dist_x * coef);
+	
 	// else if (data->map[(int)data->enemy[actual_enemy].y][-((int)((cord_dist_x * coef) + data->enemy[actual_enemy].x))] != '1' && is_player_hitbox_touched(data, actual_enemy, 1, 0) == 1)
 	// 	data->enemy[actual_enemy].x -= (cord_dist_x * coef);
 
