@@ -140,7 +140,7 @@ typedef struct s_data
 	t_map			*map_char;
 	t_pos			pos;
 	t_mousse		mouse;
-	t_enemy		*enemy;
+	t_enemy			*enemy;
 }	t_data;
 
 typedef struct s_algo
@@ -215,7 +215,13 @@ void			ft_init_img(t_data *data);
 
 /*build_img.c*/
 void			build_img(t_data *data);
+void			ft_calc_delta(t_algo *algo, t_data *data, int x);
+void			get_steps(int *stepX, int *stepY, t_algo *algo, t_data *data);
+
 int				mouse_move(int x, int y, t_data *data);
+int				mouse_left_click(int button, int x, int y, t_data *data);
+void			draw_crossair(t_data *data);
+int				door_check(t_data *data, t_algo *algo);
 //void			build_sprite(t_data *data, dist wall);
 /*build_img2.c*/
 unsigned int	get_color(unsigned char R, unsigned char G, unsigned char B);
@@ -226,6 +232,8 @@ void			pix_texture(t_data *data, t_algo *algo, int *y);
 /*build_sprite.c*/
 void			build_sprite(t_data *data, double *dis_wall);
 void			draw_sprite(t_data *data, t_point *draw, t_algo *spr, double *dis_wall);
+int				get_nb_sprite(t_data *data);
+int				sort_sprite2(t_data *data, int **order, double **dis);
 
 /*move.c*/
 void			ft_move2(t_data *data, int dir);

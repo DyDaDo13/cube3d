@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   build_sprite2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ozone <ozone@student.42.fr>                +#+  +:+       +#+        */
+/*   By: lle-saul <lle-saul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 16:16:39 by lle-saul          #+#    #+#             */
-/*   Updated: 2024/02/23 16:32:11 by ozone            ###   ########.fr       */
+/*   Updated: 2024/03/06 18:19:01 by lle-saul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,41 @@ void	draw_sprite(t_data *data, t_point *draw, t_algo *spr, double *dis_wall)
 		}
 		Xdraw++;
 	}
+}
+
+int	get_nb_sprite(t_data *data)
+{
+	int	i;
+	int	count;
+
+	i = 0;
+	count = 0;
+	while (i < data->nb_enemy)
+	{
+		//printf("salut : %d\n", i);
+		if (data->enemy[i].x >= (double)0 && data->enemy[i].y >= (double)0)
+			count++;
+		i++;
+	}
+	return (count);
+}
+
+int	sort_sprite2(t_data *data, int **order, double **dis)
+{
+	int	index;
+	int	i;
+
+	i = -1;
+	index = 0;
+	while (++i < data->nb_enemy)
+	{
+		if (data->enemy[i].x >= 0 && data->enemy[i].y >= 0)
+		{
+			(*order)[index] = i;
+			(*dis)[index] = (sqr(data->pos.p_x - data->enemy[i].x)
+				+ sqr(data->pos.p_y - data->enemy[i].y));
+			index++;
+		}
+	}
+	return (index);
 }

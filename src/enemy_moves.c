@@ -6,7 +6,7 @@
 /*   By: lle-saul <lle-saul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 08:41:37 by ozone             #+#    #+#             */
-/*   Updated: 2024/03/05 17:23:22 by lle-saul         ###   ########.fr       */
+/*   Updated: 2024/03/06 17:32:43 by lle-saul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,7 +126,8 @@ void	enemy_move(t_data *data)
 	actual_enemy = 0;
 	while (actual_enemy < data->nb_enemy)
 	{
-		enemy_move_dir(data, actual_enemy);
+		if (data->enemy[actual_enemy].x >= 0 && data->enemy[actual_enemy].y >= 0)
+			enemy_move_dir(data, actual_enemy);
 		actual_enemy++;
 	}
 }
