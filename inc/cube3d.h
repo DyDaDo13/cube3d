@@ -35,17 +35,19 @@
 # include <X11/extensions/XShm.h>
 # include <X11/XKBlib.h>
 
-# define WIN_X	1080
-# define WIN_Y	720
-# define FOV	0.66
-# define MOVE_SPEED	0.05
-# define ENEMY_MOVE_SPEED 0.05
-# define HITBOX 1
-# define ROT_SPEED	0.05
-# define TEXT_SIZE	256
-# define MINI_MAP_SIZE	20
+# define WIN_X				1080
+# define WIN_Y				720
+# define FOV				0.66
+# define MOVE_SPEED			0.05
+# define ENEMY_MOVE_SPEED	0.01
+# define HITBOX				1
+# define ROT_SPEED			0.05
+# define TEXT_SIZE			256
+# define MINI_MAP_SIZE		20
 # define MINI_MAP_COEF_LEN	12
-# define SENSIVITY 1000
+# define SENSIVITY			1000
+# define TIME_ACT_TEXT		25
+# define NB_TEXT_SPRITE		1
 
 typedef struct s_img
 {
@@ -102,6 +104,7 @@ typedef struct s_textures
 	t_img	EA;
 	t_img	DO;
 	t_img	enemy1;
+	t_img	enemy_death;
 }	t_textures;
 
 typedef struct s_point
@@ -117,6 +120,7 @@ typedef struct s_enemy
 	double		x;
 	double		y;
 	int			texture;
+	int			act_text;
 }t_enemy;
 
 typedef struct s_data
@@ -234,6 +238,7 @@ void			build_sprite(t_data *data, double *dis_wall);
 void			draw_sprite(t_data *data, t_point *draw, t_algo *spr, double *dis_wall);
 int				get_nb_sprite(t_data *data);
 int				sort_sprite2(t_data *data, int **order, double **dis);
+void			act_text(t_data *data, t_algo *spr);
 
 /*move.c*/
 void			ft_move2(t_data *data, int dir);

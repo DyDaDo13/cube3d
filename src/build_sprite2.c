@@ -6,11 +6,45 @@
 /*   By: lle-saul <lle-saul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 16:16:39 by lle-saul          #+#    #+#             */
-/*   Updated: 2024/03/06 18:19:01 by lle-saul         ###   ########.fr       */
+/*   Updated: 2024/03/06 19:22:21 by lle-saul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cube3d.h"
+
+void	act_text(t_data *data, t_algo *spr)
+{
+	if (data->enemy[spr->start].texture >= 0)
+	{
+		if (data->enemy[spr->start].act_text > TIME_ACT_TEXT)
+		{
+			data->enemy[spr->start].act_text = 0;
+			data->enemy[spr->start].texture++;
+			if (data->enemy[spr->start].texture >= NB_TEXT_SPRITE)
+				data->enemy[spr->start].texture = 0;
+		}
+		else
+			data->enemy[spr->start].act_text++;
+	}
+	else
+	{
+		if (data->enemy[spr->start].act_text > TIME_ACT_TEXT)
+		{
+			data->enemy[spr->start].x = (double)-1;
+			data->enemy[spr->start].y = (double)-1;
+		}
+		else
+			data->enemy[spr->start].act_text++;
+	}
+}
+
+t_img	*sel_tex_spr(t_data *data, int tex)
+{
+	if (tex == 0)
+		return (&data->textures.enemy1);
+	else
+		return (&data->textures.enemy_death);
+}
 
 void	draw_sprite(t_data *data, t_point *draw, t_algo *spr, double *dis_wall)
 {
@@ -31,9 +65,8 @@ void	draw_sprite(t_data *data, t_point *draw, t_algo *spr, double *dis_wall)
 			{
 				dis = (Ydraw) * 256 - WIN_Y * 128 + spr->side * 128;
 				texY = ((dis * TEXT_SIZE) / spr->side) / 256;
-				//printf("xdraw : %d | Ydraw : %d textX : %d | textY: %d\n", Xdraw, Ydraw, texX, texY);
-				if (take_pix(&data->textures.enemy1, texX, texY) != 0x000000)
-					img_pixel_put(&data->img_win, Xdraw, Ydraw, take_pix(&data->textures.enemy1, texX, texY));
+				if (take_pix(sel_tex_spr(data, data->enemy[spr->start].texture), texX, texY) != 0x000000)
+					img_pixel_put(&data->img_win, Xdraw, Ydraw, take_pix(sel_tex_spr(data, data->enemy[spr->start].texture), texX, texY));
 				Ydraw++;
 			}
 		}

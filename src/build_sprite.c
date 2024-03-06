@@ -6,7 +6,7 @@
 /*   By: lle-saul <lle-saul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 12:04:22 by lle-saul          #+#    #+#             */
-/*   Updated: 2024/03/06 18:17:10 by lle-saul         ###   ########.fr       */
+/*   Updated: 2024/03/06 19:11:19 by lle-saul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,10 +83,12 @@ void	build_sprite2(t_data *data, t_algo *spr, double *dis_wall)
 	if (draw.j >= WIN_X)
 		draw.j = WIN_X - 1;
 	draw_sprite(data, &draw, spr, dis_wall);
+	act_text(data, spr);
 }
 
 /*ray_dirX & Y : Sprite_posX & Y | Coef_camX : coef matrix
-dist_temp_rayX & Y : Sprite_pos X & Y trans | spr.end : spriteScreenX*/
+dist_temp_rayX & Y : Sprite_pos X & Y trans | spr.end : spriteScreenX
+spr.start : num_spr*/
 void	build_sprite(t_data *data, double *dis_wall)
 {
 	int		*order_sprite;
@@ -101,8 +103,9 @@ void	build_sprite(t_data *data, double *dis_wall)
 	while (++spr.x < get_nb_sprite(data))
 	{
 		//printf("sprposX : %f | sprposY : %f | X : %d\n", data->enemy[order_sprite[spr.x]].x, data->enemy[order_sprite[spr.x]].y, spr.x);
-		spr.rayDir_actX = data->enemy[order_sprite[spr.x]].x - data->pos.p_x;
-		spr.rayDir_actY = data->enemy[order_sprite[spr.x]].y - data->pos.p_y;
+		spr.start = order_sprite[spr.x];
+		spr.rayDir_actX = data->enemy[spr.start].x - data->pos.p_x;
+		spr.rayDir_actY = data->enemy[spr.start].y - data->pos.p_y;
 		spr.Coef_CamX = 1.0 / (data->pos.norm_camX * data->pos.dir_camY
 			- data->pos.dir_camX * data->pos.norm_camY);
 		spr.dist_temp_rayX = spr.Coef_CamX * ((data->pos.dir_camY * spr.rayDir_actX) - (data->pos.dir_camX * spr.rayDir_actY));

@@ -6,7 +6,7 @@
 /*   By: lle-saul <lle-saul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 15:24:26 by lle-saul          #+#    #+#             */
-/*   Updated: 2024/03/06 18:10:57 by lle-saul         ###   ########.fr       */
+/*   Updated: 2024/03/06 18:55:59 by lle-saul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,7 @@ int	kill_ennemy(t_algo *algo, t_data *data)
 		//printf("Ex : %d | Ey : %d | Mx : %d | My : %d\n", (int)data->enemy[i].x, algo->map_posX, (int)data->enemy[i].y, algo->map_posY);
 		if ((int)data->enemy[i].x == algo->map_posX && (int)data->enemy[i].y == algo->map_posY)
 		{
-			data->enemy[i].x = (double)-1;
-			data->enemy[i].y = (double)-1;
+			data->enemy[i].texture = -1;
 			return (1);
 		}
 		i++;
