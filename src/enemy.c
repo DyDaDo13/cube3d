@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   enemy.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ozone <ozone@student.42.fr>                +#+  +:+       +#+        */
+/*   By: lle-saul <lle-saul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 18:16:14 by ozone             #+#    #+#             */
-/*   Updated: 2024/02/23 09:20:44 by ozone            ###   ########.fr       */
+/*   Updated: 2024/03/06 19:14:28 by lle-saul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ int	get_pos_enemy(t_data *data, int y, int moy, int stat_moy)
 			data->map[rand_y][rand_x] = 'V';
 			data->enemy[stat_moy - moy].x = rand_x;
 			data->enemy[stat_moy - moy].y = rand_y;
+			data->enemy[stat_moy - moy].texture = 0;
+			data->enemy[stat_moy - moy].act_text = 0;
 			moy--;
 		}
 	}

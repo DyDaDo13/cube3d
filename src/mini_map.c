@@ -6,7 +6,7 @@
 /*   By: lle-saul <lle-saul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 15:41:51 by lle-saul          #+#    #+#             */
-/*   Updated: 2024/02/17 15:41:51 by lle-saul         ###   ########.fr       */
+/*   Updated: 2024/03/05 17:44:23 by lle-saul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,5 +106,7 @@ void	show_map(t_data *data)
 		y++;
 	}
 	draw_FOV(data);
+	draw_crossair(data);
+	put_info_on_screen(data);
 }
 

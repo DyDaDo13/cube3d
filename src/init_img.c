@@ -6,11 +6,20 @@
 /*   By: lle-saul <lle-saul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 14:46:34 by lle-saul          #+#    #+#             */
-/*   Updated: 2024/02/08 14:46:34 by lle-saul         ###   ########.fr       */
+/*   Updated: 2024/03/06 18:34:56 by lle-saul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cube3d.h"
+
+void	ft_init_img3(t_data *data, int *i, int *j)
+{
+	data->textures.enemy_death.img_ptr = mlx_xpm_file_to_image(data->mlx,
+			"textures/wood.xpm", i, j);
+	data->textures.enemy_death.img_pixels = mlx_get_data_addr(data->textures.enemy_death.img_ptr,
+			&data->textures.enemy_death.bits_pix, &data->textures.enemy_death.len,
+			&data->textures.enemy_death.endian);
+}
 
 void	ft_init_img2(t_data *data, int *i, int *j)
 {
@@ -36,6 +45,7 @@ void	ft_init_img2(t_data *data, int *i, int *j)
 	data->textures.enemy1.img_pixels = mlx_get_data_addr(data->textures.enemy1.img_ptr,
 			&data->textures.enemy1.bits_pix, &data->textures.enemy1.len,
 			&data->textures.enemy1.endian);
+	ft_init_img3(data, i, j);
 }
 
 void	ft_init_img(t_data *data)
