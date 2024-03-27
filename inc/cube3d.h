@@ -104,7 +104,10 @@ typedef struct s_textures
 	t_img	EA;
 	t_img	DO;
 	t_img	enemy1;
-	t_img	enemy_death;
+	t_img	enemy1_d;
+	t_img	POV;
+	int		add_POV;
+	int		way_POV;
 }	t_textures;
 
 typedef struct s_point
@@ -226,6 +229,7 @@ int				mouse_move(int x, int y, t_data *data);
 int				mouse_left_click(int button, int x, int y, t_data *data);
 void			draw_crossair(t_data *data);
 int				door_check(t_data *data, t_algo *algo);
+void			show_pov(t_data *data);
 //void			build_sprite(t_data *data, dist wall);
 /*build_img2.c*/
 unsigned int	get_color(unsigned char R, unsigned char G, unsigned char B);

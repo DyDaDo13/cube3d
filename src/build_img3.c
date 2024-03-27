@@ -6,7 +6,7 @@
 /*   By: lle-saul <lle-saul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 17:45:54 by lle-saul          #+#    #+#             */
-/*   Updated: 2024/03/06 17:56:02 by lle-saul         ###   ########.fr       */
+/*   Updated: 2024/03/27 11:17:23 by lle-saul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,42 @@ void	draw_crossair(t_data *data)
 	img_pixel_put(&data->img_win, (WIN_X / 2) + 1, (WIN_Y / 2), 0xffffff);
 	img_pixel_put(&data->img_win, (WIN_X / 2) + 2, (WIN_Y / 2), 0xffffff);
 	img_pixel_put(&data->img_win, (WIN_X / 2) + 3, (WIN_Y / 2), 0xffffff);
+}
+
+void	show_pov2(t_data *data)
+{
+	if (data->textures.add_POV == 0)
+		data->textures.way_POV = 1;
+	else if (data->textures.add_POV == 40)
+		data->textures.way_POV = 0;
+	if (data->textures.way_POV == 1)
+		data->textures.add_POV++;
+	else if (data->textures.way_POV == 0)
+		data->textures.add_POV--;
+}
+
+void	show_pov(t_data *data)
+{
+	int x;
+	int	y;
+	int x_spr;
+	int	y_spr;
+
+	y = (WIN_Y - 192) + (data->textures.add_POV / 4);
+	y_spr = 0;
+	while (y < WIN_Y)
+	{
+		x = (WIN_X / 2) - 96;
+		x_spr = 0;
+		while (x < (WIN_X / 2) + 96)
+		{
+			if (take_pix(&data->textures.POV, x_spr / 3, y_spr / 3) != 0x000000)
+				img_pixel_put(&data->img_win, x, y, take_pix(&data->textures.POV, x_spr / 3, y_spr / 3));
+			x++;
+			x_spr++;
+		}
+		y++;
+		y_spr++;
+	}
+	show_pov2(data);
 }

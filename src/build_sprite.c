@@ -6,7 +6,7 @@
 /*   By: lle-saul <lle-saul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 12:04:22 by lle-saul          #+#    #+#             */
-/*   Updated: 2024/03/06 19:11:19 by lle-saul         ###   ########.fr       */
+/*   Updated: 2024/03/27 10:34:50 by lle-saul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,6 @@ void	build_sprite(t_data *data, double *dis_wall)
 	double	*dis_sprite;
 	t_algo	spr;
 	
-	(void)dis_wall;
 	order_sprite = malloc(sizeof(int) * get_nb_sprite(data));
 	dis_sprite = malloc(sizeof(double) * get_nb_sprite(data));
 	sort_sprite(data, &order_sprite, &dis_sprite);
