@@ -1,7 +1,7 @@
 /* XPM */
 static char * bandit_dead_squeleton_xpm[] = {
 "256 256 644 2",
-"  	c None",
+"  	c #000000",
 ". 	c #C8C8C8",
 "+ 	c #BEBEBF",
 "@ 	c #A1A1A1",

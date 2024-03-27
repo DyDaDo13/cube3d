@@ -1,7 +1,7 @@
 /* XPM */
 static char * pirate_dead_squeleton_xpm[] = {
 "256 256 1182 2",
-"  	c None",
+"  	c #000000",
 ". 	c #DFDFDF",
 "+ 	c #E8E7E7",
 "@ 	c #EFEFEF",
