@@ -6,7 +6,7 @@
 /*   By: lle-saul <lle-saul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 16:16:39 by lle-saul          #+#    #+#             */
-/*   Updated: 2024/03/27 10:10:33 by lle-saul         ###   ########.fr       */
+/*   Updated: 2024/04/03 11:31:24 by lle-saul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,12 @@ t_img	*sel_tex_spr(t_data *data, int tex)
 {
 	if (tex == 0)
 		return (&data->textures.enemy1);
+	else if (tex == 1)
+		return (&data->textures.enemy2);
+	else if (tex == 2)
+		return (&data->textures.enemy3);
+	else if (tex == 3)
+		return (&data->textures.enemy4);
 	else
 		return (&data->textures.enemy1_d);
 }

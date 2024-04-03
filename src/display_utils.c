@@ -6,7 +6,7 @@
 /*   By: lle-saul <lle-saul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 16:30:56 by lle-saul          #+#    #+#             */
-/*   Updated: 2024/03/27 10:11:02 by lle-saul         ###   ########.fr       */
+/*   Updated: 2024/04/03 12:04:42 by lle-saul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,12 @@ void	destroy_all_images(t_data *data)
 	if (data->textures_path.DO)
 		mlx_destroy_image(data->mlx, data->textures.DO.img_ptr);
 	mlx_destroy_image(data->mlx, data->textures.enemy1.img_ptr);
+	mlx_destroy_image(data->mlx, data->textures.enemy2.img_ptr);
+	mlx_destroy_image(data->mlx, data->textures.enemy3.img_ptr);
+	mlx_destroy_image(data->mlx, data->textures.enemy4.img_ptr);
 	mlx_destroy_image(data->mlx, data->textures.enemy1_d.img_ptr);
+	mlx_destroy_image(data->mlx, data->textures.POV.img_ptr);
+	mlx_destroy_image(data->mlx, data->textures.shoot_POV.img_ptr);
 	mlx_destroy_image(data->mlx, data->img_win.img_ptr);
 }
 

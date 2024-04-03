@@ -47,7 +47,7 @@
 # define MINI_MAP_COEF_LEN	12
 # define SENSIVITY			1000
 # define TIME_ACT_TEXT		25
-# define NB_TEXT_SPRITE		1
+# define NB_TEXT_SPRITE		4
 
 typedef struct s_img
 {
@@ -104,10 +104,15 @@ typedef struct s_textures
 	t_img	EA;
 	t_img	DO;
 	t_img	enemy1;
+	t_img	enemy2;
+	t_img	enemy3;
+	t_img	enemy4;
 	t_img	enemy1_d;
 	t_img	POV;
+	t_img	shoot_POV;
 	int		add_POV;
 	int		way_POV;
+	int		tex_POV;
 }	t_textures;
 
 typedef struct s_point
