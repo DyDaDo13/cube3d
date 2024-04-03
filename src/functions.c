@@ -6,7 +6,7 @@
 /*   By: ozone <ozone@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 22:25:43 by ozone             #+#    #+#             */
-/*   Updated: 2024/02/07 22:26:02 by ozone            ###   ########.fr       */
+/*   Updated: 2024/04/03 16:44:22 by ozone            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,11 @@ void	change_dis(t_point *dis, t_pos start, t_data *data, int cases)
 		while (sqrt((dis->x * dis->x) + (dis->y * dis->y)) < 40)
 		{
 			dis->x = (((((MINI_MAP_SIZE * MINI_MAP_COEF_LEN) / 2) + 20)
-				+ (data->pos.dir_camX * i)) + (data->pos.norm_camX * i)) - start.p_x;
+						+ (data->pos.dir_camX * i)) + (data->pos.norm_camX * i))
+				- start.p_x;
 			dis->y = (((((MINI_MAP_SIZE * MINI_MAP_COEF_LEN) / 2) + 20)
-				+ (data->pos.dir_camY * i)) + (data->pos.norm_camY * i)) - start.p_y;
+						+ (data->pos.dir_camY * i)) + (data->pos.norm_camY * i))
+				- start.p_y;
 			i++;
 		}
 	}
@@ -73,9 +75,11 @@ void	change_dis(t_point *dis, t_pos start, t_data *data, int cases)
 		while (sqrt((dis->x * dis->x) + (dis->y * dis->y)) < 40)
 		{
 			dis->x = (((((MINI_MAP_SIZE * MINI_MAP_COEF_LEN) / 2) + 20)
-				+ (data->pos.dir_camX * i)) - (data->pos.norm_camX * i)) - start.p_x;
+						+ (data->pos.dir_camX * i)) - (data->pos.norm_camX * i))
+				- start.p_x;
 			dis->y = (((((MINI_MAP_SIZE * MINI_MAP_COEF_LEN) / 2) + 20)
-				+ (data->pos.dir_camY * i)) - (data->pos.norm_camY * i)) - start.p_y;
+						+ (data->pos.dir_camY * i)) - (data->pos.norm_camY * i))
+				- start.p_y;
 			i++;
 		}
 	}

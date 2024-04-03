@@ -6,7 +6,7 @@
 /*   By: ozone <ozone@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 12:44:24 by lle-saul          #+#    #+#             */
-/*   Updated: 2024/02/21 16:46:27 by ozone            ###   ########.fr       */
+/*   Updated: 2024/04/03 15:35:58 by ozone            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ void	ft_move2(t_data *data, int dir)
 {
 	if (dir == 2)
 	{
-		if (data->map[(int)(data->pos.p_y + (data->pos.norm_camY *
-			 data->move_speed))][(int)(data->pos.p_x)] != '1')
+		if (data->map[(int)(data->pos.p_y + (data->pos.norm_camY
+					* data->move_speed))][(int)(data->pos.p_x)] != '1')
 			data->pos.p_y += data->pos.norm_camY * data->move_speed;
 		if (data->map[(int)(data->pos.p_y)][(int)(data->pos.p_x +
 				(data->pos.norm_camX * data->move_speed))] != '1')
@@ -25,8 +25,8 @@ void	ft_move2(t_data *data, int dir)
 	}
 	else if (dir == 3)
 	{
-		if (data->map[(int)(data->pos.p_y - (data->pos.norm_camY *
-			 data->move_speed))][(int)(data->pos.p_x)] != '1')
+		if (data->map[(int)(data->pos.p_y - (data->pos.norm_camY
+					* data->move_speed))][(int)(data->pos.p_x)] != '1')
 			data->pos.p_y -= data->pos.norm_camY * data->move_speed;
 		if (data->map[(int)(data->pos.p_y)][(int)(data->pos.p_x -
 				(data->pos.norm_camX * data->move_speed))] != '1')
@@ -38,8 +38,8 @@ void	ft_move(t_data *data, int dir)
 {
 	if (dir == 0)
 	{
-		if (data->map[(int)(data->pos.p_y + (data->pos.dir_camY *
-			 data->move_speed))][(int)(data->pos.p_x)] != '1')
+		if (data->map[(int)(data->pos.p_y + (data->pos.dir_camY
+					* data->move_speed))][(int)(data->pos.p_x)] != '1')
 			data->pos.p_y += data->pos.dir_camY * data->move_speed;
 		if (data->map[(int)(data->pos.p_y)][(int)(data->pos.p_x +
 				(data->pos.dir_camX * data->move_speed))] != '1')
@@ -47,8 +47,8 @@ void	ft_move(t_data *data, int dir)
 	}
 	else if (dir == 1)
 	{
-		if (data->map[(int)(data->pos.p_y - (data->pos.dir_camY *
-			 data->move_speed))][(int)(data->pos.p_x)] != '1')
+		if (data->map[(int)(data->pos.p_y - (data->pos.dir_camY
+					* data->move_speed))][(int)(data->pos.p_x)] != '1')
 			data->pos.p_y -= data->pos.dir_camY * data->move_speed;
 		if (data->map[(int)(data->pos.p_y)][(int)(data->pos.p_x -
 				(data->pos.dir_camX * data->move_speed))] != '1')
@@ -60,52 +60,51 @@ void	ft_move(t_data *data, int dir)
 
 void	ft_rotation(t_data *data, double rot_coef)
 {
-	double	dirXtemp;
-	double	normXtemp;
+	double	dirxtemp;
+	double	normxtemp;
 
-	dirXtemp = data->pos.dir_camX;
-	normXtemp = data->pos.norm_camX;
-	data->pos.dir_camX = data->pos.dir_camX * cos(rot_coef) -
-		data->pos.dir_camY * sin(rot_coef);
-	data->pos.dir_camY = dirXtemp * sin(rot_coef) +
-		data->pos.dir_camY * cos(rot_coef);
-	data->pos.norm_camX = data->pos.norm_camX * cos(rot_coef) -
-		data->pos.norm_camY * sin(rot_coef);
-	data->pos.norm_camY = normXtemp * sin(rot_coef) +
-		data->pos.norm_camY * cos(rot_coef);
-	//printf("%f | %f | %f | %f | %f\n", rot_coef, data->pos.dir_camX, data->pos.dir_camY, data->pos.norm_camX, data->pos.norm_camY);
+	dirxtemp = data->pos.dir_camX;
+	normxtemp = data->pos.norm_camX;
+	data->pos.dir_camX = data->pos.dir_camX * cos(rot_coef)
+		- data->pos.dir_camY * sin(rot_coef);
+	data->pos.dir_camY = dirxtemp * sin(rot_coef)
+		+ data->pos.dir_camY * cos(rot_coef);
+	data->pos.norm_camX = data->pos.norm_camX * cos(rot_coef)
+		- data->pos.norm_camY * sin(rot_coef);
+	data->pos.norm_camY = normxtemp * sin(rot_coef)
+		+ data->pos.norm_camY * cos(rot_coef);
 }
 
 void	ft_rotation_left(t_data *data)
 {
-	double	dirXtemp;
-	double	normXtemp;
+	double	dirxtemp;
+	double	normxtemp;
 
-	dirXtemp = data->pos.dir_camX;
-	normXtemp = data->pos.norm_camX;
-	data->pos.dir_camX = data->pos.dir_camX * cos(ROT_SPEED) -
-		data->pos.dir_camY * sin(ROT_SPEED);
-	data->pos.dir_camY = dirXtemp * sin(ROT_SPEED) +
-		data->pos.dir_camY * cos(ROT_SPEED);
-	data->pos.norm_camX = data->pos.norm_camX * cos(ROT_SPEED) -
-		data->pos.norm_camY * sin(ROT_SPEED);
-	data->pos.norm_camY = normXtemp * sin(ROT_SPEED) +
-		data->pos.norm_camY * cos(ROT_SPEED);
+	dirxtemp = data->pos.dir_camX;
+	normxtemp = data->pos.norm_camX;
+	data->pos.dir_camX = data->pos.dir_camX * cos(ROT_SPEED)
+		- data->pos.dir_camY * sin(ROT_SPEED);
+	data->pos.dir_camY = dirxtemp * sin(ROT_SPEED)
+		+ data->pos.dir_camY * cos(ROT_SPEED);
+	data->pos.norm_camX = data->pos.norm_camX * cos(ROT_SPEED)
+		- data->pos.norm_camY * sin(ROT_SPEED);
+	data->pos.norm_camY = normxtemp * sin(ROT_SPEED)
+		+ data->pos.norm_camY * cos(ROT_SPEED);
 }
 
 void	ft_rotation_right(t_data *data)
 {
-	double	dirXtemp;
-	double	normXtemp;
+	double	dirxtemp;
+	double	normxtemp;
 
-	dirXtemp = data->pos.dir_camX;
-	normXtemp = data->pos.norm_camX;
-	data->pos.dir_camX = data->pos.dir_camX * cos(-ROT_SPEED) -
-		data->pos.dir_camY * sin(-ROT_SPEED);
-	data->pos.dir_camY = dirXtemp * sin(-ROT_SPEED) +
-		data->pos.dir_camY * cos(-ROT_SPEED);
-	data->pos.norm_camX = data->pos.norm_camX * cos(-ROT_SPEED) -
-		data->pos.norm_camY * sin(-ROT_SPEED);
-	data->pos.norm_camY = normXtemp * sin(-ROT_SPEED) +
-		data->pos.norm_camY * cos(-ROT_SPEED);
+	dirxtemp = data->pos.dir_camX;
+	normxtemp = data->pos.norm_camX;
+	data->pos.dir_camX = data->pos.dir_camX * cos(-ROT_SPEED)
+		- data->pos.dir_camY * sin(-ROT_SPEED);
+	data->pos.dir_camY = dirxtemp * sin(-ROT_SPEED)
+		+ data->pos.dir_camY * cos(-ROT_SPEED);
+	data->pos.norm_camX = data->pos.norm_camX * cos(-ROT_SPEED)
+		- data->pos.norm_camY * sin(-ROT_SPEED);
+	data->pos.norm_camY = normxtemp * sin(-ROT_SPEED)
+		+ data->pos.norm_camY * cos(-ROT_SPEED);
 }

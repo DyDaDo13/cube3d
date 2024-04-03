@@ -12,28 +12,6 @@
 
 #include "../inc/cube3d.h"
 
-// int	verfy_extention(char *av, char *ext)
-// {
-// 	int	i;
-// 	int	j;
-
-// 	i = 0;
-// 	while (av[i] && av[i] != '.')
-// 		i++;
-// 	j = 0;
-// 	while (av[i] && ext[j])
-// 		if (av[i] != ext[j])
-// 	return (open(av, O_RDONLY));
-// }
-
-// #include "mlx.h"
-// #include <stdio.h>
-
-// typedef struct s_data {
-//     void *mlx;
-//     void *win;
-// }              t_data;
-
 int	main(int ac, char **av)
 {
 	int		fd;
@@ -57,11 +35,7 @@ int	main(int ac, char **av)
 		return (free_all(&data), 1);
 	if (data.hardmode == 1)
 		placing_enemy(&data);
-	print_args(&data);
-	print_map(data.map);
-	printf("----------------------------------------\n");
 	ft_display(&data);
 	free_all(&data);
 	return (0);
 }
-

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   build_img.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lle-saul <lle-saul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ozone <ozone@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 15:16:32 by lle-saul          #+#    #+#             */
-/*   Updated: 2024/03/27 11:01:33 by lle-saul         ###   ########.fr       */
+/*   Updated: 2024/04/03 16:07:58 by ozone            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,47 +41,47 @@ void	get_steps(int *stepX, int *stepY, t_algo *algo, t_data *data)
 	if (algo->rayDir_actX < 0)
 	{
 		*stepX = -1;
-		algo->dist_temp_rayX = (data->pos.p_x - algo->map_posX) *
-			algo->delta_distX;
+		algo->dist_temp_rayX = (data->pos.p_x - algo->map_posX)
+			* algo->delta_distX;
 	}
 	else
 	{
 		*stepX = 1;
-		algo->dist_temp_rayX = ((algo->map_posX + 1.0) - data->pos.p_x) *
-			algo->delta_distX;
+		algo->dist_temp_rayX = ((algo->map_posX + 1.0) - data->pos.p_x)
+			* algo->delta_distX;
 	}
 	if (algo->rayDir_actY < 0)
 	{
 		*stepY = -1;
-		algo->dist_temp_rayY = (data->pos.p_y - algo->map_posY) *
-			algo->delta_distY;
+		algo->dist_temp_rayY = (data->pos.p_y - algo->map_posY)
+			* algo->delta_distY;
 	}
 	else
 	{
 		*stepY = 1;
-		algo->dist_temp_rayY = ((algo->map_posY + 1.0) - data->pos.p_y) *
-			algo->delta_distY;
+		algo->dist_temp_rayY = ((algo->map_posY + 1.0) - data->pos.p_y)
+			* algo->delta_distY;
 	}
 }
 
-/*algo->side == 1 -> wall in y | algo->side == 0 -> wall in x*/
-void	algo_DDA(t_algo *algo, t_data *data)
+void	algo_dda(t_algo *algo, t_data *data)
 {
-	int	stepX;
-	int	stepY;
+	int	stepx;
+	int	stepy;
 
-	get_steps(&stepX, &stepY, algo, data);
-	while (data->map[algo->map_posY][algo->map_posX] != '1' && door_check(data, algo) == 0)
+	get_steps(&stepx, &stepy, algo, data);
+	while (data->map[algo->map_posY][algo->map_posX]
+		!= '1' && door_check(data, algo) == 0)
 	{
 		if (algo->dist_temp_rayX < algo->dist_temp_rayY)
 		{
-			algo->map_posX += stepX;
+			algo->map_posX += stepx;
 			algo->side = 0;
 			algo->dist_temp_rayX += algo->delta_distX;
 		}
 		else
 		{
-			algo->map_posY += stepY;
+			algo->map_posY += stepy;
 			algo->side = 1;
 			algo->dist_temp_rayY += algo->delta_distY;
 		}
@@ -90,7 +90,7 @@ void	algo_DDA(t_algo *algo, t_data *data)
 		algo->wall_dist = algo->dist_temp_rayX - algo->delta_distX;
 	else
 		algo->wall_dist = algo->dist_temp_rayY - algo->delta_distY;
-	get_texture(algo, stepX, stepY);
+	get_texture(algo, stepx, stepy);
 }
 
 void	ft_calc_delta(t_algo *algo, t_data *data, int x)
@@ -98,35 +98,17 @@ void	ft_calc_delta(t_algo *algo, t_data *data, int x)
 	algo->side = 0;
 	algo->wall_dist = 0;
 	algo->Coef_CamX = ((2 * x) / (double)WIN_X) - 1;
-	algo->rayDir_actX = data->pos.dir_camX +
-		(data->pos.norm_camX * algo->Coef_CamX);
-	algo->rayDir_actY = data->pos.dir_camY +
-		(data->pos.norm_camY * algo->Coef_CamX);
+	algo->rayDir_actX = data->pos.dir_camX
+		+ (data->pos.norm_camX * algo->Coef_CamX);
+	algo->rayDir_actY = data->pos.dir_camY
+		+ (data->pos.norm_camY * algo->Coef_CamX);
 	algo->map_posX = (int)(data->pos.p_x);
 	algo->map_posY = (int)(data->pos.p_y);
-	algo->delta_distX = sqrt(1 + ((algo->rayDir_actY * algo->rayDir_actY) /
-		(algo->rayDir_actX * algo->rayDir_actX)));
-	algo->delta_distY = sqrt(((algo->rayDir_actX * algo->rayDir_actX) /
-		(algo->rayDir_actY * algo->rayDir_actY)) + 1);
+	algo->delta_distX = sqrt(1 + ((algo->rayDir_actY * algo->rayDir_actY)
+				/ (algo->rayDir_actX * algo->rayDir_actX)));
+	algo->delta_distY = sqrt(((algo->rayDir_actX * algo->rayDir_actX)
+				/ (algo->rayDir_actY * algo->rayDir_actY)) + 1);
 }
-
-/*a viré
-void	print_ennemy(t_data *data)
-{
-	int	i = 0;
-	int	count = 0;
-	
-	printf("ennemi : ");
-	while (i < data->nb_enemy)
-	{
-		if (data->enemy[i].x < 0 && data->enemy[i].y < 0)
-			printf("%d, ", i);
-		i++;
-	}
-	if (count == 0)
-		printf("no one !!");
-	printf("\n");
-}*/
 
 void	build_img(t_data *data)
 {
@@ -144,8 +126,8 @@ void	build_img(t_data *data)
 		algo_DDA(&algo, data);
 		if (algo.Coef_CamX != 0)
 			algo.wall_dist *= sin(atan2(algo.rayDir_actY, algo.rayDir_actX)
-				- atan2(data->pos.norm_camY * algo.Coef_CamX,
-					data->pos.norm_camX * algo.Coef_CamX));
+					- atan2(data->pos.norm_camY * algo.Coef_CamX,
+						data->pos.norm_camX * algo.Coef_CamX));
 		if (algo.wall_dist < 0)
 			algo.wall_dist *= -1;
 		draw_pix(data, &algo, WIN_Y / algo.wall_dist, x);

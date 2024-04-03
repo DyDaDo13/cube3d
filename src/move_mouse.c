@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move_mouse.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lle-saul <lle-saul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ozone <ozone@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 15:24:26 by lle-saul          #+#    #+#             */
-/*   Updated: 2024/04/03 12:01:26 by lle-saul         ###   ########.fr       */
+/*   Updated: 2024/04/03 16:37:22 by ozone            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ int	mouse_move(int x, int y, t_data *data)
 {
 	int		x_distance;
 	double	rot_coef;
-	(void)y;
 
+	(void)y;
 	x_distance = 0;
 	if (x < (WIN_X / 2))
 		x_distance = x - (WIN_X / 2);
@@ -39,8 +39,8 @@ int	kill_ennemy(t_algo *algo, t_data *data)
 	i = 0;
 	while (i < data->nb_enemy)
 	{
-		//printf("Ex : %d | Ey : %d | Mx : %d | My : %d\n", (int)data->enemy[i].x, algo->map_posX, (int)data->enemy[i].y, algo->map_posY);
-		if ((int)data->enemy[i].x == algo->map_posX && (int)data->enemy[i].y == algo->map_posY)
+		if ((int)data->enemy[i].x == algo->map_posX
+			&& (int)data->enemy[i].y == algo->map_posY)
 		{
 			data->enemy[i].texture = -1;
 			return (1);
@@ -50,23 +50,24 @@ int	kill_ennemy(t_algo *algo, t_data *data)
 	return (0);
 }
 
-void	algo_DDA_ennemy(t_algo *algo, t_data *data)
+void	algo_dda_ennemy(t_algo *algo, t_data *data)
 {
-	int	stepX;
-	int	stepY;
+	int	stepx;
+	int	stepy;
 
-	get_steps(&stepX, &stepY, algo, data);
-	while (data->map[algo->map_posY][algo->map_posX] != '1' && data->map[algo->map_posY][algo->map_posX] != 'D')
+	get_steps(&stepx, &stepy, algo, data);
+	while (data->map[algo->map_posY][algo->map_posX]
+		!= '1' && data->map[algo->map_posY][algo->map_posX] != 'D')
 	{
 		if (algo->dist_temp_rayX < algo->dist_temp_rayY)
 		{
-			algo->map_posX += stepX;
+			algo->map_posX += stepx;
 			algo->side = 0;
 			algo->dist_temp_rayX += algo->delta_distX;
 		}
 		else
 		{
-			algo->map_posY += stepY;
+			algo->map_posY += stepy;
 			algo->side = 1;
 			algo->dist_temp_rayY += algo->delta_distY;
 		}
@@ -78,7 +79,7 @@ void	algo_DDA_ennemy(t_algo *algo, t_data *data)
 int	mouse_left_click(int button, int x, int y, t_data *data)
 {
 	t_algo	algo;
-	
+
 	(void)x;
 	(void)y;
 	if (button == 1)
@@ -89,4 +90,3 @@ int	mouse_left_click(int button, int x, int y, t_data *data)
 	}
 	return (0);
 }
-

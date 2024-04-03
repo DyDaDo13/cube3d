@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   build_img2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dydado13 <dydado13@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ozone <ozone@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 11:55:49 by lle-saul          #+#    #+#             */
-/*   Updated: 2024/02/09 22:19:39 by dydado13         ###   ########.fr       */
+/*   Updated: 2024/04/03 15:57:32 by ozone            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ unsigned int	img_take_color(t_data *data, int x, int y, int texture)
 	return (*((unsigned int *)(offset + img->img_pixels)));
 }
 
-/*NO = 0 | WE = 3 | SO = 2 | EA = 1*/
 void	get_texture(t_algo *algo, int stepX, int stepY)
 {
 	if (algo->texture < 0)
@@ -65,29 +64,28 @@ void	get_texture(t_algo *algo, int stepX, int stepY)
 
 void	pix_texture(t_data *data, t_algo *algo, int *y)
 {
-	double	wallX;
-	int		textX;
+	double	wallx;
+	int		textx;
 	double	step;
 	double	textpos;
-	int		textY;
+	int		texty;
 
 	if (algo->side == 0)
-		wallX = data->pos.p_y + algo->wall_dist * algo->rayDir_actY;
+		wallx = data->pos.p_y + algo->wall_dist * algo->rayDir_actY;
 	else
-		wallX = data->pos.p_x + algo->wall_dist * algo->rayDir_actX;
-	wallX -= floor((wallX));
-	textX = (int)(wallX * (double)(TEXT_SIZE));
-	if (algo->side == 0 && algo->rayDir_actX < 0)
-		textX = TEXT_SIZE - textX - 1;
-	if (algo->side == 1 && algo->rayDir_actY > 0)
-		textX = TEXT_SIZE - textX - 1;
+		wallx = data->pos.p_x + algo->wall_dist * algo->rayDir_actX;
+	wallx -= floor((wallx));
+	textx = (int)(wallx * (double)(TEXT_SIZE));
+	textx = check_side(textx, algo);
 	step = 1.0 * TEXT_SIZE / (int)(WIN_Y / algo->wall_dist);
-	textpos = (algo->start - WIN_Y / 2 + (int)(WIN_Y / algo->wall_dist) / 2) * step;
-	while (*y < algo->end)
+	textpos = (algo->start - WIN_Y / 2
+			+ (int)(WIN_Y / algo->wall_dist) / 2) * step;
+	*y -= 1;
+	while (++*y < algo->end)
 	{
-		textY = (int)textpos & (TEXT_SIZE - 1);
+		texty = (int)textpos & (TEXT_SIZE - 1);
 		textpos += step;
-		img_pixel_put(&data->img_win, algo->x, *y, img_take_color(data, textX, textY, algo->texture));
-		++*y;
+		img_pixel_put(&data->img_win, algo->x, *y,
+			img_take_color(data, textx, texty, algo->texture));
 	}
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   build_sprite2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lle-saul <lle-saul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ozone <ozone@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 16:16:39 by lle-saul          #+#    #+#             */
-/*   Updated: 2024/04/03 11:31:24 by lle-saul         ###   ########.fr       */
+/*   Updated: 2024/04/03 16:14:00 by ozone            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,29 +54,34 @@ t_img	*sel_tex_spr(t_data *data, int tex)
 
 void	draw_sprite(t_data *data, t_point *draw, t_algo *spr, double *dis_wall)
 {
-	int	Xdraw;
-	int	Ydraw;
-	int	texX;
-	int	texY;
+	int	xdraw;
+	int	ydraw;
+	int	texx;
+	int	texy;
 	int	dis;
 
-	Xdraw = draw->x;
-	while (Xdraw < draw->j)
+	xdraw = draw->x;
+	while (xdraw < draw->j)
 	{
-		texX = (int)(256 * (Xdraw - (-spr->side / 2 + spr->end)) * TEXT_SIZE / spr->side) / 256;
-		if (spr->dist_temp_rayY > 0 && Xdraw > 0 && Xdraw < WIN_X && spr->dist_temp_rayY < dis_wall[Xdraw])
+		texx = (int)(256 * (xdraw - (-spr->side / 2 + spr->end))
+				* TEXT_SIZE / spr->side) / 256;
+		if (spr->dist_temp_rayY > 0 && xdraw > 0 && xdraw < WIN_X
+			&& spr->dist_temp_rayY < dis_wall[xdraw])
 		{
-			Ydraw = draw->y;
-			while (Ydraw < draw->i)
+			ydraw = draw->y;
+			while (ydraw < draw->i)
 			{
-				dis = (Ydraw) * 256 - WIN_Y * 128 + spr->side * 128;
-				texY = ((dis * TEXT_SIZE) / spr->side) / 256;
-				if (take_pix(sel_tex_spr(data, data->enemy[spr->start].texture), texX, texY) != 0x000000)
-					img_pixel_put(&data->img_win, Xdraw, Ydraw, take_pix(sel_tex_spr(data, data->enemy[spr->start].texture), texX, texY));
-				Ydraw++;
+				dis = (ydraw) * 256 - WIN_Y * 128 + spr->side * 128;
+				texy = ((dis * TEXT_SIZE) / spr->side) / 256;
+				if (take_pix(sel_tex_spr(data, data->enemy[spr->start].texture),
+						texx, texy) != 0x000000)
+					img_pixel_put(&data->img_win, xdraw, ydraw,
+						take_pix(sel_tex_spr(data,
+								data->enemy[spr->start].texture), texx, texy));
+				ydraw++;
 			}
 		}
-		Xdraw++;
+		xdraw++;
 	}
 }
 
@@ -85,15 +90,11 @@ int	get_nb_sprite(t_data *data)
 	int	i;
 	int	count;
 
-	i = 0;
+	i = -1;
 	count = 0;
-	while (i < data->nb_enemy)
-	{
-		//printf("salut : %d\n", i);
+	while (++i < data->nb_enemy)
 		if (data->enemy[i].x >= (double)0 && data->enemy[i].y >= (double)0)
 			count++;
-		i++;
-	}
 	return (count);
 }
 
@@ -110,7 +111,7 @@ int	sort_sprite2(t_data *data, int **order, double **dis)
 		{
 			(*order)[index] = i;
 			(*dis)[index] = (sqr(data->pos.p_x - data->enemy[i].x)
-				+ sqr(data->pos.p_y - data->enemy[i].y));
+					+ sqr(data->pos.p_y - data->enemy[i].y));
 			index++;
 		}
 	}

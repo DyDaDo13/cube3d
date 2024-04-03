@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lle-saul <lle-saul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ozone <ozone@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 15:41:51 by lle-saul          #+#    #+#             */
-/*   Updated: 2024/03/05 17:44:23 by lle-saul         ###   ########.fr       */
+/*   Updated: 2024/04/03 16:04:11 by ozone            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,21 +19,21 @@ float	interpolate(float c1, float c2, float pourcent)
 
 unsigned int	ft_mix_color(int color1, int color2, float pourcent)
 {
-	t_point			RGB_1;
-	t_point			RGB_2;
-	t_point			RGB_final;
+	t_point			rgb_1;
+	t_point			rgb_2;
+	t_point			rgb_final;
 	unsigned int	res;
 
-	RGB_1.i = (color1 >> 16) & 0xFF;
-	RGB_1.x = (color1 >> 8) & 0xFF;
-	RGB_1.y = color1 & 0xFF;
-	RGB_2.i = (color2 >> 16) & 0xFF;
-	RGB_2.x = (color2 >> 8) & 0xFF;
-	RGB_2.y = color2 & 0xFF;
-	RGB_final.i = (int)interpolate(RGB_1.i, RGB_2.i, pourcent);
-	RGB_final.x = (int)interpolate(RGB_1.x, RGB_2.x, pourcent);
-	RGB_final.y = (int)interpolate(RGB_1.y, RGB_2.y, pourcent);
-	res = (RGB_final.i << 16) | (RGB_final.x << 8) | RGB_final.y;
+	rgb_1.i = (color1 >> 16) & 0xFF;
+	rgb_1.x = (color1 >> 8) & 0xFF;
+	rgb_1.y = color1 & 0xFF;
+	rgb_2.i = (color2 >> 16) & 0xFF;
+	rgb_2.x = (color2 >> 8) & 0xFF;
+	rgb_2.y = color2 & 0xFF;
+	rgb_final.i = (int)interpolate(rgb_1.i, rgb_2.i, pourcent);
+	rgb_final.x = (int)interpolate(rgb_1.x, rgb_2.x, pourcent);
+	rgb_final.y = (int)interpolate(rgb_1.y, rgb_2.y, pourcent);
+	res = (rgb_final.i << 16) | (rgb_final.x << 8) | rgb_final.y;
 	return (res);
 }
 
@@ -44,14 +44,14 @@ void	show_map2(t_data *data, int x, int y, t_pos *pos_map)
 	middle = ((MINI_MAP_SIZE * MINI_MAP_COEF_LEN) / 2) + 20;
 	if (x < 20 + 5 || x >= 20 + ((MINI_MAP_SIZE * MINI_MAP_COEF_LEN) - 5))
 		img_pixel_put(&data->img_win, x, y, ft_mix_color(take_pix
-			(&data->img_win, x, y), 0x433D37, 0.5));
+				(&data->img_win, x, y), 0x433D37, 0.5));
 	else if (y < 20 + 5 || y >= 20 + ((MINI_MAP_SIZE * MINI_MAP_COEF_LEN) - 5))
 		img_pixel_put(&data->img_win, x, y, ft_mix_color(take_pix
-			(&data->img_win, x, y), 0x433D37, 0.5));
+				(&data->img_win, x, y), 0x433D37, 0.5));
 	else
 	{
-		if (x >= middle - 5 && y >= middle - 5 && x < middle + 5 && y <
-		middle + 5)
+		if (x >= middle - 5 && y >= middle - 5 && x < middle + 5 && y
+			< middle + 5)
 			img_pixel_put(&data->img_win, x, y, 0xFA5D00);
 		else
 			draw_mini_map_pix(data, x, y, pos_map);
@@ -59,7 +59,7 @@ void	show_map2(t_data *data, int x, int y, t_pos *pos_map)
 	}
 }
 
-void	draw_FOV(t_data *data)
+void	draw_fov(t_data *data)
 {
 	t_point	dis;
 	t_pos	start;
@@ -67,35 +67,38 @@ void	draw_FOV(t_data *data)
 	start.p_x = (double)((MINI_MAP_SIZE * MINI_MAP_COEF_LEN) / 2) + 20.0;
 	start.p_y = (double)((MINI_MAP_SIZE * MINI_MAP_COEF_LEN) / 2) + 20.0;
 	dis.x = (((((MINI_MAP_SIZE * MINI_MAP_COEF_LEN) / 2) + 20)
-		+ (data->pos.dir_camX * 1)) + (data->pos.norm_camX * 1)) - start.p_x;
+				+ (data->pos.dir_camX * 1)) + (data->pos.norm_camX * 1))
+		- start.p_x;
 	dis.y = (((((MINI_MAP_SIZE * MINI_MAP_COEF_LEN) / 2) + 20)
-		+ (data->pos.dir_camY * 1)) + (data->pos.norm_camY * 1)) - start.p_y;
+				+ (data->pos.dir_camY * 1)) + (data->pos.norm_camY * 1))
+		- start.p_y;
 	change_dis(&dis, start, data, 0);
 	trace_line(&data->img_win, start, dis, 0xFA5D00);
 	dis.x = (((((MINI_MAP_SIZE * MINI_MAP_COEF_LEN) / 2) + 20)
-		+ (data->pos.dir_camX * 1)) - (data->pos.norm_camX * 1)) - start.p_x;
+				+ (data->pos.dir_camX * 1)) - (data->pos.norm_camX * 1))
+		- start.p_x;
 	dis.y = (((((MINI_MAP_SIZE * MINI_MAP_COEF_LEN) / 2) + 20)
-		+ (data->pos.dir_camY * 1)) - (data->pos.norm_camY * 1)) - start.p_y;
+				+ (data->pos.dir_camY * 1)) - (data->pos.norm_camY * 1))
+		- start.p_y;
 	change_dis(&dis, start, data, 1);
 	trace_line(&data->img_win, start, dis, 0xFA5D00);
 }
 
-/*pos_map.angle = step*/
 void	show_map(t_data *data)
 {
 	int		x;
 	int		y;
-	double	Xstart;
+	double	xstart;
 	t_pos	pos_map;
 
 	y = 20;
-	Xstart = data->pos.p_x - (double)((MINI_MAP_COEF_LEN / 2) - 1) - 0.7;
+	xstart = data->pos.p_x - (double)((MINI_MAP_COEF_LEN / 2) - 1) - 0.7;
 	pos_map.p_y = data->pos.p_y - (double)((MINI_MAP_COEF_LEN / 2) - 1) - 0.7;
 	pos_map.angle = (double)1 / (double)MINI_MAP_SIZE;
 	while (y < (MINI_MAP_SIZE * MINI_MAP_COEF_LEN) + 20)
 	{
 		x = 20;
-		pos_map.p_x = Xstart;
+		pos_map.p_x = xstart;
 		while (x < (MINI_MAP_SIZE * MINI_MAP_COEF_LEN) + 20)
 		{
 			show_map2(data, x, y, &pos_map);
@@ -109,4 +112,3 @@ void	show_map(t_data *data)
 	draw_crossair(data);
 	put_info_on_screen(data);
 }
-

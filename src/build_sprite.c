@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   build_sprite.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lle-saul <lle-saul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ozone <ozone@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 12:04:22 by lle-saul          #+#    #+#             */
-/*   Updated: 2024/03/27 10:34:50 by lle-saul         ###   ########.fr       */
+/*   Updated: 2024/04/03 16:28:59 by ozone            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	ft_max(double *dis, double *max, int enemies)
 {
 	int		i;
 	double	max2;
-	int 	index;
+	int		index;
 
 	i = 0;
 	index = 0;
@@ -59,7 +59,7 @@ void	sort_sprite(t_data *data, int **order, double **dis)
 		index = ft_max(*dis, &max, get_nb_sprite(data));
 		temp_order[i] = (*order)[index];
 		temp_dis[i] = (*dis)[index];
-	}	
+	}
 	free_sort_sprite(temp_order, temp_dis, order, dis);
 }
 
@@ -94,22 +94,26 @@ void	build_sprite(t_data *data, double *dis_wall)
 	int		*order_sprite;
 	double	*dis_sprite;
 	t_algo	spr;
-	
+
 	order_sprite = malloc(sizeof(int) * get_nb_sprite(data));
 	dis_sprite = malloc(sizeof(double) * get_nb_sprite(data));
 	sort_sprite(data, &order_sprite, &dis_sprite);
 	spr.x = -1;
 	while (++spr.x < get_nb_sprite(data))
 	{
-		//printf("sprposX : %f | sprposY : %f | X : %d\n", data->enemy[order_sprite[spr.x]].x, data->enemy[order_sprite[spr.x]].y, spr.x);
 		spr.start = order_sprite[spr.x];
 		spr.rayDir_actX = data->enemy[spr.start].x - data->pos.p_x;
 		spr.rayDir_actY = data->enemy[spr.start].y - data->pos.p_y;
 		spr.Coef_CamX = 1.0 / (data->pos.norm_camX * data->pos.dir_camY
-			- data->pos.dir_camX * data->pos.norm_camY);
-		spr.dist_temp_rayX = spr.Coef_CamX * ((data->pos.dir_camY * spr.rayDir_actX) - (data->pos.dir_camX * spr.rayDir_actY));
-		spr.dist_temp_rayY = spr.Coef_CamX * ((-data->pos.norm_camY * spr.rayDir_actX) + (data->pos.norm_camX * spr.rayDir_actY));
-		spr.end = (int)((WIN_X / 2) * (1 + spr.dist_temp_rayX / spr.dist_temp_rayY));
+				- data->pos.dir_camX * data->pos.norm_camY);
+		spr.dist_temp_rayX = spr.Coef_CamX * ((data->pos.dir_camY
+					* spr.rayDir_actX) - (data->pos.dir_camX
+					* spr.rayDir_actY));
+		spr.dist_temp_rayY = spr.Coef_CamX * ((-data->pos.norm_camY
+					* spr.rayDir_actX)
+				+ (data->pos.norm_camX * spr.rayDir_actY));
+		spr.end = (int)((WIN_X / 2) * (1 + spr.dist_temp_rayX
+					/ spr.dist_temp_rayY));
 		build_sprite2(data, &spr, dis_wall);
 	}
 	free(order_sprite);

@@ -3,13 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   enemy.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lle-saul <lle-saul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ozone <ozone@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 18:16:14 by ozone             #+#    #+#             */
-/*   Updated: 2024/03/06 19:14:28 by lle-saul         ###   ########.fr       */
+/*   Updated: 2024/04/03 16:24:20 by ozone            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "../inc/cube3d.h"
 
@@ -67,7 +66,7 @@ void	placing_enemy(t_data *data)
 	int		y;
 	int		moy;
 	int		stat_moy;
-	
+
 	srand(time(NULL));
 	get_size_map(data);
 	moy = ((data->map_width + data->map_height) / 6);

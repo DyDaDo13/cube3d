@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   build_img3.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lle-saul <lle-saul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ozone <ozone@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 17:45:54 by lle-saul          #+#    #+#             */
-/*   Updated: 2024/04/03 11:57:43 by lle-saul         ###   ########.fr       */
+/*   Updated: 2024/04/03 16:19:27 by ozone            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,15 @@ int	door_check(t_data *data, t_algo *algo)
 {
 	if (data->map[algo->map_posY][algo->map_posX] == 'D')
 	{
-		if (algo->side == 0 && algo->dist_temp_rayY > algo->dist_temp_rayX - (algo->delta_distX * 0.5))
+		if (algo->side == 0 && algo->dist_temp_rayY > algo->dist_temp_rayX
+			- (algo->delta_distX * 0.5))
 		{
 			algo->texture = 4;
 			algo->dist_temp_rayX += (algo->delta_distX * 0.5);
 			return (1);
 		}
-		else if (algo->side == 1 && algo->dist_temp_rayX > algo->dist_temp_rayY - (algo->delta_distY * 0.5))
+		else if (algo->side == 1 && algo->dist_temp_rayX > algo->dist_temp_rayY
+			- (algo->delta_distY * 0.5))
 		{
 			algo->texture = 4;
 			algo->dist_temp_rayY += (algo->delta_distY * 0.5);
@@ -67,9 +69,9 @@ void	show_pov2(t_data *data)
 
 void	show_pov(t_data *data)
 {
-	int x;
+	int	x;
 	int	y;
-	int x_spr;
+	int	x_spr;
 	int	y_spr;
 
 	y = (WIN_Y - 192) + (data->textures.add_POV / 4);
@@ -80,10 +82,13 @@ void	show_pov(t_data *data)
 		x_spr = 0;
 		while (x < (WIN_X / 2) + 96)
 		{
-			if (data->textures.tex_POV == 0 && take_pix(&data->textures.POV, x_spr / 3, y_spr / 3) != 0x000000)
+			if (data->textures.tex_POV == 0 && take_pix(&data->textures.POV,
+					x_spr / 3, y_spr / 3) != 0x000000)
 				img_pixel_put(&data->img_win, x, y,
 					take_pix(&data->textures.POV, x_spr / 3, y_spr / 3));
-			else if (data->textures.tex_POV > 0 && take_pix(&data->textures.shoot_POV, x_spr / 3, y_spr / 3) != 0x000000)
+			else if (data->textures.tex_POV > 0
+				&& take_pix(&data->textures.shoot_POV, x_spr / 3, y_spr / 3)
+				!= 0x000000)
 				img_pixel_put(&data->img_win, x, y,
 					take_pix(&data->textures.shoot_POV, x_spr / 3, y_spr / 3));
 			x++;

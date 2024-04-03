@@ -1,24 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hitboxs.c                                          :+:      :+:    :+:   */
+/*   mouse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ozone <ozone@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/23 18:54:10 by ozone             #+#    #+#             */
-/*   Updated: 2024/04/03 15:58:19 by ozone            ###   ########.fr       */
+/*   Created: 2024/04/03 15:44:54 by ozone             #+#    #+#             */
+/*   Updated: 2024/04/03 16:22:01 by ozone            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cube3d.h"
 
-int	is_player_hitbox_touched(t_data *data, int actual_enemy)
+int	set_mouse_center_screen(t_data *data)
 {
-	double	dist_sp;
-
-	dist_sp = sqrt(sqr(data->enemy[actual_enemy].x - data->pos.p_x)
-			+ sqr(data->enemy[actual_enemy].y - data->pos.p_y));
-	if (dist_sp <= HITBOX)
-		return (1);
+	data->mouse.origin_x = (WIN_X / 2);
+	data->mouse.origin_y = (WIN_Y / 2);
+	mlx_mouse_move(data->mlx, data->win,
+		data->mouse.origin_x, data->mouse.origin_y);
 	return (0);
 }
