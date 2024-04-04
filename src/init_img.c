@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_img.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dydado13 <dydado13@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ozone <ozone@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 14:46:34 by lle-saul          #+#    #+#             */
-/*   Updated: 2024/04/04 15:40:28 by dydado13         ###   ########.fr       */
+/*   Updated: 2024/04/04 17:31:39 by ozone            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,6 @@ void	ft_init_img(t_data *data)
 	data->textures.way_POV = 0;
 	data->textures.add_POV = 0;
 	data->textures.tex_POV = 0;
-	data->pv = 3;
+	data->pv = 5;
 	ft_init_img2(data, &i, &j);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   enemy_moves.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dydado13 <dydado13@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ozone <ozone@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 08:41:37 by ozone             #+#    #+#             */
-/*   Updated: 2024/04/04 15:31:45 by dydado13         ###   ########.fr       */
+/*   Updated: 2024/04/04 17:25:20 by ozone            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,14 @@ void	enemy_move_dir(t_data *data, int actual_enemy)
 	double	coef;
 	double	cord_dist_x;
 	double	cord_dist_y;
-	static	int invincibinity = 10;
+	static	int invincibinity = 50;
 
 	cord_dist_x = (data->pos.p_x - data->enemy[actual_enemy].x);
 	cord_dist_y = (data->pos.p_y - data->enemy[actual_enemy].y);
 	coef = sqrt(sqr(ENEMY_MOVE_SPEED) / (sqr(cord_dist_x) + sqr(cord_dist_y)));
 	if (is_player_hitbox_touched(data, actual_enemy) == 0)
 	{
+		printf("-1\n");
 		if (data->map[(int)((cord_dist_y * coef) + data->enemy[actual_enemy].y)]
 			[(int)data->enemy[actual_enemy].x] != '1')
 			data->enemy[actual_enemy].y += (cord_dist_y * coef);
@@ -33,13 +34,13 @@ void	enemy_move_dir(t_data *data, int actual_enemy)
 	}
 	else
 	{
-		printf("%i | %i\n", data->pv, invincibinity);
-		if (invincibinity == 10 && data->pv > 0)
+		//printf("%i | %i\n", data->pv, invincibinity);
+		if (invincibinity == 50 && data->pv > 0)
 			data->pv -= 1;
 		if (invincibinity > 0)
 			invincibinity--;
 		else
-			invincibinity = 10;
+			invincibinity = 50;
 	}
 }
 
