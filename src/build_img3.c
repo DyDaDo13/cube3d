@@ -6,7 +6,7 @@
 /*   By: lle-saul <lle-saul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 17:45:54 by lle-saul          #+#    #+#             */
-/*   Updated: 2024/04/04 17:11:47 by lle-saul         ###   ########.fr       */
+/*   Updated: 2024/04/04 17:25:48 by lle-saul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ void	show_pov2(t_data *data)
 		data->textures.tex_POV = 0;
 	else if (data->textures.tex_POV > 0)
 		data->textures.tex_POV++;
+	put_info_on_screen(data);
 }
 
 void	show_pov(t_data *data)
@@ -74,13 +75,13 @@ void	show_pov(t_data *data)
 	int	x_spr;
 	int	y_spr;
 
-	y = (WIN_Y - 192) + (data->textures.add_POV / 4);
-	y_spr = 0;
-	while (y < WIN_Y)
+	y = ((WIN_Y - 192) + (data->textures.add_POV / 4)) - 1;
+	y_spr = -1;
+	while ((++y_spr, ++y) < WIN_Y)
 	{
-		x = (WIN_X / 2) - 96;
-		x_spr = 0;
-		while (x < (WIN_X / 2) + 96)
+		x = ((WIN_X / 2) - 96) - 1;
+		x_spr = -1;
+		while ((++x_spr, ++x) < (WIN_X / 2) + 96)
 		{
 			if (data->textures.tex_POV == 0 && take_pix(&data->textures.POV,
 					x_spr / 3, y_spr / 3) != 0x000000)
@@ -91,11 +92,7 @@ void	show_pov(t_data *data)
 				!= 0x000000)
 				img_pixel_put(&data->img_win, x, y,
 					take_pix(&data->textures.shoot_POV, x_spr / 3, y_spr / 3));
-			x++;
-			x_spr++;
 		}
-		y++;
-		y_spr++;
 	}
 	show_pov2(data);
 }
