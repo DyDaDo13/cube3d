@@ -35,15 +35,13 @@
 # include <X11/extensions/XShm.h>
 # include <X11/XKBlib.h>
 
-# define WIN_X				1080
-# define WIN_Y				720
-# define FOV				0.66
-# define MOVE_SPEED			0.05
-# define ENEMY_MOVE_SPEED	0.01
-# define HITBOX				1
-# define ROT_SPEED			0.05
-# define TEXT_SIZE			256
-# define MINI_MAP_SIZE		20
+# define WIN_X	1080
+# define WIN_Y	720
+# define FOV	0.66
+# define MOVE_SPEED	0.02
+# define ROT_SPEED	0.01
+# define TEXT_SIZE	256
+# define MINI_MAP_SIZE	20
 # define MINI_MAP_COEF_LEN	12
 # define SENSIVITY			1000
 # define TIME_ACT_TEXT		25
@@ -115,6 +113,13 @@ typedef struct s_textures
 	int		tex_POV;
 }	t_textures;
 
+typedef struct s_info
+{
+	int		fov;
+	double	sensivity;
+	double	speed;
+}t_info;
+
 typedef struct s_point
 {
 	int		x;
@@ -154,6 +159,7 @@ typedef struct s_data
 	t_pos			pos;
 	t_mousse		mouse;
 	t_enemy			*enemy;
+	t_info			info;
 }	t_data;
 
 typedef struct s_algo

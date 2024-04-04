@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   build_img.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dydado13 <dydado13@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ozone <ozone@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 15:16:32 by lle-saul          #+#    #+#             */
-/*   Updated: 2024/04/04 15:43:19 by dydado13         ###   ########.fr       */
+/*   Updated: 2024/04/04 16:07:10 by ozone            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,8 +126,8 @@ void	build_img(t_data *data)
 		algo_dda(&algo, data);
 		if (algo.Coef_CamX != 0)
 			algo.wall_dist *= sin(atan2(algo.rayDir_actY, algo.rayDir_actX)
-					- atan2(data->pos.norm_camY * algo.Coef_CamX,
-						data->pos.norm_camX * algo.Coef_CamX));
+				- atan2(data->pos.norm_camY * algo.Coef_CamX,
+					data->pos.norm_camX * algo.Coef_CamX));
 		if (algo.wall_dist < 0)
 			algo.wall_dist *= -1;
 		draw_pix(data, &algo, WIN_Y / algo.wall_dist, x);
@@ -137,4 +137,5 @@ void	build_img(t_data *data)
 	show_map(data);
 	show_pov(data);
 	mlx_put_image_to_window(data->mlx, data->win, data->img_win.img_ptr, 0, 0);
+	put_info_on_screen(data);
 }

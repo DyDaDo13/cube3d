@@ -3,14 +3,56 @@
 /*                                                        :::      ::::::::   */
 /*   display.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dydado13 <dydado13@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ozone <ozone@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 22:36:29 by ozone             #+#    #+#             */
-/*   Updated: 2024/04/04 15:31:45 by dydado13         ###   ########.fr       */
+/*   Updated: 2024/04/04 16:09:29 by ozone            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cube3d.h"
+
+int	ft_key_check(int key, t_data *data)
+{
+	if (key == XK_Escape)
+		ft_stop(data);
+	if (key == 61)
+	{
+		data->pos.norm_camX = data->pos.norm_camX * 0.99;
+		data->pos.norm_camY = data->pos.norm_camY * 0.99;
+	}
+	if (key == 45)
+	{
+		data->pos.norm_camX = data->pos.norm_camX * 1.01;
+		data->pos.norm_camY = data->pos.norm_camY * 1.01;
+	}
+	if (key == XK_w)
+		data->key_move += 1;
+	else if (key == XK_s)
+		data->key_move += 2;
+	else if (key == XK_d)
+		data->key_move += 4;
+	else if (key == XK_a)
+		data->key_move += 7;
+	else if (key == XK_Left)
+		data->key_move += 100;
+	else if (key == XK_Right)
+		data->key_move += 200;
+	else if (key == XK_Shift_L)
+		if (data->move_speed == MOVE_SPEED)
+			data->move_speed *= 3;	
+	printf("key = %i\n", data->key_move);
+	return (0);
+}
+
+int	set_mouse_center_screen(t_data *data)
+{
+	data->mouse.origin_x = (WIN_X / 2);
+	data->mouse.origin_y = (WIN_Y / 2);
+	mlx_mouse_move(data->mlx, data->win, data->mouse.origin_x,
+		data->mouse.origin_y);
+	return (0);
+}
 
 int	sprint_off(int key, t_data *data)
 {
@@ -36,62 +78,6 @@ int	sprint_off(int key, t_data *data)
 	return (0);
 }
 
-void	move_diag(t_data *data)
-{
-	if (data->key_move == 5)
-	{
-		ft_move(data, 0);
-		ft_move(data, 2);
-	}
-	else if (data->key_move == 8)
-	{
-		ft_move(data, 0);
-		ft_move(data, 3);
-	}
-	else if (data->key_move == 6)
-	{
-		ft_move(data, 1);
-		ft_move(data, 2);
-	}
-	else if (data->key_move == 9)
-	{
-		ft_move(data, 1);
-		ft_move(data, 3);
-	}
-}
-
-void	replace_before_door(t_data *data)
-{
-	int		x;
-	int		y;
-
-	y = -1;
-	while (data->map[++y])
-	{
-		x = -1;
-		while (data->map[y][++x])
-			if (data->map[y][x] == 'O')
-				data->map[y][x] = 'D';
-	}
-}
-
-void	check_door_spot(t_data *data)
-{
-	if (data->map[(int)data->pos.p_y][(int)data->pos.p_x]
-		== 'D' && data->door == 0)
-	{
-		data->map[(int)data->pos.p_y][(int)data->pos.p_x]
-			= 'O';
-		data->door = 1;
-	}
-	if (data->map[(int)data->pos.p_y][(int)data->pos.p_x]
-		!= 'O' && data->door == 1)
-	{
-		replace_before_door(data);
-		data->door = 0;
-	}
-}
-
 int	ft_display(t_data *data)
 {
 	data->mlx = mlx_init();
@@ -104,6 +90,7 @@ int	ft_display(t_data *data)
 	data->mouse.mouse_lock = 1;
 	ft_init_img(data);
 	mlx_put_image_to_window(data->mlx, data->win, data->img_win.img_ptr, 0, 0);
+	put_info_on_screen(data);
 	mlx_loop_hook(data->mlx, ft_key_moves, data);
 	mlx_hook(data->win, 6, (1L << 6), mouse_move, data);
 	mlx_hook(data->win, 4, (1L << 2), &mouse_left_click, data);
