@@ -6,7 +6,7 @@
 /*   By: ozone <ozone@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 14:46:34 by lle-saul          #+#    #+#             */
-/*   Updated: 2024/04/04 17:31:39 by ozone            ###   ########.fr       */
+/*   Updated: 2024/04/04 19:38:13 by ozone            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,18 @@ void	ft_init_img4(t_data *data, int *i, int *j)
 		= mlx_get_data_addr(data->textures.shoot_POV.img_ptr,
 			&data->textures.shoot_POV.bits_pix, &data->textures.shoot_POV.len,
 			&data->textures.shoot_POV.endian);
+	data->textures.heart_full.img_ptr = mlx_xpm_file_to_image(data->mlx,
+			"textures/sprites/player/heart_full.xpm", i, j);
+	data->textures.heart_full.img_pixels
+		= mlx_get_data_addr(data->textures.heart_full.img_ptr,
+			&data->textures.heart_full.bits_pix, &data->textures.heart_full.len,
+			&data->textures.heart_full.endian);
+	data->textures.heart_empty.img_ptr = mlx_xpm_file_to_image(data->mlx,
+			"textures/sprites/player/heart_empty.xpm", i, j);
+	data->textures.heart_empty.img_pixels
+		= mlx_get_data_addr(data->textures.heart_empty.img_ptr,
+			&data->textures.heart_empty.bits_pix, &data->textures.heart_empty.len,
+			&data->textures.heart_empty.endian);
 }
 
 void	ft_init_img3(t_data *data, int *i, int *j)
@@ -111,6 +123,6 @@ void	ft_init_img(t_data *data)
 	data->textures.way_POV = 0;
 	data->textures.add_POV = 0;
 	data->textures.tex_POV = 0;
-	data->pv = 5;
+	data->pv = FULLIFE;
 	ft_init_img2(data, &i, &j);
 }

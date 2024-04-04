@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   build_img.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lle-saul <lle-saul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ozone <ozone@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 15:16:32 by lle-saul          #+#    #+#             */
-/*   Updated: 2024/04/04 18:24:31 by lle-saul         ###   ########.fr       */
+/*   Updated: 2024/04/04 19:36:28 by ozone            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,5 +136,6 @@ void	build_img(t_data *data)
 	build_sprite(data, dis_wall);
 	show_map(data);
 	show_pov(data);
+	display_heart(data);
 	mlx_put_image_to_window(data->mlx, data->win, data->img_win.img_ptr, 0, 0);
 }

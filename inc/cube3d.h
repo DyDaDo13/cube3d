@@ -36,6 +36,7 @@
 # include <X11/XKBlib.h>
 
 # define WIN_X				1080
+# define FULLIFE			5
 # define WIN_Y				720
 # define FOV				0.66
 # define MOVE_SPEED			0.02
@@ -109,6 +110,8 @@ typedef struct s_textures
 	t_img	enemy4;
 	t_img	enemy1_d;
 	t_img	POV;
+	t_img	heart_full;
+	t_img	heart_empty;
 	t_img	shoot_POV;
 	int		add_POV;
 	int		way_POV;
@@ -155,6 +158,8 @@ typedef struct s_data
 	void			*mlx;
 	void			*win;
 	int				i;
+	int				j;
+	int				pv_cpy;
 	t_img			img_win;
 	t_textures_path	textures_path;
 	t_textures		textures;
@@ -290,5 +295,6 @@ void	placing_enemy(t_data *data);
 int		door_check(t_data *data, t_algo *algo);
 int		get_nb_sprite(t_data *data);
 int	is_player_hitbox_touched(t_data *data, int actual_enemy);
+void	display_heart(t_data *data);
 
 #endif
