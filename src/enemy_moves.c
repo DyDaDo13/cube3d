@@ -6,7 +6,7 @@
 /*   By: ozone <ozone@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 08:41:37 by ozone             #+#    #+#             */
-/*   Updated: 2024/04/04 18:46:30 by ozone            ###   ########.fr       */
+/*   Updated: 2024/04/04 21:08:52 by ozone            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	enemy_move_dir(t_data *data, int actual_enemy)
 	double	coef;
 	double	cord_dist_x;
 	double	cord_dist_y;
-	static	int invincibinity = 50;
+	static	int invincibinity = 100;
 
 	cord_dist_x = (data->pos.p_x - data->enemy[actual_enemy].x);
 	cord_dist_y = (data->pos.p_y - data->enemy[actual_enemy].y);
@@ -34,12 +34,12 @@ void	enemy_move_dir(t_data *data, int actual_enemy)
 	else
 	{
 		//printf("%i | %i\n", data->pv, invincibinity);
-		if (invincibinity == 50 && data->pv > 0)
+		if (invincibinity == 100 && data->pv > 0)
 			data->pv -= 1;
 		if (invincibinity > 0)
 			invincibinity--;
 		else
-			invincibinity = 50;
+			invincibinity = 100;
 	}
 }
 

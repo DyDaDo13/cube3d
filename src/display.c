@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   display.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lle-saul <lle-saul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ozone <ozone@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 22:36:29 by ozone             #+#    #+#             */
-/*   Updated: 2024/04/04 18:00:37 by lle-saul         ###   ########.fr       */
+/*   Updated: 2024/04/04 21:17:19 by ozone            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	ft_display(t_data *data)
 	data->mlx = mlx_init();
 	if (!data->mlx)
 		return (perror("Error"), 1);
-	data->win = mlx_new_window(data->mlx, WIN_X, WIN_Y, "Mon Q");
+	data->win = mlx_new_window(data->mlx, WIN_X, WIN_Y, "Cube3D");
 	if (data->win == NULL)
 		return (mlx_destroy_display(data->mlx), free(data->mlx), 1);
 	data->key_move = 0;

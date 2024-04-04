@@ -6,7 +6,7 @@
 /*   By: ozone <ozone@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 15:45:41 by ozone             #+#    #+#             */
-/*   Updated: 2024/04/04 19:37:12 by ozone            ###   ########.fr       */
+/*   Updated: 2024/04/04 21:11:58 by ozone            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,8 @@ int	ft_key_moves(t_data *data)
 		move_diag(data);
 	if (data->hardmode == 1)
 		enemy_move(data);
+	if (data->pv == 0)
+		ft_stop(data);
 	check_door_spot(data);
 	build_img(data);
 	put_info_on_screen(data);
