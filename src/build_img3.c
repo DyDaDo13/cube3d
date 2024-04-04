@@ -6,7 +6,7 @@
 /*   By: lle-saul <lle-saul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 17:45:54 by lle-saul          #+#    #+#             */
-/*   Updated: 2024/04/04 17:25:48 by lle-saul         ###   ########.fr       */
+/*   Updated: 2024/04/04 18:41:24 by lle-saul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@ void	show_pov2(t_data *data)
 		data->textures.tex_POV = 0;
 	else if (data->textures.tex_POV > 0)
 		data->textures.tex_POV++;
-	put_info_on_screen(data);
 }
 
 void	show_pov(t_data *data)

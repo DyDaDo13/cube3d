@@ -6,7 +6,7 @@
 /*   By: lle-saul <lle-saul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 15:45:41 by ozone             #+#    #+#             */
-/*   Updated: 2024/04/04 17:08:11 by lle-saul         ###   ########.fr       */
+/*   Updated: 2024/04/04 18:41:29 by lle-saul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,5 +98,6 @@ int	ft_key_moves(t_data *data)
 		enemy_move(data);
 	check_door_spot(data);
 	build_img(data);
+	put_info_on_screen(data);
 	return (0);
 }
