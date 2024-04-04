@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   build_img2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dydado13 <dydado13@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lle-saul <lle-saul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 11:55:49 by lle-saul          #+#    #+#             */
-/*   Updated: 2024/04/04 15:36:45 by dydado13         ###   ########.fr       */
+/*   Updated: 2024/04/04 19:33:53 by lle-saul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,6 @@ void	pix_texture(t_data *data, t_algo *algo, int *y)
 	{
 		texty = (int)textpos & (TEXT_SIZE - 1);
 		textpos += step;
-		img_pixel_put(&data->img_win, algo->x, *y,
-			img_take_color(data, textx, texty, algo->texture));
+		img_pixel_put(&data->img_win, algo->x, *y, ft_mix_color(img_take_color(data, textx, texty, algo->texture), 0x000000, algo->wall_dist / 10));
 	}
 }
