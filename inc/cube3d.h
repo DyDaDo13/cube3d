@@ -35,13 +35,15 @@
 # include <X11/extensions/XShm.h>
 # include <X11/XKBlib.h>
 
-# define WIN_X	1080
-# define WIN_Y	720
-# define FOV	0.66
-# define MOVE_SPEED	0.02
-# define ROT_SPEED	0.01
-# define TEXT_SIZE	256
-# define MINI_MAP_SIZE	20
+# define WIN_X				1080
+# define WIN_Y				720
+# define FOV				0.66
+# define MOVE_SPEED			0.02
+# define ENEMY_MOVE_SPEED	0.02
+# define HITBOX				1
+# define ROT_SPEED			0.01
+# define TEXT_SIZE			256
+# define MINI_MAP_SIZE		20
 # define MINI_MAP_COEF_LEN	12
 # define SENSIVITY			1000
 # define TIME_ACT_TEXT		25
@@ -284,5 +286,9 @@ int		check_side(int textx, t_algo *algo);
 int		ft_key_moves(t_data *data);
 void	move_diag(t_data *data);
 void	check_door_spot(t_data *data);
+void	placing_enemy(t_data *data);
+int		door_check(t_data *data, t_algo *algo);
+int		get_nb_sprite(t_data *data);
+int	is_player_hitbox_touched(t_data *data, int actual_enemy);
 
 #endif

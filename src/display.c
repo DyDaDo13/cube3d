@@ -6,53 +6,11 @@
 /*   By: ozone <ozone@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 22:36:29 by ozone             #+#    #+#             */
-/*   Updated: 2024/04/04 16:09:29 by ozone            ###   ########.fr       */
+/*   Updated: 2024/04/04 17:04:40 by ozone            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cube3d.h"
-
-int	ft_key_check(int key, t_data *data)
-{
-	if (key == XK_Escape)
-		ft_stop(data);
-	if (key == 61)
-	{
-		data->pos.norm_camX = data->pos.norm_camX * 0.99;
-		data->pos.norm_camY = data->pos.norm_camY * 0.99;
-	}
-	if (key == 45)
-	{
-		data->pos.norm_camX = data->pos.norm_camX * 1.01;
-		data->pos.norm_camY = data->pos.norm_camY * 1.01;
-	}
-	if (key == XK_w)
-		data->key_move += 1;
-	else if (key == XK_s)
-		data->key_move += 2;
-	else if (key == XK_d)
-		data->key_move += 4;
-	else if (key == XK_a)
-		data->key_move += 7;
-	else if (key == XK_Left)
-		data->key_move += 100;
-	else if (key == XK_Right)
-		data->key_move += 200;
-	else if (key == XK_Shift_L)
-		if (data->move_speed == MOVE_SPEED)
-			data->move_speed *= 3;	
-	printf("key = %i\n", data->key_move);
-	return (0);
-}
-
-int	set_mouse_center_screen(t_data *data)
-{
-	data->mouse.origin_x = (WIN_X / 2);
-	data->mouse.origin_y = (WIN_Y / 2);
-	mlx_mouse_move(data->mlx, data->win, data->mouse.origin_x,
-		data->mouse.origin_y);
-	return (0);
-}
 
 int	sprint_off(int key, t_data *data)
 {
