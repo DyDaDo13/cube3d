@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   build_sprite2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ozone <ozone@student.42.fr>                +#+  +:+       +#+        */
+/*   By: lle-saul <lle-saul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 16:16:39 by lle-saul          #+#    #+#             */
-/*   Updated: 2024/04/03 16:14:00 by ozone            ###   ########.fr       */
+/*   Updated: 2024/04/04 15:41:31 by lle-saul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,36 +52,33 @@ t_img	*sel_tex_spr(t_data *data, int tex)
 		return (&data->textures.enemy1_d);
 }
 
+/*x & y = drawx & y | i & j = var.i & y | d = dis*/
 void	draw_sprite(t_data *data, t_point *draw, t_algo *spr, double *dis_wall)
 {
-	int	xdraw;
-	int	ydraw;
-	int	texx;
-	int	texy;
-	int	dis;
+	t_point	var;
 
-	xdraw = draw->x;
-	while (xdraw < draw->j)
+	var.x = draw->x;
+	while (var.x < draw->j)
 	{
-		texx = (int)(256 * (xdraw - (-spr->side / 2 + spr->end))
+		var.i = (int)(256 * (var.x - (-spr->side / 2 + spr->end))
 				* TEXT_SIZE / spr->side) / 256;
-		if (spr->dist_temp_rayY > 0 && xdraw > 0 && xdraw < WIN_X
-			&& spr->dist_temp_rayY < dis_wall[xdraw])
+		if (spr->dist_temp_rayY > 0 && var.x > 0 && var.x < WIN_X
+			&& spr->dist_temp_rayY < dis_wall[var.x])
 		{
-			ydraw = draw->y;
-			while (ydraw < draw->i)
+			var.y = draw->y;
+			while (var.y < draw->i)
 			{
-				dis = (ydraw) * 256 - WIN_Y * 128 + spr->side * 128;
-				texy = ((dis * TEXT_SIZE) / spr->side) / 256;
+				var.d = (var.y) * 256 - WIN_Y * 128 + spr->side * 128;
+				var.j = ((var.d * TEXT_SIZE) / spr->side) / 256;
 				if (take_pix(sel_tex_spr(data, data->enemy[spr->start].texture),
-						texx, texy) != 0x000000)
-					img_pixel_put(&data->img_win, xdraw, ydraw,
-						take_pix(sel_tex_spr(data,
-								data->enemy[spr->start].texture), texx, texy));
-				ydraw++;
+						var.i, var.j) != 0x000000)
+					img_pixel_put(&data->img_win, var.x, var.y, take_pix(
+							sel_tex_spr(data, data->enemy[spr->start].texture),
+							var.i, var.j));
+				var.y++;
 			}
 		}
-		xdraw++;
+		var.x++;
 	}
 }
 

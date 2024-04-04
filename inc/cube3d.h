@@ -121,6 +121,7 @@ typedef struct s_point
 	int		y;
 	int		i;
 	int		j;
+	int		d;
 }t_point;
 
 typedef struct s_enemy
@@ -272,5 +273,9 @@ void			enemy_move(t_data *data);
 
 /*hitbox*/
 int	is_player_hitbox_touched(t_data *data, int actual_enemy);
+
+int				check_side(int textx, t_algo *algo);
+
+int				ft_key_moves(t_data *data);
 
 #endif
