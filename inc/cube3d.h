@@ -126,6 +126,7 @@ typedef struct s_point
 	int		y;
 	int		i;
 	int		j;
+	int		d;
 }t_point;
 
 typedef struct s_enemy

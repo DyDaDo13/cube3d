@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   build_img3.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dydado13 <dydado13@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lle-saul <lle-saul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 17:45:54 by lle-saul          #+#    #+#             */
-/*   Updated: 2024/04/04 15:31:45 by dydado13         ###   ########.fr       */
+/*   Updated: 2024/04/04 16:27:47 by lle-saul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,13 +74,13 @@ void	show_pov(t_data *data)
 	int	x_spr;
 	int	y_spr;
 
-	y = (WIN_Y - 192) + (data->textures.add_POV / 4);
-	y_spr = 0;
-	while (y < WIN_Y)
+	y = ((WIN_Y - 192) + (data->textures.add_POV / 4)) - 1;
+	y_spr = -1;
+	while (++y < WIN_Y && ++y_spr)
 	{
-		x = (WIN_X / 2) - 96;
-		x_spr = 0;
-		while (x < (WIN_X / 2) + 96)
+		x = ((WIN_X / 2) - 96) - 1;
+		x_spr = -1;
+		while (++x < (WIN_X / 2) + 96 && ++x_spr)
 		{
 			if (data->textures.tex_POV == 0 && take_pix(&data->textures.POV,
 					x_spr / 3, y_spr / 3) != 0x000000)
@@ -91,11 +91,7 @@ void	show_pov(t_data *data)
 				!= 0x000000)
 				img_pixel_put(&data->img_win, x, y,
 					take_pix(&data->textures.shoot_POV, x_spr / 3, y_spr / 3));
-			x++;
-			x_spr++;
 		}
-		y++;
-		y_spr++;
 	}
 	show_pov2(data);
 }

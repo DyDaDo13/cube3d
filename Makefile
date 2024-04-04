@@ -10,7 +10,8 @@ init_map.c lst_functions.c main.c \
 get_args.c trunc_map.c functions.c check_map_valid.c \
 get_vec.c flood_fill.c map_dup.c \
 build_img2.c build_img.c display_utils.c \
-display.c init_img.c move.c move_mouse.c mini_map.c check_doors.c ft_moves_auto.c ft_itoa.c put_info_on_screen.c maths.c\
+display.c init_img.c move.c move_mouse.c mini_map.c check_doors.c ft_moves_auto.c ft_itoa.c put_info_on_screen.c maths.c \
+key.c mouse.c extra.c
 #───────────────────────────────╱
 
 #┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
