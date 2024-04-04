@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   display_heart.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ozone <ozone@student.42.fr>                +#+  +:+       +#+        */
+/*   By: lle-saul <lle-saul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 18:49:41 by ozone             #+#    #+#             */
-/*   Updated: 2024/04/04 20:01:44 by ozone            ###   ########.fr       */
+/*   Updated: 2024/04/04 20:27:19 by lle-saul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,45 +18,43 @@ void	display_heart(t_data *data)
 	int	y;
 	int	x_spr;
 	int	y_spr;
+	int	add;
 	
-	data->j = 2;
+	data->j = FULLIFE + 1;
 	data->pv_cpy = data->pv;
-	//mlx_put_image_to_window(data->mlx, data->win, data->textures.heart_empty.img_ptr, 0, 0);
+	add = 0;
 	while (--data->j > 0)
 	{
-		y = (WIN_Y - 128) - 1;
+		y = (WIN_Y - 64) - 1;
 		y_spr = -1;
-		while ((++y, ++y_spr) < WIN_Y)
+		while ((++y_spr, ++y) < WIN_Y)
 		{
-			x = 0;
+			x = add - 1;
 			x_spr = -1;
-			while (x < (128 * (FULLIFE - data->j)) - 128)
-				x++;
-			while (x && ++x_spr < 128 * (FULLIFE - data->j))
+			while ((++x_spr, ++x) < 64 * ((FULLIFE - data->j) + 1))
 			{
-				printf("pos_x %i, pos_x_spr %i, pos_y %i, pos_y_spr %i\n", x, x_spr, y, y_spr);
 				if (data->pv_cpy > 0)
 				{
 					if (take_pix(&data->textures.heart_full,
-						x_spr / 2, y_spr / 2) != 0x000000)
+						x_spr, y_spr) != 0x000000)
 					{
 						img_pixel_put(&data->img_win, x, y,
-							take_pix(&data->textures.heart_full, x_spr / 2, y_spr / 2));
+							take_pix(&data->textures.heart_full, x_spr, y_spr));
 					}
 				}
 				else
 				{
 					if (take_pix(&data->textures.heart_empty,
-						x_spr / 2, y_spr / 2) != 0x000000)
+						x_spr, y_spr) != 0x000000)
 					{
 						img_pixel_put(&data->img_win, x, y,
-							take_pix(&data->textures.heart_empty, x_spr / 2, y_spr / 2));
+							take_pix(&data->textures.heart_empty, x_spr, y_spr));
 					}
 				}
-				data->pv_cpy--;
-				x++;
 			}
 		}
+		add += 64;
+		data->pv_cpy--;
 	}
 }
 
