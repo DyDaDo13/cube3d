@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   build_sprite.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dydado13 <dydado13@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lle-saul <lle-saul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 12:04:22 by lle-saul          #+#    #+#             */
-/*   Updated: 2024/04/04 15:31:45 by dydado13         ###   ########.fr       */
+/*   Updated: 2024/04/04 17:22:22 by lle-saul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,8 @@ void	build_sprite2(t_data *data, t_algo *spr, double *dis_wall)
 {
 	t_point	draw;
 
+	spr->end = (int)((WIN_X / 2) * (1 + spr->dist_temp_rayX
+				/ spr->dist_temp_rayY));
 	spr->side = abs((int)(WIN_Y / spr->dist_temp_rayY));
 	draw.y = -spr->side / 2 + WIN_Y / 2;
 	if (draw.y < 0)
@@ -112,8 +114,6 @@ void	build_sprite(t_data *data, double *dis_wall)
 		spr.dist_temp_rayY = spr.Coef_CamX * ((-data->pos.norm_camY
 					* spr.rayDir_actX)
 				+ (data->pos.norm_camX * spr.rayDir_actY));
-		spr.end = (int)((WIN_X / 2) * (1 + spr.dist_temp_rayX
-					/ spr.dist_temp_rayY));
 		build_sprite2(data, &spr, dis_wall);
 	}
 	free(order_sprite);
