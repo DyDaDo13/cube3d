@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dydado13 <dydado13@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lle-saul <lle-saul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 15:41:51 by lle-saul          #+#    #+#             */
-/*   Updated: 2024/04/04 15:45:14 by dydado13         ###   ########.fr       */
+/*   Updated: 2024/04/04 19:32:52 by lle-saul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,9 @@ unsigned int	ft_mix_color(int color1, int color2, float pourcent)
 	t_point			rgb_final;
 	unsigned int	res;
 
+	//printf("pourcent : %f\n", pourcent);
+	if (pourcent < 0)
+		pourcent *= -1;
 	rgb_1.i = (color1 >> 16) & 0xFF;
 	rgb_1.x = (color1 >> 8) & 0xFF;
 	rgb_1.y = color1 & 0xFF;
@@ -34,6 +37,8 @@ unsigned int	ft_mix_color(int color1, int color2, float pourcent)
 	rgb_final.x = (int)interpolate(rgb_1.x, rgb_2.x, pourcent);
 	rgb_final.y = (int)interpolate(rgb_1.y, rgb_2.y, pourcent);
 	res = (rgb_final.i << 16) | (rgb_final.x << 8) | rgb_final.y;
+	if (res > 0xFFFFFF)
+		return (0x000000);
 	return (res);
 }
 

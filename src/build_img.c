@@ -6,7 +6,7 @@
 /*   By: ozone <ozone@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 15:16:32 by lle-saul          #+#    #+#             */
-/*   Updated: 2024/04/04 19:36:28 by ozone            ###   ########.fr       */
+/*   Updated: 2024/04/04 20:04:12 by ozone            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,15 @@ void	draw_pix(t_data *data, t_algo *algo, int line_to_draw, int x)
 		algo->end = WIN_Y - 1;
 	i = 0;
 	algo->x = x;
+	//printf("walldist : %f\n", algo->wall_dist);
 	while (i < WIN_Y)
 	{
 		if (i <= algo->start)
-			img_pixel_put(&data->img_win, x, i, data->textures_path.C);
+			img_pixel_put(&data->img_win, x, i, ft_mix_color(data->textures_path.C, 0x000000, (double)i / (double)(WIN_Y / 2)));
 		else if (i > algo->start && i <= algo->end)
 			pix_texture(data, algo, &i);
 		else
-			img_pixel_put(&data->img_win, x, i, data->textures_path.F);
+			img_pixel_put(&data->img_win, x, i, ft_mix_color(data->textures_path.F, 0x000000, ((double)i / (double)(WIN_Y / 2)) - 2.0));
 		i++;
 	}
 }

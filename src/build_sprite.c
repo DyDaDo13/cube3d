@@ -6,7 +6,7 @@
 /*   By: lle-saul <lle-saul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 12:04:22 by lle-saul          #+#    #+#             */
-/*   Updated: 2024/04/04 17:22:22 by lle-saul         ###   ########.fr       */
+/*   Updated: 2024/04/04 19:55:25 by lle-saul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ void	build_sprite2(t_data *data, t_algo *spr, double *dis_wall)
 	draw.j = spr->side / 2 + spr->end;
 	if (draw.j >= WIN_X)
 		draw.j = WIN_X - 1;
+	spr->wall_dist = spr->rayDir_actX + spr->rayDir_actY;
 	draw_sprite(data, &draw, spr, dis_wall);
 	act_text(data, spr);
 }
