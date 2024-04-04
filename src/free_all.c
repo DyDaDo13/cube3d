@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_all.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ozone <ozone@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dydado13 <dydado13@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 14:35:32 by dydado13          #+#    #+#             */
-/*   Updated: 2024/02/21 13:43:21 by ozone            ###   ########.fr       */
+/*   Updated: 2024/04/04 15:38:56 by dydado13         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,16 +42,16 @@ void	free_all(t_data *data)
 {
 	if (data->map)
 		free_map(data->map);
-	if (data->textures_path.EA)
-		free(data->textures_path.EA);
-	if (data->textures_path.WE)
-		free(data->textures_path.WE);
-	if (data->textures_path.NO)
-		free(data->textures_path.NO);
-	if (data->textures_path.SO)
-		free(data->textures_path.SO);
-	if (data->textures_path.DO)
-		free(data->textures_path.DO);
+	if (data->textures_path.ea)
+		free(data->textures_path.ea);
+	if (data->textures_path.we)
+		free(data->textures_path.we);
+	if (data->textures_path.no)
+		free(data->textures_path.no);
+	if (data->textures_path.so)
+		free(data->textures_path.so);
+	if (data->textures_path.dor)
+		free(data->textures_path.dor);
 	if (data->enemy)
 		free(data->enemy);
 }

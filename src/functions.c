@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   functions.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lle-saul <lle-saul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dydado13 <dydado13@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 22:25:43 by ozone             #+#    #+#             */
-/*   Updated: 2024/04/04 15:47:54 by lle-saul         ###   ########.fr       */
+/*   Updated: 2024/04/04 15:31:45 by dydado13         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,27 +52,24 @@ size_t	ft_strcpy(char *dst, char *src)
 	return (len);
 }
 
-void	change_dis_case0(t_point *dis, t_pos start, t_data *data, int i)
-{
-	while (sqrt((dis->x * dis->x) + (dis->y * dis->y)) < 40)
-	{
-		dis->x = (((((MINI_MAP_SIZE * MINI_MAP_COEF_LEN) / 2) + 20)
-					+ (data->pos.dir_camX * i)) + (data->pos.norm_camX * i))
-			- start.p_x;
-		dis->y = (((((MINI_MAP_SIZE * MINI_MAP_COEF_LEN) / 2) + 20)
-					+ (data->pos.dir_camY * i)) + (data->pos.norm_camY * i))
-			- start.p_y;
-		i++;
-	}
-}
-
 void	change_dis(t_point *dis, t_pos start, t_data *data, int cases)
 {
 	int	i;
 
 	i = 2;
 	if (cases == 0)
-		change_dis_case0(dis, start, data, i);
+	{
+		while (sqrt((dis->x * dis->x) + (dis->y * dis->y)) < 40)
+		{
+			dis->x = (((((MINI_MAP_SIZE * MINI_MAP_COEF_LEN) / 2) + 20)
+						+ (data->pos.dir_camX * i)) + (data->pos.norm_camX * i))
+				- start.p_x;
+			dis->y = (((((MINI_MAP_SIZE * MINI_MAP_COEF_LEN) / 2) + 20)
+						+ (data->pos.dir_camY * i)) + (data->pos.norm_camY * i))
+				- start.p_y;
+			i++;
+		}
+	}
 	else
 	{
 		while (sqrt((dis->x * dis->x) + (dis->y * dis->y)) < 40)

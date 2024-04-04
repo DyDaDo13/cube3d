@@ -60,11 +60,11 @@ typedef struct s_img
 
 typedef struct s_textures_path
 {
-	char			*NO;
-	char			*SO;
-	char			*WE;
-	char			*EA;
-	char			*DO;
+	char			*no;
+	char			*so;
+	char			*we;
+	char			*ea;
+	char			*dor;
 	unsigned int	F;
 	unsigned int	C;
 }	t_textures_path;
@@ -98,11 +98,11 @@ typedef struct s_mouse
 
 typedef struct s_textures
 {
-	t_img	NO;
-	t_img	SO;
-	t_img	WE;
-	t_img	EA;
-	t_img	DO;
+	t_img	no;
+	t_img	so;
+	t_img	we;
+	t_img	ea;
+	t_img	dor;
 	t_img	enemy1;
 	t_img	enemy2;
 	t_img	enemy3;
@@ -121,7 +121,6 @@ typedef struct s_point
 	int		y;
 	int		i;
 	int		j;
-	int		d;
 }t_point;
 
 typedef struct s_enemy
@@ -139,6 +138,7 @@ typedef struct s_data
 	int				nb_enemy;
 	int				map_width;
 	int				map_height;
+	int				pv;
 	int				door;
 	double			move_speed;
 	int				key_move;
@@ -272,10 +272,10 @@ void			placing_enemy(t_data *data);
 void			enemy_move(t_data *data);
 
 /*hitbox*/
-int	is_player_hitbox_touched(t_data *data, int actual_enemy);
-
-int				check_side(int textx, t_algo *algo);
-
-int				ft_key_moves(t_data *data);
+int		is_player_hitbox_touched(t_data *data, int actual_enemy);
+int		check_side(int textx, t_algo *algo);
+int		ft_key_moves(t_data *data);
+void	move_diag(t_data *data);
+void	check_door_spot(t_data *data);
 
 #endif

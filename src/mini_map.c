@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ozone <ozone@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dydado13 <dydado13@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 15:41:51 by lle-saul          #+#    #+#             */
-/*   Updated: 2024/04/03 16:04:11 by ozone            ###   ########.fr       */
+/*   Updated: 2024/04/04 15:45:14 by dydado13         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ void	show_map(t_data *data)
 			pos_map.p_y += pos_map.angle;
 		y++;
 	}
-	draw_FOV(data);
+	draw_fov(data);
 	draw_crossair(data);
 	put_info_on_screen(data);
 }

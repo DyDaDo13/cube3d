@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   display_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ozone <ozone@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dydado13 <dydado13@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 16:30:56 by lle-saul          #+#    #+#             */
-/*   Updated: 2024/04/03 16:41:43 by ozone            ###   ########.fr       */
+/*   Updated: 2024/04/04 15:44:23 by dydado13         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 void	destroy_all_images(t_data *data)
 {
-	mlx_destroy_image(data->mlx, data->textures.EA.img_ptr);
-	mlx_destroy_image(data->mlx, data->textures.WE.img_ptr);
-	mlx_destroy_image(data->mlx, data->textures.NO.img_ptr);
-	mlx_destroy_image(data->mlx, data->textures.SO.img_ptr);
-	if (data->textures_path.DO)
-		mlx_destroy_image(data->mlx, data->textures.DO.img_ptr);
+	mlx_destroy_image(data->mlx, data->textures.ea.img_ptr);
+	mlx_destroy_image(data->mlx, data->textures.we.img_ptr);
+	mlx_destroy_image(data->mlx, data->textures.no.img_ptr);
+	mlx_destroy_image(data->mlx, data->textures.so.img_ptr);
+	if (data->textures_path.dor)
+		mlx_destroy_image(data->mlx, data->textures.dor.img_ptr);
 	mlx_destroy_image(data->mlx, data->textures.enemy1.img_ptr);
 	mlx_destroy_image(data->mlx, data->textures.enemy2.img_ptr);
 	mlx_destroy_image(data->mlx, data->textures.enemy3.img_ptr);

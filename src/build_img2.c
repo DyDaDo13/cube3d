@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   build_img2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ozone <ozone@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dydado13 <dydado13@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 11:55:49 by lle-saul          #+#    #+#             */
-/*   Updated: 2024/04/03 15:57:32 by ozone            ###   ########.fr       */
+/*   Updated: 2024/04/04 15:36:45 by dydado13         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,15 +34,15 @@ unsigned int	img_take_color(t_data *data, int x, int y, int texture)
 	t_img	*img;
 
 	if (texture == 0)
-		img = &data->textures.NO;
+		img = &data->textures.no;
 	else if (texture == 1)
-		img = &data->textures.WE;
+		img = &data->textures.we;
 	else if (texture == 2)
-		img = &data->textures.SO;
+		img = &data->textures.so;
 	else if (texture == 4)
-		img = &data->textures.DO;
+		img = &data->textures.dor;
 	else
-		img = &data->textures.EA;
+		img = &data->textures.ea;
 	offset = (img->len * y) + (x * (img->bits_pix / 8));
 	return (*((unsigned int *)(offset + img->img_pixels)));
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_doors.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ozone <ozone@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dydado13 <dydado13@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 17:11:46 by ozone             #+#    #+#             */
-/*   Updated: 2024/02/20 17:07:28 by ozone            ###   ########.fr       */
+/*   Updated: 2024/04/04 15:37:08 by dydado13         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int	is_door_valid(char **map, t_data *data)
 			}
 		}
 	}
-	if (is_d == 1 && !data->textures_path.DO)
+	if (is_d == 1 && !data->textures_path.dor)
 		return (printf("texture not found\n"), 1);
 	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_img.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ozone <ozone@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dydado13 <dydado13@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 14:46:34 by lle-saul          #+#    #+#             */
-/*   Updated: 2024/04/03 16:32:42 by ozone            ###   ########.fr       */
+/*   Updated: 2024/04/04 15:40:28 by dydado13         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,23 +59,23 @@ void	ft_init_img3(t_data *data, int *i, int *j)
 
 void	ft_init_img2(t_data *data, int *i, int *j)
 {
-	data->textures.EA.img_ptr = mlx_xpm_file_to_image(data->mlx,
-			data->textures_path.EA, i, j);
-	data->textures.EA.img_pixels = mlx_get_data_addr(data->textures.EA.img_ptr,
-			&data->textures.EA.bits_pix, &data->textures.EA.len,
-			&data->textures.EA.endian);
+	data->textures.ea.img_ptr = mlx_xpm_file_to_image(data->mlx,
+			data->textures_path.ea, i, j);
+	data->textures.ea.img_pixels = mlx_get_data_addr(data->textures.ea.img_ptr,
+			&data->textures.ea.bits_pix, &data->textures.ea.len,
+			&data->textures.ea.endian);
 	data->img_win.img_ptr = mlx_new_image(data->mlx, WIN_X, WIN_Y);
 	data->img_win.img_pixels = mlx_get_data_addr(data->img_win.img_ptr,
 			&data->img_win.bits_pix, &data->img_win.len,
 			&data->img_win.endian);
-	if (data->textures_path.DO)
+	if (data->textures_path.dor)
 	{
-		data->textures.DO.img_ptr = mlx_xpm_file_to_image(data->mlx,
-				data->textures_path.DO, i, j);
-		data->textures.DO.img_pixels
-			= mlx_get_data_addr(data->textures.DO.img_ptr,
-				&data->textures.DO.bits_pix, &data->textures.DO.len,
-				&data->textures.DO.endian);
+		data->textures.dor.img_ptr = mlx_xpm_file_to_image(data->mlx,
+				data->textures_path.dor, i, j);
+		data->textures.dor.img_pixels
+			= mlx_get_data_addr(data->textures.dor.img_ptr,
+				&data->textures.dor.bits_pix, &data->textures.dor.len,
+				&data->textures.dor.endian);
 	}
 	data->textures.POV.img_ptr = mlx_xpm_file_to_image(data->mlx,
 			"textures/sprites/player/normal_pov.xpm", i, j);
@@ -93,23 +93,24 @@ void	ft_init_img(t_data *data)
 
 	j = 64;
 	i = 64;
-	data->textures.NO.img_ptr = mlx_xpm_file_to_image(data->mlx,
-			data->textures_path.NO, &i, &j);
-	data->textures.NO.img_pixels = mlx_get_data_addr(data->textures.NO.img_ptr,
-			&data->textures.NO.bits_pix, &data->textures.NO.len,
-			&data->textures.NO.endian);
-	data->textures.SO.img_ptr = mlx_xpm_file_to_image(data->mlx,
-			data->textures_path.SO, &i, &j);
-	data->textures.SO.img_pixels = mlx_get_data_addr(data->textures.SO.img_ptr,
-			&data->textures.SO.bits_pix, &data->textures.SO.len,
-			&data->textures.SO.endian);
-	data->textures.WE.img_ptr = mlx_xpm_file_to_image(data->mlx,
-			data->textures_path.WE, &i, &j);
-	data->textures.WE.img_pixels = mlx_get_data_addr(data->textures.WE.img_ptr,
-			&data->textures.WE.bits_pix, &data->textures.WE.len,
-			&data->textures.WE.endian);
+	data->textures.no.img_ptr = mlx_xpm_file_to_image(data->mlx,
+			data->textures_path.no, &i, &j);
+	data->textures.no.img_pixels = mlx_get_data_addr(data->textures.no.img_ptr,
+			&data->textures.no.bits_pix, &data->textures.no.len,
+			&data->textures.no.endian);
+	data->textures.so.img_ptr = mlx_xpm_file_to_image(data->mlx,
+			data->textures_path.so, &i, &j);
+	data->textures.so.img_pixels = mlx_get_data_addr(data->textures.so.img_ptr,
+			&data->textures.so.bits_pix, &data->textures.so.len,
+			&data->textures.so.endian);
+	data->textures.we.img_ptr = mlx_xpm_file_to_image(data->mlx,
+			data->textures_path.we, &i, &j);
+	data->textures.we.img_pixels = mlx_get_data_addr(data->textures.we.img_ptr,
+			&data->textures.we.bits_pix, &data->textures.we.len,
+			&data->textures.we.endian);
 	data->textures.way_POV = 0;
 	data->textures.add_POV = 0;
 	data->textures.tex_POV = 0;
+	data->pv = 3;
 	ft_init_img2(data, &i, &j);
 }

@@ -73,13 +73,13 @@ void	print_map(char **map)
 void	print_args(t_data *data)
 {
 	printf("┌───────────────────────────────────────\n");
-	printf("│NO	= %s\n", data->textures_path.NO);
-	printf("│SO	= %s\n", data->textures_path.SO);
-	printf("│WE	= %s\n", data->textures_path.WE);
-	printf("│EA	= %s\n", data->textures_path.EA);
+	printf("│no	= %s\n", data->textures_path.no);
+	printf("│so	= %s\n", data->textures_path.so);
+	printf("│we	= %s\n", data->textures_path.we);
+	printf("│ea	= %s\n", data->textures_path.ea);
 	printf("│C	= %i\n", data->textures_path.C);
 	printf("│F	= %i\n", data->textures_path.F);
-	printf("│DO	= %s\n", data->textures_path.DO);
+	printf("│dor	= %s\n", data->textures_path.dor);
 	printf("├───────────────────────────────────────\n");
 	printf("│Map height = \e[1;94m%i\e[0m\n", data->map_height);
 	printf("│Map wifth = \e[1;91m%i\e[0m\n", data->map_width);

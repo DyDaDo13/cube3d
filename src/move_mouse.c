@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move_mouse.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ozone <ozone@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dydado13 <dydado13@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 15:24:26 by lle-saul          #+#    #+#             */
-/*   Updated: 2024/04/03 16:37:22 by ozone            ###   ########.fr       */
+/*   Updated: 2024/04/04 15:43:19 by dydado13         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ int	mouse_left_click(int button, int x, int y, t_data *data)
 	{
 		data->textures.tex_POV = 1;
 		ft_calc_delta(&algo, data, WIN_X / 2);
-		algo_DDA_ennemy(&algo, data);
+		algo_dda_ennemy(&algo, data);
 	}
 	return (0);
 }

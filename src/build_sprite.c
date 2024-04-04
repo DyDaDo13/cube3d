@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   build_sprite.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ozone <ozone@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dydado13 <dydado13@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 12:04:22 by lle-saul          #+#    #+#             */
-/*   Updated: 2024/04/03 16:28:59 by ozone            ###   ########.fr       */
+/*   Updated: 2024/04/04 15:31:45 by dydado13         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,8 @@ void	sort_sprite(t_data *data, int **order, double **dis)
 	free_sort_sprite(temp_order, temp_dis, order, dis);
 }
 
-/*draw.y : drawStartY | draw.i : drawEndY | spr->side : spriteHeight
-draw.x : drawStartX | draw.j : drawEndX | spr->side : spriteWidth*/
+/*draw.y : drawStartY | draw.i : drawendY | spr->side : spriteHeight
+draw.x : drawStartX | draw.j : drawendX | spr->side : spriteWidth*/
 void	build_sprite2(t_data *data, t_algo *spr, double *dis_wall)
 {
 	t_point	draw;

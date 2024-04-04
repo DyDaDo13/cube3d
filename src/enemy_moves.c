@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   enemy_moves.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ozone <ozone@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dydado13 <dydado13@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 08:41:37 by ozone             #+#    #+#             */
-/*   Updated: 2024/04/03 15:41:21 by ozone            ###   ########.fr       */
+/*   Updated: 2024/04/04 15:31:45 by dydado13         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	enemy_move_dir(t_data *data, int actual_enemy)
 	double	coef;
 	double	cord_dist_x;
 	double	cord_dist_y;
+	static	int invincibinity = 10;
 
 	cord_dist_x = (data->pos.p_x - data->enemy[actual_enemy].x);
 	cord_dist_y = (data->pos.p_y - data->enemy[actual_enemy].y);
@@ -29,6 +30,16 @@ void	enemy_move_dir(t_data *data, int actual_enemy)
 		if (data->map[(int)data->enemy[actual_enemy].y][(int)((cord_dist_x
 				* coef) + data->enemy[actual_enemy].x)] != '1')
 			data->enemy[actual_enemy].x += (cord_dist_x * coef);
+	}
+	else
+	{
+		printf("%i | %i\n", data->pv, invincibinity);
+		if (invincibinity == 10 && data->pv > 0)
+			data->pv -= 1;
+		if (invincibinity > 0)
+			invincibinity--;
+		else
+			invincibinity = 10;
 	}
 }
 
