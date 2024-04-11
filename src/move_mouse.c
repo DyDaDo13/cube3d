@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move_mouse.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dydado13 <dydado13@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lle-saul <lle-saul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 15:24:26 by lle-saul          #+#    #+#             */
-/*   Updated: 2024/04/04 15:43:19 by dydado13         ###   ########.fr       */
+/*   Updated: 2024/04/11 10:59:56 by lle-saul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ int	mouse_left_click(int button, int x, int y, t_data *data)
 
 	(void)x;
 	(void)y;
-	if (button == 1)
+	if (button == 1 && data->hardmode == 1)
 	{
 		data->textures.tex_POV = 1;
 		ft_calc_delta(&algo, data, WIN_X / 2);
