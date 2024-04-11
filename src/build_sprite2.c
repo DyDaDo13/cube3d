@@ -6,7 +6,7 @@
 /*   By: lle-saul <lle-saul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 16:16:39 by lle-saul          #+#    #+#             */
-/*   Updated: 2024/04/04 19:47:22 by lle-saul         ###   ########.fr       */
+/*   Updated: 2024/04/11 10:15:04 by lle-saul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,8 @@ int	get_nb_sprite(t_data *data)
 
 	i = -1;
 	count = 0;
+	if (data->nb_enemy <= 0)
+		return (0);
 	while (++i < data->nb_enemy)
 		if (data->enemy[i].x >= (double)0 && data->enemy[i].y >= (double)0)
 			count++;
