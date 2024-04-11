@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   build_img.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ozone <ozone@student.42.fr>                +#+  +:+       +#+        */
+/*   By: lle-saul <lle-saul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 15:16:32 by lle-saul          #+#    #+#             */
-/*   Updated: 2024/04/04 20:04:12 by ozone            ###   ########.fr       */
+/*   Updated: 2024/04/11 10:12:44 by lle-saul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,7 +134,8 @@ void	build_img(t_data *data)
 		draw_pix(data, &algo, WIN_Y / algo.wall_dist, x);
 		dis_wall[x] = algo.wall_dist;
 	}
-	build_sprite(data, dis_wall);
+	if (get_nb_sprite(data) >= 0)
+		build_sprite(data, dis_wall);
 	show_map(data);
 	show_pov(data);
 	display_heart(data);
