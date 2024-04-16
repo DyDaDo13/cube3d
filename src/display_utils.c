@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   display_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dydado13 <dydado13@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lle-saul <lle-saul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 16:30:56 by lle-saul          #+#    #+#             */
-/*   Updated: 2024/04/11 10:45:24 by dydado13         ###   ########.fr       */
+/*   Updated: 2024/04/16 15:06:58 by lle-saul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,12 @@ void	destroy_all_images(t_data *data)
 		mlx_destroy_image(data->mlx, data->textures.enemy2.img_ptr);
 		mlx_destroy_image(data->mlx, data->textures.enemy3.img_ptr);
 		mlx_destroy_image(data->mlx, data->textures.enemy4.img_ptr);
-		mlx_destroy_image(data->mlx, data->textures.enemy1_d.img_ptr);	
+		mlx_destroy_image(data->mlx, data->textures.enemy1_d.img_ptr);
 	}
 	mlx_destroy_image(data->mlx, data->textures.POV.img_ptr);
 	mlx_destroy_image(data->mlx, data->textures.shoot_POV.img_ptr);
+	mlx_destroy_image(data->mlx, data->textures.heart_empty.img_ptr);
+	mlx_destroy_image(data->mlx, data->textures.heart_full.img_ptr);
 	mlx_destroy_image(data->mlx, data->img_win.img_ptr);
 }
 

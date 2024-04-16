@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   build_img.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dydado13 <dydado13@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lle-saul <lle-saul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 15:16:32 by lle-saul          #+#    #+#             */
-/*   Updated: 2024/04/11 10:38:31 by dydado13         ###   ########.fr       */
+/*   Updated: 2024/04/16 15:03:34 by lle-saul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,18 @@ void	draw_pix(t_data *data, t_algo *algo, int line_to_draw, int x)
 		algo->end = WIN_Y - 1;
 	i = 0;
 	algo->x = x;
-	//printf("walldist : %f\n", algo->wall_dist);
 	while (i < WIN_Y)
 	{
 		if (i <= algo->start)
-			img_pixel_put(&data->img_win, x, i, ft_mix_color(data->textures_path.C, 0x000000, (double)i / (double)(WIN_Y / 2)));
+			img_pixel_put(&data->img_win, x, i, ft_mix_color(
+					data->textures_path.C, 0x000000, (double)i
+					/ (double)(WIN_Y / 2)));
 		else if (i > algo->start && i <= algo->end)
 			pix_texture(data, algo, &i);
 		else
-			img_pixel_put(&data->img_win, x, i, ft_mix_color(data->textures_path.F, 0x000000, ((double)i / (double)(WIN_Y / 2)) - 2.0));
+			img_pixel_put(&data->img_win, x, i, ft_mix_color(
+					data->textures_path.F, 0x000000, ((double)i
+						/ (double)(WIN_Y / 2)) - 2.0));
 		i++;
 	}
 }
@@ -127,17 +130,15 @@ void	build_img(t_data *data)
 		algo_dda(&algo, data);
 		if (algo.Coef_CamX != 0)
 			algo.wall_dist *= sin(atan2(algo.rayDir_actY, algo.rayDir_actX)
-				- atan2(data->pos.norm_camY * algo.Coef_CamX,
-					data->pos.norm_camX * algo.Coef_CamX));
+					- atan2(data->pos.norm_camY * algo.Coef_CamX,
+						data->pos.norm_camX * algo.Coef_CamX));
 		if (algo.wall_dist < 0)
 			algo.wall_dist *= -1;
 		draw_pix(data, &algo, WIN_Y / algo.wall_dist, x);
 		dis_wall[x] = algo.wall_dist;
 	}
-	if (get_nb_sprite(data) >= 0)
+	if (data->hardmode == 1)
 		build_sprite(data, dis_wall);
 	show_map(data);
-	show_pov(data);
-	display_heart(data);
 	mlx_put_image_to_window(data->mlx, data->win, data->img_win.img_ptr, 0, 0);
 }

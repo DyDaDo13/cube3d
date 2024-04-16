@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_img.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dydado13 <dydado13@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lle-saul <lle-saul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 14:46:34 by lle-saul          #+#    #+#             */
-/*   Updated: 2024/04/11 10:33:03 by dydado13         ###   ########.fr       */
+/*   Updated: 2024/04/16 14:54:39 by lle-saul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,8 @@ void	ft_init_img4(t_data *data, int *i, int *j)
 			"textures/sprites/player/heart_empty.xpm", i, j);
 	data->textures.heart_empty.img_pixels
 		= mlx_get_data_addr(data->textures.heart_empty.img_ptr,
-			&data->textures.heart_empty.bits_pix, &data->textures.heart_empty.len,
+			&data->textures.heart_empty.bits_pix,
+			&data->textures.heart_empty.len,
 			&data->textures.heart_empty.endian);
 	ft_init_img5(data, i, j);
 }

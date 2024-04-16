@@ -6,7 +6,7 @@
 /*   By: lle-saul <lle-saul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 16:16:39 by lle-saul          #+#    #+#             */
-/*   Updated: 2024/04/11 10:15:04 by lle-saul         ###   ########.fr       */
+/*   Updated: 2024/04/16 14:29:20 by lle-saul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,8 @@ void	draw_sprite(t_data *data, t_point *draw, t_algo *spr, double *dis_wall)
 {
 	t_point	var;
 
-	var.x = draw->x;
-	while (var.x < draw->j)
+	var.x = draw->x - 1;
+	while (++var.x < draw->j)
 	{
 		var.i = (int)(256 * (var.x - (-spr->side / 2 + spr->end))
 				* TEXT_SIZE / spr->side) / 256;
@@ -72,13 +72,13 @@ void	draw_sprite(t_data *data, t_point *draw, t_algo *spr, double *dis_wall)
 				var.j = ((var.d * TEXT_SIZE) / spr->side) / 256;
 				if (take_pix(sel_tex_spr(data, data->enemy[spr->start].texture),
 						var.i, var.j) != 0x000000)
-					img_pixel_put(&data->img_win, var.x, var.y, ft_mix_color(take_pix(
-							sel_tex_spr(data, data->enemy[spr->start].texture),
-							var.i, var.j), 0x000000, spr->wall_dist / 10.0));
+					img_pixel_put(&data->img_win, var.x, var.y, ft_mix_color(
+							take_pix(sel_tex_spr(data, data->enemy[spr->start]
+									.texture), var.i, var.j), 0x000000,
+							spr->wall_dist / 10.0));
 				var.y++;
 			}
 		}
-		var.x++;
 	}
 }
 

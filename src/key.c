@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ozone <ozone@student.42.fr>                +#+  +:+       +#+        */
+/*   By: lle-saul <lle-saul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 15:45:41 by ozone             #+#    #+#             */
-/*   Updated: 2024/04/04 21:11:58 by ozone            ###   ########.fr       */
+/*   Updated: 2024/04/16 14:55:42 by lle-saul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	replace_before_door(t_data *data)
 	int		x;
 	int		y;
 
-	y = -1;	
+	y = -1;
 	while (data->map[++y])
 	{
 		x = -1;
@@ -29,12 +29,14 @@ void	replace_before_door(t_data *data)
 
 void	check_door_spot(t_data *data)
 {
-	if (data->map[(int)data->pos.p_y][(int)data->pos.p_x] == 'D' && data->door == 0)
+	if (data->map[(int)data->pos.p_y][(int)data->pos.p_x] == 'D'
+			&& data->door == 0)
 	{
 		data->map[(int)data->pos.p_y][(int)data->pos.p_x] = 'O';
 		data->door = 1;
 	}
-	if (data->map[(int)data->pos.p_y][(int)data->pos.p_x] != 'O' && data->door == 1)
+	if (data->map[(int)data->pos.p_y][(int)data->pos.p_x] != 'O'
+			&& data->door == 1)
 	{
 		replace_before_door(data);
 		data->door = 0;

@@ -6,7 +6,7 @@
 /*   By: lle-saul <lle-saul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 15:41:51 by lle-saul          #+#    #+#             */
-/*   Updated: 2024/04/04 19:32:52 by lle-saul         ###   ########.fr       */
+/*   Updated: 2024/04/16 14:56:03 by lle-saul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ unsigned int	ft_mix_color(int color1, int color2, float pourcent)
 	t_point			rgb_final;
 	unsigned int	res;
 
-	//printf("pourcent : %f\n", pourcent);
 	if (pourcent < 0)
 		pourcent *= -1;
 	rgb_1.i = (color1 >> 16) & 0xFF;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_args.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ozone <ozone@student.42.fr>                +#+  +:+       +#+        */
+/*   By: lle-saul <lle-saul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 17:55:15 by ozone             #+#    #+#             */
-/*   Updated: 2024/04/04 16:09:48 by ozone            ###   ########.fr       */
+/*   Updated: 2024/04/16 14:54:17 by lle-saul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,12 +84,13 @@ void	init_args(t_data *data)
 	data->textures_path.so = NULL;
 	data->textures_path.we = NULL;
 	data->textures_path.ea = NULL;
+	data->textures_path.dor = get_path(data->map,
+			find_arg('D', 'O', data->map));
 }
 
 int	get_args(t_data *data)
 {
 	init_args(data);
-	data->textures_path.dor = get_path(data->map, find_arg('D', 'O', data->map));
 	data->textures_path.no = get_path(data->map, find_arg('N', 'O', data->map));
 	if (!data->textures_path.no)
 		return (printf("Error: arg 'no' not found\n"), 1);

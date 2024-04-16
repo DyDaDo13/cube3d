@@ -3,21 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   enemy_moves.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ozone <ozone@student.42.fr>                +#+  +:+       +#+        */
+/*   By: lle-saul <lle-saul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 08:41:37 by ozone             #+#    #+#             */
-/*   Updated: 2024/04/04 21:08:52 by ozone            ###   ########.fr       */
+/*   Updated: 2024/04/16 14:51:19 by lle-saul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cube3d.h"
 
-void	enemy_move_dir(t_data *data, int actual_enemy)
+void	enemy_move_dir(t_data *data, int actual_enemy, double coef)
 {
-	double	coef;
-	double	cord_dist_x;
-	double	cord_dist_y;
-	static	int invincibinity = 100;
+	double		cord_dist_x;
+	double		cord_dist_y;
+	static int	invincibinity = 100;
 
 	cord_dist_x = (data->pos.p_x - data->enemy[actual_enemy].x);
 	cord_dist_y = (data->pos.p_y - data->enemy[actual_enemy].y);
@@ -33,7 +32,6 @@ void	enemy_move_dir(t_data *data, int actual_enemy)
 	}
 	else
 	{
-		//printf("%i | %i\n", data->pv, invincibinity);
 		if (invincibinity == 100 && data->pv > 0)
 			data->pv -= 1;
 		if (invincibinity > 0)
@@ -52,7 +50,7 @@ void	enemy_move(t_data *data)
 	{
 		if (data->enemy[actual_enemy].x >= 0
 			&& data->enemy[actual_enemy].y >= 0)
-			enemy_move_dir(data, actual_enemy);
+			enemy_move_dir(data, actual_enemy, 0.0);
 		actual_enemy++;
 	}
 }
