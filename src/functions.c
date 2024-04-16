@@ -57,10 +57,10 @@ void	change_dis_case0(t_point *dis, t_pos start, t_data *data, int i)
 	while (sqrt((dis->x * dis->x) + (dis->y * dis->y)) < 40)
 	{
 		dis->x = (((((MINI_MAP_SIZE * MINI_MAP_COEF_LEN) / 2) + 20)
-					+ (data->pos.dir_camX * i)) + (data->pos.norm_camX * i))
+					+ (data->pos.dir_camx * i)) + (data->pos.norm_camx * i))
 			- start.p_x;
 		dis->y = (((((MINI_MAP_SIZE * MINI_MAP_COEF_LEN) / 2) + 20)
-					+ (data->pos.dir_camY * i)) + (data->pos.norm_camY * i))
+					+ (data->pos.dir_camy * i)) + (data->pos.norm_camy * i))
 			- start.p_y;
 		i++;
 	}
@@ -78,10 +78,10 @@ void	change_dis(t_point *dis, t_pos start, t_data *data, int cases)
 		while (sqrt((dis->x * dis->x) + (dis->y * dis->y)) < 40)
 		{
 			dis->x = (((((MINI_MAP_SIZE * MINI_MAP_COEF_LEN) / 2) + 20)
-						+ (data->pos.dir_camX * i)) - (data->pos.norm_camX * i))
+						+ (data->pos.dir_camx * i)) - (data->pos.norm_camx * i))
 				- start.p_x;
 			dis->y = (((((MINI_MAP_SIZE * MINI_MAP_COEF_LEN) / 2) + 20)
-						+ (data->pos.dir_camY * i)) - (data->pos.norm_camY * i))
+						+ (data->pos.dir_camy * i)) - (data->pos.norm_camy * i))
 				- start.p_y;
 			i++;
 		}

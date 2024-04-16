@@ -69,9 +69,9 @@ void	build_sprite2(t_data *data, t_algo *spr, double *dis_wall)
 {
 	t_point	draw;
 
-	spr->end = (int)((WIN_X / 2) * (1 + spr->dist_temp_rayX
-				/ spr->dist_temp_rayY));
-	spr->side = abs((int)(WIN_Y / spr->dist_temp_rayY));
+	spr->end = (int)((WIN_X / 2) * (1 + spr->dist_temp_rayx
+				/ spr->dist_temp_rayy));
+	spr->side = abs((int)(WIN_Y / spr->dist_temp_rayy));
 	draw.y = -spr->side / 2 + WIN_Y / 2;
 	if (draw.y < 0)
 		draw.y = 0;
@@ -84,13 +84,13 @@ void	build_sprite2(t_data *data, t_algo *spr, double *dis_wall)
 	draw.j = spr->side / 2 + spr->end;
 	if (draw.j >= WIN_X)
 		draw.j = WIN_X - 1;
-	spr->wall_dist = spr->rayDir_actX + spr->rayDir_actY;
+	spr->wall_dist = spr->raydir_actx + spr->raydir_acty;
 	draw_sprite(data, &draw, spr, dis_wall);
 	act_text(data, spr);
 }
 
-/*ray_dirX & Y : Sprite_posX & Y | Coef_camX : coef matrix
-dist_temp_rayX & Y : Sprite_pos X & Y trans | spr.end : spriteScreenX
+/*ray_dirX & Y : Sprite_posX & Y | coef_camx : coef matrix
+dist_temp_rayx & Y : Sprite_pos X & Y trans | spr.end : spriteScreenX
 spr.start : num_spr*/
 void	build_sprite(t_data *data, double *dis_wall)
 {
@@ -105,16 +105,16 @@ void	build_sprite(t_data *data, double *dis_wall)
 	while (++spr.x < get_nb_sprite(data))
 	{
 		spr.start = order_sprite[spr.x];
-		spr.rayDir_actX = data->enemy[spr.start].x - data->pos.p_x;
-		spr.rayDir_actY = data->enemy[spr.start].y - data->pos.p_y;
-		spr.Coef_CamX = 1.0 / (data->pos.norm_camX * data->pos.dir_camY
-				- data->pos.dir_camX * data->pos.norm_camY);
-		spr.dist_temp_rayX = spr.Coef_CamX * ((data->pos.dir_camY
-					* spr.rayDir_actX) - (data->pos.dir_camX
-					* spr.rayDir_actY));
-		spr.dist_temp_rayY = spr.Coef_CamX * ((-data->pos.norm_camY
-					* spr.rayDir_actX)
-				+ (data->pos.norm_camX * spr.rayDir_actY));
+		spr.raydir_actx = data->enemy[spr.start].x - data->pos.p_x;
+		spr.raydir_acty = data->enemy[spr.start].y - data->pos.p_y;
+		spr.coef_camx = 1.0 / (data->pos.norm_camx * data->pos.dir_camy
+				- data->pos.dir_camx * data->pos.norm_camy);
+		spr.dist_temp_rayx = spr.coef_camx * ((data->pos.dir_camy
+					* spr.raydir_actx) - (data->pos.dir_camx
+					* spr.raydir_acty));
+		spr.dist_temp_rayy = spr.coef_camx * ((-data->pos.norm_camy
+					* spr.raydir_actx)
+				+ (data->pos.norm_camx * spr.raydir_acty));
 		build_sprite2(data, &spr, dis_wall);
 	}
 	free(order_sprite);

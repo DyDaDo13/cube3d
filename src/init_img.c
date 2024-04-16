@@ -33,12 +33,12 @@ void	ft_init_img5(t_data *data, int *i, int *j)
 
 void	ft_init_img4(t_data *data, int *i, int *j)
 {
-	data->textures.shoot_POV.img_ptr = mlx_xpm_file_to_image(data->mlx,
+	data->textures.shoot_pov.img_ptr = mlx_xpm_file_to_image(data->mlx,
 			"textures/sprites/player/shooting_pov.xpm", i, j);
-	data->textures.shoot_POV.img_pixels
-		= mlx_get_data_addr(data->textures.shoot_POV.img_ptr,
-			&data->textures.shoot_POV.bits_pix, &data->textures.shoot_POV.len,
-			&data->textures.shoot_POV.endian);
+	data->textures.shoot_pov.img_pixels
+		= mlx_get_data_addr(data->textures.shoot_pov.img_ptr,
+			&data->textures.shoot_pov.bits_pix, &data->textures.shoot_pov.len,
+			&data->textures.shoot_pov.endian);
 	data->textures.heart_full.img_ptr = mlx_xpm_file_to_image(data->mlx,
 			"textures/sprites/player/heart_full.xpm", i, j);
 	data->textures.heart_full.img_pixels
@@ -101,12 +101,12 @@ void	ft_init_img2(t_data *data, int *i, int *j)
 				&data->textures.dor.bits_pix, &data->textures.dor.len,
 				&data->textures.dor.endian);
 	}
-	data->textures.POV.img_ptr = mlx_xpm_file_to_image(data->mlx,
+	data->textures.pov.img_ptr = mlx_xpm_file_to_image(data->mlx,
 			"textures/sprites/player/normal_pov.xpm", i, j);
-	data->textures.POV.img_pixels
-		= mlx_get_data_addr(data->textures.POV.img_ptr,
-			&data->textures.POV.bits_pix, &data->textures.POV.len,
-			&data->textures.POV.endian);
+	data->textures.pov.img_pixels
+		= mlx_get_data_addr(data->textures.pov.img_ptr,
+			&data->textures.pov.bits_pix, &data->textures.pov.len,
+			&data->textures.pov.endian);
 	ft_init_img3(data, i, j);
 }
 
@@ -132,9 +132,9 @@ void	ft_init_img(t_data *data)
 	data->textures.we.img_pixels = mlx_get_data_addr(data->textures.we.img_ptr,
 			&data->textures.we.bits_pix, &data->textures.we.len,
 			&data->textures.we.endian);
-	data->textures.way_POV = 0;
-	data->textures.add_POV = 0;
-	data->textures.tex_POV = 0;
+	data->textures.way_pov = 0;
+	data->textures.add_pov = 0;
+	data->textures.tex_pov = 0;
 	data->pv = FULLIFE;
 	ft_init_img2(data, &i, &j);
 }

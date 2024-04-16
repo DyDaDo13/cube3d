@@ -78,8 +78,8 @@ int	find_arg(char c, char f, char **map)
 
 void	init_args(t_data *data)
 {
-	data->textures_path.C = (int)-1;
-	data->textures_path.F = (int)-1;
+	data->textures_path.c = (int)-1;
+	data->textures_path.f = (int)-1;
 	data->textures_path.no = NULL;
 	data->textures_path.so = NULL;
 	data->textures_path.we = NULL;
@@ -103,13 +103,13 @@ int	get_args(t_data *data)
 	data->textures_path.ea = get_path(data->map, find_arg('E', 'A', data->map));
 	if (!data->textures_path.ea)
 		return (printf("Error: arg 'ea' not found\n"), 1);
-	data->textures_path.C = get_color_path(data->map,
+	data->textures_path.c = get_color_path(data->map,
 			find_arg('C', ' ', data->map));
-	if ((int)data->textures_path.C == -1)
+	if ((int)data->textures_path.c == -1)
 		return (printf("Error: arg 'C' not found\n"), 1);
-	data->textures_path.F = get_color_path(data->map,
+	data->textures_path.f = get_color_path(data->map,
 			find_arg('F', ' ', data->map));
-	if ((int)data->textures_path.F == -1)
+	if ((int)data->textures_path.f == -1)
 		return (printf("Error: arg 'F' not found\n"), 1);
 	if (find_arg('V', '\0', data->map) != -1)
 		data->hardmode = 1;

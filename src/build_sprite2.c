@@ -62,8 +62,8 @@ void	draw_sprite(t_data *data, t_point *draw, t_algo *spr, double *dis_wall)
 	{
 		var.i = (int)(256 * (var.x - (-spr->side / 2 + spr->end))
 				* TEXT_SIZE / spr->side) / 256;
-		if (spr->dist_temp_rayY > 0 && var.x > 0 && var.x < WIN_X
-			&& spr->dist_temp_rayY < dis_wall[var.x])
+		if (spr->dist_temp_rayy > 0 && var.x > 0 && var.x < WIN_X
+			&& spr->dist_temp_rayy < dis_wall[var.x])
 		{
 			var.y = draw->y;
 			while (var.y < draw->i)

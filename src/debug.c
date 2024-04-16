@@ -77,8 +77,8 @@ void	print_args(t_data *data)
 	printf("│so	= %s\n", data->textures_path.so);
 	printf("│we	= %s\n", data->textures_path.we);
 	printf("│ea	= %s\n", data->textures_path.ea);
-	printf("│C	= %i\n", data->textures_path.C);
-	printf("│F	= %i\n", data->textures_path.F);
+	printf("│c	= %i\n", data->textures_path.c);
+	printf("│f	= %i\n", data->textures_path.f);
 	printf("│dor	= %s\n", data->textures_path.dor);
 	printf("├───────────────────────────────────────\n");
 	printf("│Map height = \e[1;94m%i\e[0m\n", data->map_height);
@@ -93,8 +93,8 @@ void	print_args(t_data *data)
 	printf("│NB enemy: %i\n", data->nb_enemy);
 	printf("├───────────────────────────────────────\n");
 	printf("│\e[1;93mcamX_dir:\t%f\t| \e[1;91mcamY_dir:\t%f\e[0m\n",
-		data->pos.dir_camX, data->pos.dir_camY);
+		data->pos.dir_camx, data->pos.dir_camy);
 	printf("│\e[1;92mcamX_normal:\t%f\t| \e[1;96mcamY_normal:\t%f\e[0m\n",
-		data->pos.norm_camX, data->pos.norm_camY);
+		data->pos.norm_camx, data->pos.norm_camy);
 	printf("└───────────────────────────────────────\n");
 }

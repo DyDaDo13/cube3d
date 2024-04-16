@@ -16,9 +16,9 @@ void	put_info_on_screen(t_data *data)
 {
 	char	*str;
 
-	data->info.fov = (int)((atan(sqrt(sqr(data->pos.norm_camX) + sqr
-						(data->pos.norm_camY)) / sqrt(sqr(data->pos.dir_camX)
-						+ sqr(data->pos.dir_camY))) * 2) * 180 / 3.14);
+	data->info.fov = (int)((atan(sqrt(sqr(data->pos.norm_camx) + sqr
+						(data->pos.norm_camy)) / sqrt(sqr(data->pos.dir_camx)
+						+ sqr(data->pos.dir_camy))) * 2) * 180 / 3.14);
 	data->info.sensivity = SENSIVITY;
 	data->info.speed = MOVE_SPEED * 100;
 	str = ft_itoa(data->info.fov);

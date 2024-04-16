@@ -28,13 +28,13 @@ void	draw_pix(t_data *data, t_algo *algo, int line_to_draw, int x)
 	{
 		if (i <= algo->start)
 			img_pixel_put(&data->img_win, x, i, ft_mix_color(
-					data->textures_path.C, 0x000000, (double)i
+					data->textures_path.c, 0x000000, (double)i
 					/ (double)(WIN_Y / 2)));
 		else if (i > algo->start && i <= algo->end)
 			pix_texture(data, algo, &i);
 		else
 			img_pixel_put(&data->img_win, x, i, ft_mix_color(
-					data->textures_path.F, 0x000000, ((double)i
+					data->textures_path.f, 0x000000, ((double)i
 						/ (double)(WIN_Y / 2)) - 2.0));
 		i++;
 	}
@@ -42,29 +42,29 @@ void	draw_pix(t_data *data, t_algo *algo, int line_to_draw, int x)
 
 void	get_steps(int *stepX, int *stepY, t_algo *algo, t_data *data)
 {
-	if (algo->rayDir_actX < 0)
+	if (algo->raydir_actx < 0)
 	{
 		*stepX = -1;
-		algo->dist_temp_rayX = (data->pos.p_x - algo->map_posX)
-			* algo->delta_distX;
+		algo->dist_temp_rayx = (data->pos.p_x - algo->map_posx)
+			* algo->delta_distx;
 	}
 	else
 	{
 		*stepX = 1;
-		algo->dist_temp_rayX = ((algo->map_posX + 1.0) - data->pos.p_x)
-			* algo->delta_distX;
+		algo->dist_temp_rayx = ((algo->map_posx + 1.0) - data->pos.p_x)
+			* algo->delta_distx;
 	}
-	if (algo->rayDir_actY < 0)
+	if (algo->raydir_acty < 0)
 	{
 		*stepY = -1;
-		algo->dist_temp_rayY = (data->pos.p_y - algo->map_posY)
-			* algo->delta_distY;
+		algo->dist_temp_rayy = (data->pos.p_y - algo->map_posy)
+			* algo->delta_disty;
 	}
 	else
 	{
 		*stepY = 1;
-		algo->dist_temp_rayY = ((algo->map_posY + 1.0) - data->pos.p_y)
-			* algo->delta_distY;
+		algo->dist_temp_rayy = ((algo->map_posy + 1.0) - data->pos.p_y)
+			* algo->delta_disty;
 	}
 }
 
@@ -74,26 +74,26 @@ void	algo_dda(t_algo *algo, t_data *data)
 	int	stepy;
 
 	get_steps(&stepx, &stepy, algo, data);
-	while (data->map[algo->map_posY][algo->map_posX]
+	while (data->map[algo->map_posy][algo->map_posx]
 		!= '1' && door_check(data, algo) == 0)
 	{
-		if (algo->dist_temp_rayX < algo->dist_temp_rayY)
+		if (algo->dist_temp_rayx < algo->dist_temp_rayy)
 		{
-			algo->map_posX += stepx;
+			algo->map_posx += stepx;
 			algo->side = 0;
-			algo->dist_temp_rayX += algo->delta_distX;
+			algo->dist_temp_rayx += algo->delta_distx;
 		}
 		else
 		{
-			algo->map_posY += stepy;
+			algo->map_posy += stepy;
 			algo->side = 1;
-			algo->dist_temp_rayY += algo->delta_distY;
+			algo->dist_temp_rayy += algo->delta_disty;
 		}
 	}
 	if (algo->side == 0)
-		algo->wall_dist = algo->dist_temp_rayX - algo->delta_distX;
+		algo->wall_dist = algo->dist_temp_rayx - algo->delta_distx;
 	else
-		algo->wall_dist = algo->dist_temp_rayY - algo->delta_distY;
+		algo->wall_dist = algo->dist_temp_rayy - algo->delta_disty;
 	get_texture(algo, stepx, stepy);
 }
 
@@ -101,17 +101,17 @@ void	ft_calc_delta(t_algo *algo, t_data *data, int x)
 {
 	algo->side = 0;
 	algo->wall_dist = 0;
-	algo->Coef_CamX = ((2 * x) / (double)WIN_X) - 1;
-	algo->rayDir_actX = data->pos.dir_camX
-		+ (data->pos.norm_camX * algo->Coef_CamX);
-	algo->rayDir_actY = data->pos.dir_camY
-		+ (data->pos.norm_camY * algo->Coef_CamX);
-	algo->map_posX = (int)(data->pos.p_x);
-	algo->map_posY = (int)(data->pos.p_y);
-	algo->delta_distX = sqrt(1 + ((algo->rayDir_actY * algo->rayDir_actY)
-				/ (algo->rayDir_actX * algo->rayDir_actX)));
-	algo->delta_distY = sqrt(((algo->rayDir_actX * algo->rayDir_actX)
-				/ (algo->rayDir_actY * algo->rayDir_actY)) + 1);
+	algo->coef_camx = ((2 * x) / (double)WIN_X) - 1;
+	algo->raydir_actx = data->pos.dir_camx
+		+ (data->pos.norm_camx * algo->coef_camx);
+	algo->raydir_acty = data->pos.dir_camy
+		+ (data->pos.norm_camy * algo->coef_camx);
+	algo->map_posx = (int)(data->pos.p_x);
+	algo->map_posy = (int)(data->pos.p_y);
+	algo->delta_distx = sqrt(1 + ((algo->raydir_acty * algo->raydir_acty)
+				/ (algo->raydir_actx * algo->raydir_actx)));
+	algo->delta_disty = sqrt(((algo->raydir_actx * algo->raydir_actx)
+				/ (algo->raydir_acty * algo->raydir_acty)) + 1);
 }
 
 void	build_img(t_data *data)
@@ -128,10 +128,10 @@ void	build_img(t_data *data)
 		algo.texture = -1;
 		ft_calc_delta(&algo, data, x);
 		algo_dda(&algo, data);
-		if (algo.Coef_CamX != 0)
-			algo.wall_dist *= sin(atan2(algo.rayDir_actY, algo.rayDir_actX)
-					- atan2(data->pos.norm_camY * algo.Coef_CamX,
-						data->pos.norm_camX * algo.Coef_CamX));
+		if (algo.coef_camx != 0)
+			algo.wall_dist *= sin(atan2(algo.raydir_acty, algo.raydir_actx)
+					- atan2(data->pos.norm_camy * algo.coef_camx,
+						data->pos.norm_camx * algo.coef_camx));
 		if (algo.wall_dist < 0)
 			algo.wall_dist *= -1;
 		draw_pix(data, &algo, WIN_Y / algo.wall_dist, x);

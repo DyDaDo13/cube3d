@@ -68,13 +68,13 @@ int	ft_key_check(int key, t_data *data)
 		ft_stop(data);
 	if (key == 61)
 	{
-		data->pos.norm_camX = data->pos.norm_camX * 0.99;
-		data->pos.norm_camY = data->pos.norm_camY * 0.99;
+		data->pos.norm_camx = data->pos.norm_camx * 0.99;
+		data->pos.norm_camy = data->pos.norm_camy * 0.99;
 	}
 	if (key == 45)
 	{
-		data->pos.norm_camX = data->pos.norm_camX * 1.01;
-		data->pos.norm_camY = data->pos.norm_camY * 1.01;
+		data->pos.norm_camx = data->pos.norm_camx * 1.01;
+		data->pos.norm_camy = data->pos.norm_camy * 1.01;
 	}
 	key_move(key, data);
 	return (0);

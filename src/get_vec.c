@@ -16,23 +16,23 @@ void	get_pos(char c, t_data *data)
 {
 	if (c == 'N')
 	{
-		data->pos.dir_camX = 0;
-		data->pos.dir_camY = -1;
+		data->pos.dir_camx = 0;
+		data->pos.dir_camy = -1;
 	}
 	if (c == 'W')
 	{
-		data->pos.dir_camX = -1;
-		data->pos.dir_camY = 0;
+		data->pos.dir_camx = -1;
+		data->pos.dir_camy = 0;
 	}
 	if (c == 'S')
 	{
-		data->pos.dir_camX = 0;
-		data->pos.dir_camY = 1;
+		data->pos.dir_camx = 0;
+		data->pos.dir_camy = 1;
 	}
 	if (c == 'E')
 	{
-		data->pos.dir_camX = 1;
-		data->pos.dir_camY = 0;
+		data->pos.dir_camx = 1;
+		data->pos.dir_camy = 0;
 	}
 }
 
@@ -40,23 +40,23 @@ void	get_fov(char c, t_data *data)
 {
 	if (c == 'N')
 	{
-		data->pos.norm_camX = FOV;
-		data->pos.norm_camY = 0;
+		data->pos.norm_camx = FOV;
+		data->pos.norm_camy = 0;
 	}
 	if (c == 'W')
 	{
-		data->pos.norm_camX = 0;
-		data->pos.norm_camY = -FOV;
+		data->pos.norm_camx = 0;
+		data->pos.norm_camy = -FOV;
 	}
 	if (c == 'S')
 	{
-		data->pos.norm_camX = -FOV;
-		data->pos.norm_camY = 0;
+		data->pos.norm_camx = -FOV;
+		data->pos.norm_camy = 0;
 	}
 	if (c == 'E')
 	{
-		data->pos.norm_camX = 0;
-		data->pos.norm_camY = FOV;
+		data->pos.norm_camx = 0;
+		data->pos.norm_camy = FOV;
 	}
 }
 

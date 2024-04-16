@@ -66,8 +66,8 @@ typedef struct s_textures_path
 	char			*we;
 	char			*ea;
 	char			*dor;
-	unsigned int	F;
-	unsigned int	C;
+	unsigned int	f;
+	unsigned int	c;
 }	t_textures_path;
 
 typedef struct s_map
@@ -81,10 +81,10 @@ typedef struct s_pos
 	char	c;
 	double	p_x;
 	double	p_y;
-	double	dir_camX;
-	double	dir_camY;
-	double	norm_camX;
-	double	norm_camY;
+	double	dir_camx;
+	double	dir_camy;
+	double	norm_camx;
+	double	norm_camy;
 	double	angle;
 }	t_pos;
 
@@ -109,13 +109,13 @@ typedef struct s_textures
 	t_img	enemy3;
 	t_img	enemy4;
 	t_img	enemy1_d;
-	t_img	POV;
+	t_img	pov;
 	t_img	heart_full;
 	t_img	heart_empty;
-	t_img	shoot_POV;
-	int		add_POV;
-	int		way_POV;
-	int		tex_POV;
+	t_img	shoot_pov;
+	int		add_pov;
+	int		way_pov;
+	int		tex_pov;
 }	t_textures;
 
 typedef struct s_info
@@ -123,7 +123,7 @@ typedef struct s_info
 	int		fov;
 	double	sensivity;
 	double	speed;
-}t_info;
+}	t_info;
 
 typedef struct s_point
 {
@@ -132,7 +132,7 @@ typedef struct s_point
 	int		i;
 	int		j;
 	int		d;
-}t_point;
+}	t_point;
 
 typedef struct s_enemy
 {
@@ -140,7 +140,7 @@ typedef struct s_enemy
 	double		y;
 	int			texture;
 	int			act_text;
-}t_enemy;
+}	t_enemy;
 
 typedef struct s_data
 {
@@ -153,8 +153,8 @@ typedef struct s_data
 	int				door;
 	double			move_speed;
 	int				key_move;
-	int				map_lenX;
-	int				map_lenY;
+	int				map_lenx;
+	int				map_leny;
 	void			*mlx;
 	void			*win;
 	int				i;
@@ -172,15 +172,15 @@ typedef struct s_data
 
 typedef struct s_algo
 {
-	double	Coef_CamX;
-	double	rayDir_actX;
-	double	rayDir_actY;
-	int		map_posX;
-	int		map_posY;
-	double	delta_distX;
-	double	delta_distY;
-	double	dist_temp_rayX;
-	double	dist_temp_rayY;
+	double	coef_camx;
+	double	raydir_actx;
+	double	raydir_acty;
+	int		map_posx;
+	int		map_posy;
+	double	delta_distx;
+	double	delta_disty;
+	double	dist_temp_rayx;
+	double	dist_temp_rayy;
 	int		side;
 	int		texture;
 	double	wall_dist;
@@ -219,7 +219,8 @@ size_t			ft_strlen2(char **s);
 size_t			ft_strcpy(char *dst, char *src);
 char			**trunc_map(t_data *data);
 int				check_map_valid(t_data *data);
-void			flood_fill(char **tab, t_point *size, t_point *begin, t_data *data);
+void			flood_fill(char **tab, t_point *size,
+					t_point *begin, t_data *data);
 char			**map_dup(char **tab);
 void			change_dis(t_point *dis, t_pos start, t_data *data, int cases);
 
@@ -259,7 +260,8 @@ void			pix_texture(t_data *data, t_algo *algo, int *y);
 
 /*build_sprite.c*/
 void			build_sprite(t_data *data, double *dis_wall);
-void			draw_sprite(t_data *data, t_point *draw, t_algo *spr, double *dis_wall);
+void			draw_sprite(t_data *data, t_point *draw,
+					t_algo *spr, double *dis_wall);
 int				get_nb_sprite(t_data *data);
 int				sort_sprite2(t_data *data, int **order, double **dis);
 void			act_text(t_data *data, t_algo *spr);
@@ -286,15 +288,15 @@ void			placing_enemy(t_data *data);
 void			enemy_move(t_data *data);
 
 /*hitbox*/
-int		is_player_hitbox_touched(t_data *data, int actual_enemy);
-int		check_side(int textx, t_algo *algo);
-int		ft_key_moves(t_data *data);
-void	move_diag(t_data *data);
-void	check_door_spot(t_data *data);
-void	placing_enemy(t_data *data);
-int		door_check(t_data *data, t_algo *algo);
-int		get_nb_sprite(t_data *data);
-int	is_player_hitbox_touched(t_data *data, int actual_enemy);
-void	display_heart(t_data *data);
+int				is_player_hitbox_touched(t_data *data, int actual_enemy);
+int				check_side(int textx, t_algo *algo);
+int				ft_key_moves(t_data *data);
+void			move_diag(t_data *data);
+void			check_door_spot(t_data *data);
+void			placing_enemy(t_data *data);
+int				door_check(t_data *data, t_algo *algo);
+int				get_nb_sprite(t_data *data);
+int				is_player_hitbox_touched(t_data *data, int actual_enemy);
+void			display_heart(t_data *data);
 
 #endif

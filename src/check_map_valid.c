@@ -124,7 +124,7 @@ int	check_map_valid(t_data *data)
 	data->move_speed = MOVE_SPEED;
 	data->door = 0;
 	data->enemy = NULL;
-	data->map_lenX = ft_strlen(data->map[0]);
-	data->map_lenY = ft_strlen2(data->map);
+	data->map_lenx = ft_strlen(data->map[0]);
+	data->map_leny = ft_strlen2(data->map);
 	return (0);
 }

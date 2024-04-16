@@ -71,9 +71,9 @@ void	pix_texture(t_data *data, t_algo *algo, int *y)
 	int		texty;
 
 	if (algo->side == 0)
-		wallx = data->pos.p_y + algo->wall_dist * algo->rayDir_actY;
+		wallx = data->pos.p_y + algo->wall_dist * algo->raydir_acty;
 	else
-		wallx = data->pos.p_x + algo->wall_dist * algo->rayDir_actX;
+		wallx = data->pos.p_x + algo->wall_dist * algo->raydir_actx;
 	wallx -= floor((wallx));
 	textx = (int)(wallx * (double)(TEXT_SIZE));
 	textx = check_side(textx, algo);

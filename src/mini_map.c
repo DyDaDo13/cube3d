@@ -71,18 +71,18 @@ void	draw_fov(t_data *data)
 	start.p_x = (double)((MINI_MAP_SIZE * MINI_MAP_COEF_LEN) / 2) + 20.0;
 	start.p_y = (double)((MINI_MAP_SIZE * MINI_MAP_COEF_LEN) / 2) + 20.0;
 	dis.x = (((((MINI_MAP_SIZE * MINI_MAP_COEF_LEN) / 2) + 20)
-				+ (data->pos.dir_camX * 1)) + (data->pos.norm_camX * 1))
+				+ (data->pos.dir_camx * 1)) + (data->pos.norm_camx * 1))
 		- start.p_x;
 	dis.y = (((((MINI_MAP_SIZE * MINI_MAP_COEF_LEN) / 2) + 20)
-				+ (data->pos.dir_camY * 1)) + (data->pos.norm_camY * 1))
+				+ (data->pos.dir_camy * 1)) + (data->pos.norm_camy * 1))
 		- start.p_y;
 	change_dis(&dis, start, data, 0);
 	trace_line(&data->img_win, start, dis, 0xFA5D00);
 	dis.x = (((((MINI_MAP_SIZE * MINI_MAP_COEF_LEN) / 2) + 20)
-				+ (data->pos.dir_camX * 1)) - (data->pos.norm_camX * 1))
+				+ (data->pos.dir_camx * 1)) - (data->pos.norm_camx * 1))
 		- start.p_x;
 	dis.y = (((((MINI_MAP_SIZE * MINI_MAP_COEF_LEN) / 2) + 20)
-				+ (data->pos.dir_camY * 1)) - (data->pos.norm_camY * 1))
+				+ (data->pos.dir_camy * 1)) - (data->pos.norm_camy * 1))
 		- start.p_y;
 	change_dis(&dis, start, data, 1);
 	trace_line(&data->img_win, start, dis, 0xFA5D00);

@@ -39,8 +39,8 @@ int	kill_ennemy(t_algo *algo, t_data *data)
 	i = 0;
 	while (i < data->nb_enemy)
 	{
-		if ((int)data->enemy[i].x == algo->map_posX
-			&& (int)data->enemy[i].y == algo->map_posY)
+		if ((int)data->enemy[i].x == algo->map_posx
+			&& (int)data->enemy[i].y == algo->map_posy)
 		{
 			data->enemy[i].texture = -1;
 			return (1);
@@ -56,20 +56,20 @@ void	algo_dda_ennemy(t_algo *algo, t_data *data)
 	int	stepy;
 
 	get_steps(&stepx, &stepy, algo, data);
-	while (data->map[algo->map_posY][algo->map_posX]
-		!= '1' && data->map[algo->map_posY][algo->map_posX] != 'D')
+	while (data->map[algo->map_posy][algo->map_posx]
+		!= '1' && data->map[algo->map_posy][algo->map_posx] != 'D')
 	{
-		if (algo->dist_temp_rayX < algo->dist_temp_rayY)
+		if (algo->dist_temp_rayx < algo->dist_temp_rayy)
 		{
-			algo->map_posX += stepx;
+			algo->map_posx += stepx;
 			algo->side = 0;
-			algo->dist_temp_rayX += algo->delta_distX;
+			algo->dist_temp_rayx += algo->delta_distx;
 		}
 		else
 		{
-			algo->map_posY += stepy;
+			algo->map_posy += stepy;
 			algo->side = 1;
-			algo->dist_temp_rayY += algo->delta_distY;
+			algo->dist_temp_rayy += algo->delta_disty;
 		}
 		if (kill_ennemy(algo, data) == 1)
 			return ;
@@ -84,7 +84,7 @@ int	mouse_left_click(int button, int x, int y, t_data *data)
 	(void)y;
 	if (button == 1 && data->hardmode == 1)
 	{
-		data->textures.tex_POV = 1;
+		data->textures.tex_pov = 1;
 		ft_calc_delta(&algo, data, WIN_X / 2);
 		algo_dda_ennemy(&algo, data);
 	}

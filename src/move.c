@@ -16,21 +16,21 @@ void	ft_move2(t_data *data, int dir)
 {
 	if (dir == 2)
 	{
-		if (data->map[(int)(data->pos.p_y + (data->pos.norm_camY
+		if (data->map[(int)(data->pos.p_y + (data->pos.norm_camy
 					* data->move_speed))][(int)(data->pos.p_x)] != '1')
-			data->pos.p_y += data->pos.norm_camY * data->move_speed;
+			data->pos.p_y += data->pos.norm_camy * data->move_speed;
 		if (data->map[(int)(data->pos.p_y)][(int)(data->pos.p_x +
-				(data->pos.norm_camX * data->move_speed))] != '1')
-			data->pos.p_x += data->pos.norm_camX * data->move_speed;
+				(data->pos.norm_camx * data->move_speed))] != '1')
+			data->pos.p_x += data->pos.norm_camx * data->move_speed;
 	}
 	else if (dir == 3)
 	{
-		if (data->map[(int)(data->pos.p_y - (data->pos.norm_camY
+		if (data->map[(int)(data->pos.p_y - (data->pos.norm_camy
 					* data->move_speed))][(int)(data->pos.p_x)] != '1')
-			data->pos.p_y -= data->pos.norm_camY * data->move_speed;
+			data->pos.p_y -= data->pos.norm_camy * data->move_speed;
 		if (data->map[(int)(data->pos.p_y)][(int)(data->pos.p_x -
-				(data->pos.norm_camX * data->move_speed))] != '1')
-			data->pos.p_x -= data->pos.norm_camX * data->move_speed;
+				(data->pos.norm_camx * data->move_speed))] != '1')
+			data->pos.p_x -= data->pos.norm_camx * data->move_speed;
 	}
 }
 
@@ -38,21 +38,21 @@ void	ft_move(t_data *data, int dir)
 {
 	if (dir == 0)
 	{
-		if (data->map[(int)(data->pos.p_y + (data->pos.dir_camY
+		if (data->map[(int)(data->pos.p_y + (data->pos.dir_camy
 					* data->move_speed))][(int)(data->pos.p_x)] != '1')
-			data->pos.p_y += data->pos.dir_camY * data->move_speed;
+			data->pos.p_y += data->pos.dir_camy * data->move_speed;
 		if (data->map[(int)(data->pos.p_y)][(int)(data->pos.p_x +
-				(data->pos.dir_camX * data->move_speed))] != '1')
-			data->pos.p_x += data->pos.dir_camX * data->move_speed;
+				(data->pos.dir_camx * data->move_speed))] != '1')
+			data->pos.p_x += data->pos.dir_camx * data->move_speed;
 	}
 	else if (dir == 1)
 	{
-		if (data->map[(int)(data->pos.p_y - (data->pos.dir_camY
+		if (data->map[(int)(data->pos.p_y - (data->pos.dir_camy
 					* data->move_speed))][(int)(data->pos.p_x)] != '1')
-			data->pos.p_y -= data->pos.dir_camY * data->move_speed;
+			data->pos.p_y -= data->pos.dir_camy * data->move_speed;
 		if (data->map[(int)(data->pos.p_y)][(int)(data->pos.p_x -
-				(data->pos.dir_camX * data->move_speed))] != '1')
-			data->pos.p_x -= data->pos.dir_camX * data->move_speed;
+				(data->pos.dir_camx * data->move_speed))] != '1')
+			data->pos.p_x -= data->pos.dir_camx * data->move_speed;
 	}
 	else
 		ft_move2(data, dir);
@@ -63,16 +63,16 @@ void	ft_rotation(t_data *data, double rot_coef)
 	double	dirxtemp;
 	double	normxtemp;
 
-	dirxtemp = data->pos.dir_camX;
-	normxtemp = data->pos.norm_camX;
-	data->pos.dir_camX = data->pos.dir_camX * cos(rot_coef)
-		- data->pos.dir_camY * sin(rot_coef);
-	data->pos.dir_camY = dirxtemp * sin(rot_coef)
-		+ data->pos.dir_camY * cos(rot_coef);
-	data->pos.norm_camX = data->pos.norm_camX * cos(rot_coef)
-		- data->pos.norm_camY * sin(rot_coef);
-	data->pos.norm_camY = normxtemp * sin(rot_coef)
-		+ data->pos.norm_camY * cos(rot_coef);
+	dirxtemp = data->pos.dir_camx;
+	normxtemp = data->pos.norm_camx;
+	data->pos.dir_camx = data->pos.dir_camx * cos(rot_coef)
+		- data->pos.dir_camy * sin(rot_coef);
+	data->pos.dir_camy = dirxtemp * sin(rot_coef)
+		+ data->pos.dir_camy * cos(rot_coef);
+	data->pos.norm_camx = data->pos.norm_camx * cos(rot_coef)
+		- data->pos.norm_camy * sin(rot_coef);
+	data->pos.norm_camy = normxtemp * sin(rot_coef)
+		+ data->pos.norm_camy * cos(rot_coef);
 }
 
 void	ft_rotation_left(t_data *data)
@@ -80,16 +80,16 @@ void	ft_rotation_left(t_data *data)
 	double	dirxtemp;
 	double	normxtemp;
 
-	dirxtemp = data->pos.dir_camX;
-	normxtemp = data->pos.norm_camX;
-	data->pos.dir_camX = data->pos.dir_camX * cos(ROT_SPEED)
-		- data->pos.dir_camY * sin(ROT_SPEED);
-	data->pos.dir_camY = dirxtemp * sin(ROT_SPEED)
-		+ data->pos.dir_camY * cos(ROT_SPEED);
-	data->pos.norm_camX = data->pos.norm_camX * cos(ROT_SPEED)
-		- data->pos.norm_camY * sin(ROT_SPEED);
-	data->pos.norm_camY = normxtemp * sin(ROT_SPEED)
-		+ data->pos.norm_camY * cos(ROT_SPEED);
+	dirxtemp = data->pos.dir_camx;
+	normxtemp = data->pos.norm_camx;
+	data->pos.dir_camx = data->pos.dir_camx * cos(ROT_SPEED)
+		- data->pos.dir_camy * sin(ROT_SPEED);
+	data->pos.dir_camy = dirxtemp * sin(ROT_SPEED)
+		+ data->pos.dir_camy * cos(ROT_SPEED);
+	data->pos.norm_camx = data->pos.norm_camx * cos(ROT_SPEED)
+		- data->pos.norm_camy * sin(ROT_SPEED);
+	data->pos.norm_camy = normxtemp * sin(ROT_SPEED)
+		+ data->pos.norm_camy * cos(ROT_SPEED);
 }
 
 void	ft_rotation_right(t_data *data)
@@ -97,14 +97,14 @@ void	ft_rotation_right(t_data *data)
 	double	dirxtemp;
 	double	normxtemp;
 
-	dirxtemp = data->pos.dir_camX;
-	normxtemp = data->pos.norm_camX;
-	data->pos.dir_camX = data->pos.dir_camX * cos(-ROT_SPEED)
-		- data->pos.dir_camY * sin(-ROT_SPEED);
-	data->pos.dir_camY = dirxtemp * sin(-ROT_SPEED)
-		+ data->pos.dir_camY * cos(-ROT_SPEED);
-	data->pos.norm_camX = data->pos.norm_camX * cos(-ROT_SPEED)
-		- data->pos.norm_camY * sin(-ROT_SPEED);
-	data->pos.norm_camY = normxtemp * sin(-ROT_SPEED)
-		+ data->pos.norm_camY * cos(-ROT_SPEED);
+	dirxtemp = data->pos.dir_camx;
+	normxtemp = data->pos.norm_camx;
+	data->pos.dir_camx = data->pos.dir_camx * cos(-ROT_SPEED)
+		- data->pos.dir_camy * sin(-ROT_SPEED);
+	data->pos.dir_camy = dirxtemp * sin(-ROT_SPEED)
+		+ data->pos.dir_camy * cos(-ROT_SPEED);
+	data->pos.norm_camx = data->pos.norm_camx * cos(-ROT_SPEED)
+		- data->pos.norm_camy * sin(-ROT_SPEED);
+	data->pos.norm_camy = normxtemp * sin(-ROT_SPEED)
+		+ data->pos.norm_camy * cos(-ROT_SPEED);
 }

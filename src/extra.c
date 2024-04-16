@@ -14,9 +14,9 @@
 
 int	check_side(int textx, t_algo *algo)
 {
-	if (algo->side == 0 && algo->rayDir_actX < 0)
+	if (algo->side == 0 && algo->raydir_actx < 0)
 		textx = TEXT_SIZE - textx - 1;
-	if (algo->side == 1 && algo->rayDir_actY > 0)
+	if (algo->side == 1 && algo->raydir_acty > 0)
 		textx = TEXT_SIZE - textx - 1;
 	return (textx);
 }
