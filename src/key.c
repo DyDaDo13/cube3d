@@ -6,7 +6,7 @@
 /*   By: dylmarti <dylmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 15:45:41 by ozone             #+#    #+#             */
-/*   Updated: 2024/04/22 08:46:22 by dylmarti         ###   ########.fr       */
+/*   Updated: 2024/04/22 09:06:07 by dylmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ int	ft_key_moves(t_data *data)
 	check_door_spot(data);
 	data->info.fps = get_time();
 	build_img(data);
-	data->info.temp = get_time() - data->info.fps;
+	data->info.temp = 100 - (int)(get_time() - data->info.fps);
 	put_info_on_screen(data);
 	return (0);
 }
