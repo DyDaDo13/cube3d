@@ -42,6 +42,8 @@ int	ft_stop(t_data *data)
 	mlx_destroy_display(data->mlx);
 	free(data->mlx);
 	free_all(data);
+	if (data->enemy)
+		free(data->enemy);
 	exit(0);
 	return (0);
 }

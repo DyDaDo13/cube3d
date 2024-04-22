@@ -14,23 +14,28 @@
 
 void	ft_move2(t_data *data, int dir)
 {
+	double	coef;
+
+	coef = 1.0;
+	if (sqrt(sqr(data->pos.norm_camx) + sqr(data->pos.norm_camy)) != 1.0)
+		coef = 1 / sqrt(sqr(data->pos.norm_camx) + sqr(data->pos.norm_camy));
 	if (dir == 2)
 	{
-		if (data->map[(int)(data->pos.p_y + (data->pos.norm_camy
+		if (data->map[(int)(data->pos.p_y + ((data->pos.norm_camy * coef)
 					* data->move_speed))][(int)(data->pos.p_x)] != '1')
-			data->pos.p_y += data->pos.norm_camy * data->move_speed;
+			data->pos.p_y += (data->pos.norm_camy * coef) * data->move_speed;
 		if (data->map[(int)(data->pos.p_y)][(int)(data->pos.p_x +
-				(data->pos.norm_camx * data->move_speed))] != '1')
-			data->pos.p_x += data->pos.norm_camx * data->move_speed;
+				((data->pos.norm_camx * coef) * data->move_speed))] != '1')
+			data->pos.p_x += (data->pos.norm_camx * coef) * data->move_speed;
 	}
 	else if (dir == 3)
-	{
-		if (data->map[(int)(data->pos.p_y - (data->pos.norm_camy
+	{	
+		if (data->map[(int)(data->pos.p_y - ((data->pos.norm_camy * coef)
 					* data->move_speed))][(int)(data->pos.p_x)] != '1')
-			data->pos.p_y -= data->pos.norm_camy * data->move_speed;
+			data->pos.p_y -= (data->pos.norm_camy * coef) * data->move_speed;
 		if (data->map[(int)(data->pos.p_y)][(int)(data->pos.p_x -
-				(data->pos.norm_camx * data->move_speed))] != '1')
-			data->pos.p_x -= data->pos.norm_camx * data->move_speed;
+				((data->pos.norm_camx * coef) * data->move_speed))] != '1')
+			data->pos.p_x -= (data->pos.norm_camx * coef) * data->move_speed;
 	}
 }
 

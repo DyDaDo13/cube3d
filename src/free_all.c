@@ -52,10 +52,4 @@ void	free_all(t_data *data)
 		free(data->textures_path.so);
 	if (data->textures_path.dor)
 		free(data->textures_path.dor);
-	if (data->enemy)
-		free(data->enemy);
 }
-	// if (data->textures_path.C)
-	// 	free(data->textures_path.C);
-	// if (data->textures_path.F)
-	// 	free(data->textures_path.F);
