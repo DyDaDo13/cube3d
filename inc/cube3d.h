@@ -34,6 +34,7 @@
 # include <sys/shm.h>
 # include <X11/extensions/XShm.h>
 # include <X11/XKBlib.h>
+# include <sys/time.h>
 
 # define WIN_X				1080
 # define FULLIFE			5
@@ -123,6 +124,8 @@ typedef struct s_info
 	int		fov;
 	double	sensivity;
 	double	speed;
+	long	fps;
+	int		temp;
 }	t_info;
 
 typedef struct s_point
@@ -298,5 +301,8 @@ int				door_check(t_data *data, t_algo *algo);
 int				get_nb_sprite(t_data *data);
 int				is_player_hitbox_touched(t_data *data, int actual_enemy);
 void			display_heart(t_data *data);
+
+/*time*/
+long			get_time(void);
 
 #endif

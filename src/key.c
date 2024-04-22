@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lle-saul <lle-saul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dylmarti <dylmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 15:45:41 by ozone             #+#    #+#             */
-/*   Updated: 2024/04/16 14:55:42 by lle-saul         ###   ########.fr       */
+/*   Updated: 2024/04/22 08:46:22 by dylmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,9 @@ int	ft_key_moves(t_data *data)
 	if (data->pv == 0)
 		ft_stop(data);
 	check_door_spot(data);
+	data->info.fps = get_time();
 	build_img(data);
+	data->info.temp = get_time() - data->info.fps;
 	put_info_on_screen(data);
 	return (0);
 }
