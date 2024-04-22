@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_img.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lle-saul <lle-saul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dylmarti <dylmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 14:46:34 by lle-saul          #+#    #+#             */
-/*   Updated: 2024/04/16 14:54:39 by lle-saul         ###   ########.fr       */
+/*   Updated: 2024/04/22 11:46:11 by dylmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,8 @@ void	ft_init_img3(t_data *data, int *i, int *j)
 				&data->textures.enemy4.bits_pix, &data->textures.enemy4.len,
 				&data->textures.enemy4.endian);
 	}
+	data->info.temp = 0;
+	data->info.fps = 0;
 	ft_init_img4(data, i, j);
 }
 
