@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dydado13 <dydado13@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lle-saul <lle-saul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 15:45:41 by ozone             #+#    #+#             */
-/*   Updated: 2024/04/23 09:07:20 by dydado13         ###   ########.fr       */
+/*   Updated: 2024/04/23 13:02:18 by lle-saul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,8 @@ int	ft_key_check(int key, t_data *data)
 
 int	ft_key_moves(t_data *data)
 {
+	static int i = 0;
+	i++;
 	if (data->key_move == 1)
 		ft_move(data, 0);
 	else if (data->key_move == 2)
@@ -100,6 +102,13 @@ int	ft_key_moves(t_data *data)
 		enemy_move(data);
 	if (data->pv == 0)
 		ft_stop(data);
+	if (i == 1000)
+		data->mouse.mouse_lock *= -1;
+	else if (i == 1001)
+	{
+		data->mouse.mouse_lock *= -1;
+		i = 0;
+	}
 	check_door_spot(data);
 	data->info.fps = get_time();
 	build_img(data);

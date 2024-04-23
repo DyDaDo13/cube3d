@@ -6,7 +6,7 @@
 /*   By: lle-saul <lle-saul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 14:11:58 by ozone             #+#    #+#             */
-/*   Updated: 2024/04/23 10:25:11 by lle-saul         ###   ########.fr       */
+/*   Updated: 2024/04/23 11:57:12 by lle-saul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,4 @@ void	put_info_on_screen(t_data *data)
 	mlx_string_put(data->mlx, data->win, WIN_X - 30, 60, 0x0000ff, str);
 	free(str);
 	show_fps(data);
-	show_pov(data);
-	display_heart(data);
 }

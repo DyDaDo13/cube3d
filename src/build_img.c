@@ -6,7 +6,7 @@
 /*   By: lle-saul <lle-saul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 15:16:32 by lle-saul          #+#    #+#             */
-/*   Updated: 2024/04/16 15:03:34 by lle-saul         ###   ########.fr       */
+/*   Updated: 2024/04/23 13:07:52 by lle-saul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	draw_pix(t_data *data, t_algo *algo, int line_to_draw, int x)
 	algo->x = x;
 	while (i < WIN_Y)
 	{
-		if (i <= algo->start)
+		if (i < algo->start)
 			img_pixel_put(&data->img_win, x, i, ft_mix_color(
 					data->textures_path.c, 0x000000, (double)i
 					/ (double)(WIN_Y / 2)));
@@ -140,5 +140,7 @@ void	build_img(t_data *data)
 	if (data->hardmode == 1)
 		build_sprite(data, dis_wall);
 	show_map(data);
+	show_pov(data);
+	display_heart(data);	
 	mlx_put_image_to_window(data->mlx, data->win, data->img_win.img_ptr, 0, 0);
 }
