@@ -49,6 +49,8 @@ void	draw_crossair(t_data *data)
 	img_pixel_put(&data->img_win, (WIN_X / 2) + 1, (WIN_Y / 2), 0xffffff);
 	img_pixel_put(&data->img_win, (WIN_X / 2) + 2, (WIN_Y / 2), 0xffffff);
 	img_pixel_put(&data->img_win, (WIN_X / 2) + 3, (WIN_Y / 2), 0xffffff);
+	show_pov(data);
+	display_heart(data);
 }
 
 void	show_pov2(t_data *data)

@@ -140,7 +140,5 @@ void	build_img(t_data *data)
 	if (data->hardmode == 1)
 		build_sprite(data, dis_wall);
 	show_map(data);
-	show_pov(data);
-	display_heart(data);	
 	mlx_put_image_to_window(data->mlx, data->win, data->img_win.img_ptr, 0, 0);
 }

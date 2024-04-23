@@ -16,6 +16,7 @@ int	check_extention(char *str, char *ext)
 {
 	int	i;
 	int	j;
+
 	j = 0;
 	i = ft_strlen(str);
 	if (i - 4 > 0)
@@ -40,4 +41,20 @@ int	check_side(int textx, t_algo *algo)
 	if (algo->side == 1 && algo->raydir_acty > 0)
 		textx = TEXT_SIZE - textx - 1;
 	return (textx);
+}
+
+void	ft_key_moves2(t_data *data, int *i)
+{
+	if (data->hardmode == 1)
+		enemy_move(data);
+	if (data->pv == 0)
+		ft_stop(data);
+	if (*i == 1000)
+		data->mouse.mouse_lock *= -1;
+	else if (*i == 1001)
+	{
+		data->mouse.mouse_lock *= -1;
+		*i = 0;
+	}
+	check_door_spot(data);
 }

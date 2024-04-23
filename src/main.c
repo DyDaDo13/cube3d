@@ -38,6 +38,5 @@ int	main(int ac, char **av)
 	if (data.hardmode == 1)
 		placing_enemy(&data);
 	ft_display(&data);
-	free_all(&data);
 	return (0);
 }

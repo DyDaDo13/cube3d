@@ -82,7 +82,8 @@ int	ft_key_check(int key, t_data *data)
 
 int	ft_key_moves(t_data *data)
 {
-	static int i = 0;
+	static int	i = 0;
+
 	i++;
 	if (data->key_move == 1)
 		ft_move(data, 0);
@@ -98,18 +99,7 @@ int	ft_key_moves(t_data *data)
 		ft_rotation_left(data);
 	else
 		move_diag(data);
-	if (data->hardmode == 1)
-		enemy_move(data);
-	if (data->pv == 0)
-		ft_stop(data);
-	if (i == 1000)
-		data->mouse.mouse_lock *= -1;
-	else if (i == 1001)
-	{
-		data->mouse.mouse_lock *= -1;
-		i = 0;
-	}
-	check_door_spot(data);
+	ft_key_moves2(data, &i);
 	data->info.fps = get_time();
 	build_img(data);
 	data->info.temp = 1 / (get_time() - data->info.fps);

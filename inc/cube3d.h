@@ -227,6 +227,7 @@ void			flood_fill(char **tab, t_point *size,
 char			**map_dup(char **tab);
 void			change_dis(t_point *dis, t_pos start, t_data *data, int cases);
 int				check_colour(int *res);
+void			ft_key_moves2(t_data *data, int *i);
 
 /*get_vec.c*/
 void			get_player_vec_camera(t_data *data);
