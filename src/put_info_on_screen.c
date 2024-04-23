@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   put_info_on_screen.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dydado13 <dydado13@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lle-saul <lle-saul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 14:11:58 by ozone             #+#    #+#             */
-/*   Updated: 2024/04/23 09:16:53 by dydado13         ###   ########.fr       */
+/*   Updated: 2024/04/23 10:25:11 by lle-saul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,9 @@
 void	show_fps(t_data *data)
 {
 	char	*str;
-	mlx_string_put(data->mlx, data->win, WIN_X - 89, 80, 0x000000, "LATENCE : ");
+
+	mlx_string_put(data->mlx, data->win, WIN_X - 89, 80, 0x000000,
+		"LATENCE : ");
 	str = ft_itoa((int)data->info.temp);
 	if ((int)data->info.temp < 30)
 		mlx_string_put(data->mlx, data->win, WIN_X - 30, 80, 0x00ff00, str);

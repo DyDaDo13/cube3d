@@ -3,25 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_args.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dylmarti <dylmarti@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lle-saul <lle-saul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 17:55:15 by ozone             #+#    #+#             */
-/*   Updated: 2024/04/23 10:10:24 by dylmarti         ###   ########.fr       */
+/*   Updated: 2024/04/23 10:29:00 by lle-saul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cube3d.h"
-
-int		check_colour(int *res)
-{
-	if (res[0] < 0 || res[0] > 255)
-		return (1);
-	if (res[1] < 0 || res[1] > 255)
-		return (1);
-	if (res[2] < 0 || res[2] > 255)
-		return (1);
-	return (0);
-}
 
 char	*get_path(char **map, int pos)
 {

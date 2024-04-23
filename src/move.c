@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dydado13 <dydado13@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lle-saul <lle-saul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 12:44:24 by lle-saul          #+#    #+#             */
-/*   Updated: 2024/04/04 15:31:45 by dydado13         ###   ########.fr       */
+/*   Updated: 2024/04/23 10:24:46 by lle-saul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	ft_move2(t_data *data, int dir)
 			data->pos.p_x += (data->pos.norm_camx * coef) * data->move_speed;
 	}
 	else if (dir == 3)
-	{	
+	{
 		if (data->map[(int)(data->pos.p_y - ((data->pos.norm_camy * coef)
 					* data->move_speed))][(int)(data->pos.p_x)] != '1')
 			data->pos.p_y -= (data->pos.norm_camy * coef) * data->move_speed;

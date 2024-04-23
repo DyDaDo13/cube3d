@@ -12,6 +12,25 @@
 
 #include "../inc/cube3d.h"
 
+int	get_map_lenx(char **map)
+{
+	int	x;
+	int	y;
+	int	max_size;
+
+	y = -1;
+	max_size = 0;
+	while (map[++y])
+	{
+		x = 0;
+		while (map[y][x])
+			x++;
+		if (max_size < x)
+			max_size = x;
+	}
+	return (max_size);
+}
+
 void	print_enemy_movement(t_data *data, int actual_enemy)
 {
 	int	x;

@@ -6,11 +6,22 @@
 /*   By: lle-saul <lle-saul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 22:25:43 by ozone             #+#    #+#             */
-/*   Updated: 2024/04/04 16:26:29 by lle-saul         ###   ########.fr       */
+/*   Updated: 2024/04/23 10:28:50 by lle-saul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cube3d.h"
+
+int	check_colour(int *res)
+{
+	if (res[0] < 0 || res[0] > 255)
+		return (1);
+	if (res[1] < 0 || res[1] > 255)
+		return (1);
+	if (res[2] < 0 || res[2] > 255)
+		return (1);
+	return (0);
+}
 
 int	ft_atoi(const char *nptr)
 {

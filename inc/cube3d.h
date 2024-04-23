@@ -226,6 +226,7 @@ void			flood_fill(char **tab, t_point *size,
 					t_point *begin, t_data *data);
 char			**map_dup(char **tab);
 void			change_dis(t_point *dis, t_pos start, t_data *data, int cases);
+int				check_colour(int *res);
 
 /*get_vec.c*/
 void			get_player_vec_camera(t_data *data);
@@ -255,6 +256,7 @@ void			draw_crossair(t_data *data);
 int				door_check(t_data *data, t_algo *algo);
 void			show_pov(t_data *data);
 //void			build_sprite(t_data *data, dist wall);
+
 /*build_img2.c*/
 unsigned int	get_color(unsigned char R, unsigned char G, unsigned char B);
 void			img_pixel_put(t_img *img, int x, int y, int color);
