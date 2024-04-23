@@ -6,7 +6,7 @@
 /*   By: dydado13 <dydado13@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 14:11:58 by ozone             #+#    #+#             */
-/*   Updated: 2024/04/23 16:42:31 by dydado13         ###   ########.fr       */
+/*   Updated: 2024/04/23 16:46:32 by dydado13         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@ void	show_fps(t_data *data)
 	mlx_string_put(data->mlx, data->win, WIN_X - 65, 80, 0x000000,
 		"FPS : ");
 	str = ft_itoa(data->info.temp);
-	if ((int)data->info.temp < 30)
-		mlx_string_put(data->mlx, data->win, WIN_X - 30, 80, 0x00ff00, str);
-	else if ((int)data->info.temp < 60)
-		mlx_string_put(data->mlx, data->win, WIN_X - 30, 80, 0xff9900, str);
-	else if ((int)data->info.temp > 60)
+	if ((int)data->info.temp < 25)
 		mlx_string_put(data->mlx, data->win, WIN_X - 30, 80, 0xff0000, str);
+	else if ((int)data->info.temp < 60)
+		mlx_string_put(data->mlx, data->win, WIN_X - 30, 80, 0x999900, str);
+	else if ((int)data->info.temp > 60)
+		mlx_string_put(data->mlx, data->win, WIN_X - 30, 80, 0x00ff00, str);
 	free(str);
 }
 

@@ -6,7 +6,7 @@
 /*   By: dydado13 <dydado13@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 15:45:41 by ozone             #+#    #+#             */
-/*   Updated: 2024/04/23 16:39:55 by dydado13         ###   ########.fr       */
+/*   Updated: 2024/04/23 16:46:55 by dydado13         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,6 @@ int	ft_key_moves(t_data *data)
 	data->info.fps = get_time();
 	build_img(data);
 	data->info.temp = 1 / (get_time() - data->info.fps);
-	printf("%f\n", data->info.temp);
 	put_info_on_screen(data);
 	return (0);
 }
