@@ -6,11 +6,32 @@
 /*   By: dydado13 <dydado13@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 15:57:14 by ozone             #+#    #+#             */
-/*   Updated: 2024/04/04 15:31:45 by dydado13         ###   ########.fr       */
+/*   Updated: 2024/04/23 14:06:26 by dydado13         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cube3d.h"
+
+int	check_extention(char *str, char *ext)
+{
+	int	i;
+	int	j;
+	j = 0;
+	i = ft_strlen(str);
+	if (i - 4 > 0)
+	{
+		i -= 4;
+		while (str[i] == ext[j] && str[i] != '\0' && ext[j] != '\0')
+		{
+			i++;
+			j++;
+		}
+		if (str[i] == '\0')
+			return (0);
+		return (1);
+	}
+	return (1);
+}
 
 int	check_side(int textx, t_algo *algo)
 {
