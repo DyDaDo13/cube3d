@@ -124,8 +124,8 @@ typedef struct s_info
 	int		fov;
 	double	sensivity;
 	double	speed;
-	long	fps;
-	int		temp;
+	double	fps;
+	double	temp;
 }	t_info;
 
 typedef struct s_point
@@ -306,6 +306,6 @@ void			display_heart(t_data *data);
 int				check_extention(char *str, char *ext);
 
 /*time*/
-long			get_time(void);
+double			get_time(void);
 
 #endif
