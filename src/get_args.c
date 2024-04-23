@@ -3,14 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   get_args.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lle-saul <lle-saul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dylmarti <dylmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 17:55:15 by ozone             #+#    #+#             */
-/*   Updated: 2024/04/16 14:54:17 by lle-saul         ###   ########.fr       */
+/*   Updated: 2024/04/23 10:10:24 by dylmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cube3d.h"
+
+int		check_colour(int *res)
+{
+	if (res[0] < 0 || res[0] > 255)
+		return (1);
+	if (res[1] < 0 || res[1] > 255)
+		return (1);
+	if (res[2] < 0 || res[2] > 255)
+		return (1);
+	return (0);
+}
 
 char	*get_path(char **map, int pos)
 {
@@ -32,7 +43,7 @@ char	*get_path(char **map, int pos)
 	while (map[pos][++i])
 		path[++j] = map[pos][i];
 	if (access(path, F_OK) != 0)
-		return (printf("texture not found\n"), NULL);
+		return (free(path), printf("texture not found\n"), NULL);
 	return (path);
 }
 
@@ -56,6 +67,8 @@ unsigned int	get_color_path(char **map, int pos)
 		i++;
 		j++;
 	}
+	if (check_colour(res) == 1)
+		return (free(res), -1);
 	res2 = get_color((unsigned char)res[0],
 			(unsigned char)res[1],
 			(unsigned char)res[2]);
@@ -106,11 +119,11 @@ int	get_args(t_data *data)
 	data->textures_path.c = get_color_path(data->map,
 			find_arg('C', ' ', data->map));
 	if ((int)data->textures_path.c == -1)
-		return (printf("Error: arg 'C' not found\n"), 1);
+		return (printf("Error: arg 'C' not found or invalid\n"), 1);
 	data->textures_path.f = get_color_path(data->map,
 			find_arg('F', ' ', data->map));
 	if ((int)data->textures_path.f == -1)
-		return (printf("Error: arg 'F' not found\n"), 1);
+		return (printf("Error: arg 'F' not found or invalid\n"), 1);
 	if (find_arg('V', '\0', data->map) != -1)
 		data->hardmode = 1;
 	return (0);
