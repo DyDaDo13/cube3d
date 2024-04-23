@@ -3,14 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   put_info_on_screen.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dylmarti <dylmarti@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dydado13 <dydado13@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 14:11:58 by ozone             #+#    #+#             */
-/*   Updated: 2024/04/22 11:47:45 by dylmarti         ###   ########.fr       */
+/*   Updated: 2024/04/23 09:16:53 by dydado13         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cube3d.h"
+
+void	show_fps(t_data *data)
+{
+	char	*str;
+	mlx_string_put(data->mlx, data->win, WIN_X - 89, 80, 0x000000, "LATENCE : ");
+	str = ft_itoa((int)data->info.temp);
+	if ((int)data->info.temp < 30)
+		mlx_string_put(data->mlx, data->win, WIN_X - 30, 80, 0x00ff00, str);
+	else if ((int)data->info.temp < 60)
+		mlx_string_put(data->mlx, data->win, WIN_X - 30, 80, 0xff9900, str);
+	else if ((int)data->info.temp > 60)
+		mlx_string_put(data->mlx, data->win, WIN_X - 30, 80, 0xff0000, str);
+	free(str);
+}
 
 void	put_info_on_screen(t_data *data)
 {
@@ -34,10 +48,7 @@ void	put_info_on_screen(t_data *data)
 		"SENSIVITY : ");
 	mlx_string_put(data->mlx, data->win, WIN_X - 30, 60, 0x0000ff, str);
 	free(str);
-	mlx_string_put(data->mlx, data->win, WIN_X - 65, 80, 0x000000, "FPS : ");
-	str = ft_itoa((int)data->info.temp);
-	mlx_string_put(data->mlx, data->win, WIN_X - 30, 80, 0x0000ff, str);
-	free(str);
+	show_fps(data);
 	show_pov(data);
 	display_heart(data);
 }
