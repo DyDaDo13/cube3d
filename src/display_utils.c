@@ -88,7 +88,8 @@ void	draw_mini_map_pix(t_data *data, int x, int y, t_pos *pos_map)
 {
 	int	len;
 
-	if ((int)pos_map->p_y >= 0)
+	//printf("p_y %d\n", (int)pos_map->p_y );
+	if ((int)pos_map->p_y >= 0 && pos_map->p_y < data->map_leny)
 		len = ft_strlen(data->map[(int)pos_map->p_y]);
 	else
 		len = 0;
