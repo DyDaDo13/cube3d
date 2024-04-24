@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_args.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lle-saul <lle-saul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dydado13 <dydado13@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 17:55:15 by ozone             #+#    #+#             */
-/*   Updated: 2024/04/23 10:29:00 by lle-saul         ###   ########.fr       */
+/*   Updated: 2024/04/24 12:11:47 by dydado13         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,5 +115,6 @@ int	get_args(t_data *data)
 		return (printf("Error: arg 'F' not found or invalid\n"), 1);
 	if (find_arg('V', '\0', data->map) != -1)
 		data->hardmode = 1;
+	data->info.live_ennemy = 0;
 	return (0);
 }
