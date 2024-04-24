@@ -6,7 +6,7 @@
 /*   By: dydado13 <dydado13@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 13:13:55 by dydado13          #+#    #+#             */
-/*   Updated: 2024/04/24 16:22:30 by dydado13         ###   ########.fr       */
+/*   Updated: 2024/04/24 16:55:21 by dydado13         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	check_around(char **tab, int row, int col)
 		if (!tab[row][col + 1] || col - 1 < 0)
 			return (1);
 		if ((row + 1 < ft_strlen2(tab) && ft_strlen(tab[row + 1]) > col)
-			&& (!tab[row + 1][col] || row - 1 < 0))
+			&& (!tab[row + 1][col] || row - 1 < 0 || !tab[row - 1][col]))
 			return (1);
 	}
 	return (0);
