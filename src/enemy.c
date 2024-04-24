@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   enemy.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dydado13 <dydado13@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lle-saul <lle-saul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 18:16:14 by ozone             #+#    #+#             */
-/*   Updated: 2024/04/11 10:36:00 by dydado13         ###   ########.fr       */
+/*   Updated: 2024/04/24 10:28:52 by lle-saul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ void	placing_enemy(t_data *data)
 	get_size_map(data);
 	moy = ((data->map_width + data->map_height) / 6);
 	data->nb_enemy = moy;
+	data->info.live_ennemy = moy;
 	stat_moy = moy;
 	data->enemy = malloc(sizeof(t_enemy) * moy);
 	while (moy > 0)

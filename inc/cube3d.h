@@ -122,6 +122,7 @@ typedef struct s_textures
 typedef struct s_info
 {
 	int		fov;
+	int		live_ennemy;
 	double	sensivity;
 	double	speed;
 	double	fps;

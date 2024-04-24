@@ -6,7 +6,7 @@
 /*   By: lle-saul <lle-saul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 15:24:26 by lle-saul          #+#    #+#             */
-/*   Updated: 2024/04/23 12:59:05 by lle-saul         ###   ########.fr       */
+/*   Updated: 2024/04/24 10:29:15 by lle-saul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ int	kill_ennemy(t_algo *algo, t_data *data)
 			&& (int)data->enemy[i].y == algo->map_posy)
 		{
 			data->enemy[i].texture = -1;
+			data->info.live_ennemy -= 1;
 			return (1);
 		}
 		i++;
