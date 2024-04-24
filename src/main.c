@@ -17,7 +17,7 @@ int	main(int ac, char **av)
 	int		fd;
 	t_data	data;
 
-	if (ac != 2)
+	if (ac < 2 || ac > 3)
 		return (printf("Error: Too Many or Less Arguments\n"), 1);
 	fd = open(av[1], O_RDONLY);
 	if (fd == -1)
@@ -37,6 +37,8 @@ int	main(int ac, char **av)
 		return (free_all(&data), 1);
 	if (data.hardmode == 1)
 		placing_enemy(&data);
+	if (ft_strlen(av[2]) == 2 && av[2][0] && av[2][1] && av[2][0] == '-' && av[2][1] == 'd')
+		print_args(&data);
 	ft_display(&data);
 	return (0);
 }
