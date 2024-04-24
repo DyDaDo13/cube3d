@@ -6,7 +6,7 @@
 /*   By: dydado13 <dydado13@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 14:11:58 by ozone             #+#    #+#             */
-/*   Updated: 2024/04/24 10:39:28 by dydado13         ###   ########.fr       */
+/*   Updated: 2024/04/24 12:18:12 by dydado13         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,11 @@ void	show_fps(t_data *data)
 		mlx_string_put(data->mlx, data->win, WIN_X - 30, 80, 0x999900, str);
 	else if ((int)data->info.temp > 60)
 		mlx_string_put(data->mlx, data->win, WIN_X - 30, 80, 0x00ff00, str);
+	free(str);
+	str = ft_itoa(data->info.live_ennemy);
+	mlx_string_put(data->mlx, data->win, WIN_X - 102, 100, 0x000000,
+		"ENEMY LEFT: ");
+	mlx_string_put(data->mlx, data->win, WIN_X - 30, 100, 0xff0000, str);
 	free(str);
 }
 
@@ -49,10 +54,6 @@ void	put_info_on_screen(t_data *data)
 	mlx_string_put(data->mlx, data->win, WIN_X - 101, 60, 0x000000,
 		"SENSIVITY : ");
 	mlx_string_put(data->mlx, data->win, WIN_X - 30, 60, 0x0000ff, str);
-	free(str);
-	str = ft_itoa(data->info.live_ennemy);
-	mlx_string_put(data->mlx, data->win, WIN_X - 107, 100, 0x000000, "ENEMY LEFT : ");
-	mlx_string_put(data->mlx, data->win, WIN_X - 30, 100, 0xff0000, str);
 	free(str);
 	show_fps(data);
 }
