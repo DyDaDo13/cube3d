@@ -6,7 +6,7 @@
 /*   By: dydado13 <dydado13@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 15:13:58 by ozone             #+#    #+#             */
-/*   Updated: 2024/04/24 13:53:39 by dydado13         ###   ########.fr       */
+/*   Updated: 2024/04/24 15:55:52 by dydado13         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,7 +126,7 @@ int	check_map_valid(t_data *data)
 	data->move_speed = MOVE_SPEED;
 	data->door = 0;
 	data->enemy = NULL;
-	data->map_lenx = ft_strlen(data->map[0]);
+	data->map_lenx = ft_max_size(data->map);
 	data->map_leny = ft_strlen2(data->map);
 	return (0);
 }
