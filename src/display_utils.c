@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   display_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lle-saul <lle-saul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dydado13 <dydado13@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 16:30:56 by lle-saul          #+#    #+#             */
-/*   Updated: 2024/04/16 15:06:58 by lle-saul         ###   ########.fr       */
+/*   Updated: 2024/04/24 19:45:18 by dydado13         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,6 @@ void	draw_mini_map_pix(t_data *data, int x, int y, t_pos *pos_map)
 {
 	int	len;
 
-	//printf("p_y %d\n", (int)pos_map->p_y );
 	if ((int)pos_map->p_y >= 0 && pos_map->p_y < data->map_leny)
 		len = ft_strlen(data->map[(int)pos_map->p_y]);
 	else
