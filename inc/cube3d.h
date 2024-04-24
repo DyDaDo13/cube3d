@@ -219,7 +219,7 @@ int				ft_lstsize(t_map *lst);
 /*functions_plus*/
 int				ft_atoi(const char *nptr);
 int				get_args(t_data *data);
-size_t			ft_strlen2(char **s);
+int				ft_strlen2(char **s);
 size_t			ft_strcpy(char *dst, char *src);
 char			**trunc_map(t_data *data);
 int				check_map_valid(t_data *data);

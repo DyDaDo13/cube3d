@@ -6,7 +6,7 @@
 /*   By: dydado13 <dydado13@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 17:55:15 by ozone             #+#    #+#             */
-/*   Updated: 2024/04/24 13:49:33 by dydado13         ###   ########.fr       */
+/*   Updated: 2024/04/24 15:16:04 by dydado13         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,14 @@ void	init_args(t_data *data)
 	data->textures_path.ea = NULL;
 	data->textures_path.dor = get_path(data->map,
 			find_arg('D', 'O', data->map));
+	if (check_extention(data->textures_path.no, ".xpm") != 0)
+		data->textures_path.no = NULL;
+	if (check_extention(data->textures_path.so, ".xpm") != 0)
+		data->textures_path.so = NULL;
+	if (check_extention(data->textures_path.ea, ".xpm") != 0)
+		data->textures_path.ea = NULL;
+	if (check_extention(data->textures_path.we, ".xpm") != 0)
+		data->textures_path.we = NULL;
 }
 
 int	get_args(t_data *data)

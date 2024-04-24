@@ -6,7 +6,7 @@
 /*   By: dydado13 <dydado13@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 10:37:46 by dydado13          #+#    #+#             */
-/*   Updated: 2024/04/04 15:31:45 by dydado13         ###   ########.fr       */
+/*   Updated: 2024/04/24 14:55:03 by dydado13         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,9 @@ char	*ft_strjoin(char *s1, char *s2)
 	return (str);
 }
 
-size_t	ft_strlen(char *s)
+int	ft_strlen(char *s)
 {
-	size_t	j;
+	int	j;
 
 	j = 0;
 	if (!s)
@@ -70,9 +70,9 @@ size_t	ft_strlen(char *s)
 	return (j);
 }
 
-size_t	ft_strlen2(char **s)
+int	ft_strlen2(char **s)
 {
-	size_t	j;
+	int	j;
 
 	j = 0;
 	while (s[j])
