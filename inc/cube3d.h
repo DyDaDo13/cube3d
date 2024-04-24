@@ -311,4 +311,5 @@ int				ft_max_size(char **str);
 /*time*/
 double			get_time(void);
 int				check_arg_2(t_data *data);
+void			find_p(char **map, t_point *P, t_data *data);
 #endif
