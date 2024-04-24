@@ -309,5 +309,5 @@ int				check_extention(char *str, char *ext);
 
 /*time*/
 double			get_time(void);
-
+int				check_arg_2(t_data *data);
 #endif

@@ -6,11 +6,25 @@
 /*   By: dydado13 <dydado13@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 15:57:14 by ozone             #+#    #+#             */
-/*   Updated: 2024/04/24 15:15:04 by dydado13         ###   ########.fr       */
+/*   Updated: 2024/04/24 15:36:25 by dydado13         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cube3d.h"
+
+int	check_arg_2(t_data *data)
+{
+	if (check_extention(data->textures_path.no, ".xpm") != 0)
+		return (1);
+	if (check_extention(data->textures_path.so, ".xpm") != 0)
+		return (1);
+	if (check_extention(data->textures_path.ea, ".xpm") != 0)
+		return (1);
+	if (check_extention(data->textures_path.we, ".xpm") != 0)
+		return (1);
+	data->info.live_ennemy = 0;
+	return (0);
+}
 
 int	check_extention(char *str, char *ext)
 {
@@ -29,9 +43,9 @@ int	check_extention(char *str, char *ext)
 		}
 		if (str[i] == '\0')
 			return (0);
-		return (1);
+		return (printf("error: invalid extention\n"), 1);
 	}
-	return (1);
+	return (printf("error: invalid extention\n"), 1);
 }
 
 int	check_side(int textx, t_algo *algo)

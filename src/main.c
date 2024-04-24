@@ -36,7 +36,7 @@ int	main(int ac, char **av)
 	if (fd == -1)
 		return (perror("Error: fd not_open"), 1);
 	if (check_extention(av[1], ".cub") == 1)
-		return (printf("Error: Invalid Extention\n"), 1);
+		return (1);
 	data.map = init_map(fd, &data);
 	if (data.map == NULL)
 		return (1);
