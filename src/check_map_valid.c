@@ -6,7 +6,7 @@
 /*   By: dydado13 <dydado13@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 15:13:58 by ozone             #+#    #+#             */
-/*   Updated: 2024/04/04 15:31:45 by dydado13         ###   ########.fr       */
+/*   Updated: 2024/04/24 13:53:39 by dydado13         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,8 @@ int	check_map_valid(t_data *data)
 		return (printf("Error: invalid object in map 'WALLS'\n"), 1);
 	if (is_door_valid(data->map, data) == 1)
 		return (printf("Error: doors incorect position\n"), 1);
+	if (is_door_valid(data->map, data) == 2)
+		return (1);
 	get_player_vec_camera(data);
 	data->move_speed = MOVE_SPEED;
 	data->door = 0;
