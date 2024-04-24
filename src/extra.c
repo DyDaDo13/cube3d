@@ -6,7 +6,7 @@
 /*   By: dydado13 <dydado13@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 15:57:14 by ozone             #+#    #+#             */
-/*   Updated: 2024/04/24 15:50:49 by dydado13         ###   ########.fr       */
+/*   Updated: 2024/04/24 16:04:14 by dydado13         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 int	ft_max_size(char **str)
 {
-	int x;
-	int y;
-	int max;
-	
+	int	x;
+	int	y;
+	int	max;
+
 	y = -1;
 	max = 0;
 	while (str[++y])
