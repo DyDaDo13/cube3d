@@ -6,7 +6,7 @@
 /*   By: dydado13 <dydado13@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 14:11:58 by ozone             #+#    #+#             */
-/*   Updated: 2024/04/24 10:11:21 by dydado13         ###   ########.fr       */
+/*   Updated: 2024/04/24 10:14:36 by dydado13         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,5 @@ void	put_info_on_screen(t_data *data)
 		"SENSIVITY : ");
 	mlx_string_put(data->mlx, data->win, WIN_X - 30, 60, 0x0000ff, str);
 	free(str);
-	str = ft_itoa(data->enemy)
 	show_fps(data);
 }
