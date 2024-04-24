@@ -6,7 +6,7 @@
 /*   By: dydado13 <dydado13@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 17:55:15 by ozone             #+#    #+#             */
-/*   Updated: 2024/04/24 12:11:47 by dydado13         ###   ########.fr       */
+/*   Updated: 2024/04/24 13:40:21 by dydado13         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ void	init_args(t_data *data)
 	data->textures_path.so = NULL;
 	data->textures_path.we = NULL;
 	data->textures_path.ea = NULL;
+	data->textures_path.dor = NULL;
 	data->textures_path.dor = get_path(data->map,
 			find_arg('D', 'O', data->map));
 }
