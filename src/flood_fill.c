@@ -6,7 +6,7 @@
 /*   By: dydado13 <dydado13@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 13:13:55 by dydado13          #+#    #+#             */
-/*   Updated: 2024/04/24 21:00:42 by dydado13         ###   ########.fr       */
+/*   Updated: 2024/04/25 07:51:05 by dydado13         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ void	f_fill(char **tab, t_point *size, int row, int col)
 {
 	if (check_around(tab, row, col) == 1)
 		size->i = 1;
-	if (tab[row][col] && (tab[row][col] == '.' || tab[row][col] == '1' || tab[row][col] == '2'))
+	if (tab[row][col] && (tab[row][col] == '.' || tab[row][col] == '1'
+		|| tab[row][col] == '2'))
 		return ;
 	tab[row][col] = '.';
 	f_fill(tab, size, row -1, col);
