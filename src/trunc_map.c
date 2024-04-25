@@ -12,9 +12,8 @@
 
 #include "../inc/cube3d.h"
 
-int	check_move(char **map, double y, double x, t_data *data)
+int	check_move(char **map, double y, double x)
 {
-	(void)data;
 	if (map[(int)y][(int)x] != '\0' && map[(int)y][(int)x] != '1'
 		&& map[(int)y][(int)x] != ' ')
 		return (1);

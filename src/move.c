@@ -22,19 +22,19 @@ void	ft_move2(t_data *data, int dir)
 	if (dir == 2)
 	{
 		if (check_move(data->map, (data->pos.p_y + ((data->pos.norm_camy * coef)
-					* data->move_speed)), data->pos.p_x) == 1)
+						* data->move_speed)), data->pos.p_x) == 1)
 			data->pos.p_y += (data->pos.norm_camy * coef) * data->move_speed;
-		if (check_move(data->map, data->pos.p_y, (data->pos.p_x +
-				((data->pos.norm_camx * coef) * data->move_speed))) == 1)
+		if (check_move(data->map, data->pos.p_y, (data->pos.p_x
+					+ ((data->pos.norm_camx * coef) * data->move_speed))) == 1)
 			data->pos.p_x += (data->pos.norm_camx * coef) * data->move_speed;
 	}
 	else if (dir == 3)
 	{
 		if (check_move(data->map, (data->pos.p_y - ((data->pos.norm_camy * coef)
-					* data->move_speed)), data->pos.p_x) == 1)
+						* data->move_speed)), data->pos.p_x) == 1)
 			data->pos.p_y -= (data->pos.norm_camy * coef) * data->move_speed;
-		if (check_move(data->map, data->pos.p_y, (data->pos.p_x -
-				((data->pos.norm_camx * coef) * data->move_speed))) == 1)
+		if (check_move(data->map, data->pos.p_y, (data->pos.p_x
+					- ((data->pos.norm_camx * coef) * data->move_speed))) == 1)
 			data->pos.p_x -= (data->pos.norm_camx * coef) * data->move_speed;
 	}
 }
@@ -44,19 +44,19 @@ void	ft_move(t_data *data, int dir)
 	if (dir == 0)
 	{
 		if (check_move(data->map, (data->pos.p_y + (data->pos.dir_camy
-					* data->move_speed)), data->pos.p_x) == 1)
+						* data->move_speed)), data->pos.p_x) == 1)
 			data->pos.p_y += data->pos.dir_camy * data->move_speed;
-		if (check_move(data->map, data->pos.p_y, (data->pos.p_x +
-				(data->pos.dir_camx * data->move_speed))) == 1)
+		if (check_move(data->map, data->pos.p_y, (data->pos.p_x
+					+ (data->pos.dir_camx * data->move_speed))) == 1)
 			data->pos.p_x += data->pos.dir_camx * data->move_speed;
 	}
 	else if (dir == 1)
 	{
 		if (check_move(data->map, (data->pos.p_y - (data->pos.dir_camy
-					* data->move_speed)), data->pos.p_x) == 1)
+						* data->move_speed)), data->pos.p_x) == 1)
 			data->pos.p_y -= data->pos.dir_camy * data->move_speed;
-		if (check_move(data->map, data->pos.p_y, (data->pos.p_x -
-				(data->pos.dir_camx * data->move_speed))) == 1)
+		if (check_move(data->map, data->pos.p_y, (data->pos.p_x
+					- (data->pos.dir_camx * data->move_speed))) == 1)
 			data->pos.p_x -= data->pos.dir_camx * data->move_speed;
 	}
 	else
