@@ -314,5 +314,7 @@ int				check_move(char **map, double y, double x);
 double			get_time(void);
 int				check_arg_2(t_data *data);
 void			find_p(char **map, t_point *P, t_data *data);
+int				ft_color_check1(char *str);
+int				ft_lenxd(char *str);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_args.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dydado13 <dydado13@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lle-saul <lle-saul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 17:55:15 by ozone             #+#    #+#             */
-/*   Updated: 2024/04/25 15:18:45 by dydado13         ###   ########.fr       */
+/*   Updated: 2024/04/25 16:56:16 by lle-saul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*get_path(char **map, int pos)
 
 	i = 0;
 	j = -1;
-	if (pos == -1)
+	if (pos <= -1)
 		return (NULL);
 	while (map[pos][i] && map[pos][i] != '.')
 		i++;
@@ -45,7 +45,7 @@ unsigned int	get_color_path(char **map, int pos)
 
 	i = 2;
 	j = 0;
-	if (pos == -1)
+	if (pos <= -1 || ft_color_check1(map[pos]) == 1)
 		return ((int)-1);
 	res = malloc(sizeof(int *) * 3);
 	while (map[pos][i])
@@ -77,7 +77,12 @@ int	find_arg(char c, char f, char **map)
 		{
 			if (j != -1)
 				return (-1);
-			j = i + 1;
+			if (f == '\0')
+				return (3);
+			if (f == ' ')
+				j = i + 1;
+			if (f != ' ' && ft_lenxd(map[i]) == 3)
+				j = i + 1;
 		}
 		i++;
 	}
@@ -119,7 +124,7 @@ int	get_args(t_data *data)
 			find_arg('F', ' ', data->map));
 	if ((int)data->textures_path.f == -1)
 		return (printf("Error: arg 'F' not found or invalid\n"), 1);
-	if (find_arg('V', '\0', data->map) != -1)
+	if (find_arg('V', '\0', data->map) > -1)
 		data->hardmode = 1;
 	return (check_arg_2(data));
 }

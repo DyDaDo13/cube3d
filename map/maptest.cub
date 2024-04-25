@@ -2,14 +2,14 @@ EA ./textures/leaves.xpm
 NO ./textures/Brick_Grey.xpm
 SO ./textures/Brick_Grey.xpm
 WE ./textures/Concrete_Lines_Grey.xpm
-DO ./textures/metal_door.xpm
 
-V
+
 
 F 100,100,100
 C 128,255,190
 
-111111111
+11111111
 100000001
-1E0000001
+1E0000011
+100000001
 111111111
