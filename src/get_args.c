@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_args.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dylmarti <dylmarti@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dydado13 <dydado13@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 17:55:15 by ozone             #+#    #+#             */
-/*   Updated: 2024/04/25 08:53:53 by dylmarti         ###   ########.fr       */
+/*   Updated: 2024/04/25 15:18:45 by dydado13         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,15 +67,21 @@ unsigned int	get_color_path(char **map, int pos)
 int	find_arg(char c, char f, char **map)
 {
 	int	i;
+	int	j;
 
+	j = -1;
 	i = 0;
 	while (map[i])
 	{
 		if (map[i][0] == c && map[i][1] == f)
-			return (i);
+		{
+			if (j != -1)
+				return (-1);
+			j = i + 1;
+		}
 		i++;
 	}
-	return (-1);
+	return (j - 1);
 }
 
 void	init_args(t_data *data)
@@ -95,16 +101,16 @@ int	get_args(t_data *data)
 	init_args(data);
 	data->textures_path.no = get_path(data->map, find_arg('N', 'O', data->map));
 	if (!data->textures_path.no)
-		return (printf("Error: arg 'no' not found\n"), 1);
+		return (printf("Error: arg 'no' not found or invalid\n"), 1);
 	data->textures_path.so = get_path(data->map, find_arg('S', 'O', data->map));
 	if (!data->textures_path.so)
-		return (printf("Error: arg 'so' not found\n"), 1);
+		return (printf("Error: arg 'so' not found or invalid\n"), 1);
 	data->textures_path.we = get_path(data->map, find_arg('W', 'E', data->map));
 	if (!data->textures_path.we)
-		return (printf("Error: arg 'we' not found\n"), 1);
+		return (printf("Error: arg 'we' not found or invalid\n"), 1);
 	data->textures_path.ea = get_path(data->map, find_arg('E', 'A', data->map));
 	if (!data->textures_path.ea)
-		return (printf("Error: arg 'ea' not found\n"), 1);
+		return (printf("Error: arg 'ea' not found or invalid\n"), 1);
 	data->textures_path.c = get_color_path(data->map,
 			find_arg('C', ' ', data->map));
 	if ((int)data->textures_path.c == -1)

@@ -2,7 +2,9 @@ EA ./textures/leaves.xpm
 NO ./textures/wood.xpm
 SO ./textures/Brick_Grey.xpm
 WE ./textures/Concrete_Lines_Grey.xpm
+WE ./textures/Concrete_Lines_Grey.xpm
 DO ./textures/metal_door.xpm
+
 
 F 100,100,100
 C 128,255,190
