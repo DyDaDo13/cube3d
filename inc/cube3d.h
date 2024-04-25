@@ -43,6 +43,7 @@
 # define MOVE_SPEED			0.02
 # define ENEMY_MOVE_SPEED	0.02
 # define HITBOX				1
+# define HITBOX_WALL		0.01
 # define ROT_SPEED			0.1
 # define TEXT_SIZE			256
 # define MINI_MAP_SIZE		20
