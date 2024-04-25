@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map_valid.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dydado13 <dydado13@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dylmarti <dylmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 15:13:58 by ozone             #+#    #+#             */
-/*   Updated: 2024/04/24 20:58:48 by dydado13         ###   ########.fr       */
+/*   Updated: 2024/04/25 08:50:02 by dylmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,8 @@ int	is_path_valid(char **map, t_data *data)
 	begin = malloc(sizeof(t_point));
 	if (size == NULL || begin == NULL)
 		return (1);
-	find_p(map, begin, data);
 	flood_fill(map, size, begin, data);
+	find_p(map, begin, data);
 	if (size->i == 1)
 		return (free(size), free(begin), 1);
 	return (free(size), free(begin), 0);

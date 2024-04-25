@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   extra.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dydado13 <dydado13@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dylmarti <dylmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 15:57:14 by ozone             #+#    #+#             */
-/*   Updated: 2024/04/24 16:04:14 by dydado13         ###   ########.fr       */
+/*   Updated: 2024/04/25 09:00:35 by dylmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,9 +82,9 @@ void	ft_key_moves2(t_data *data, int *i)
 		enemy_move(data);
 	if (data->pv == 0)
 		ft_stop(data);
-	if (*i == 1000)
+	if (*i == 500)
 		data->mouse.mouse_lock *= -1;
-	else if (*i == 1001)
+	else if (*i == 501)
 	{
 		data->mouse.mouse_lock *= -1;
 		*i = 0;

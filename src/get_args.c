@@ -6,7 +6,7 @@
 /*   By: dylmarti <dylmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 17:55:15 by ozone             #+#    #+#             */
-/*   Updated: 2024/04/25 08:39:20 by dylmarti         ###   ########.fr       */
+/*   Updated: 2024/04/25 08:53:53 by dylmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	*get_path(char **map, int pos)
 	i = 0;
 	j = -1;
 	if (pos == -1)
-		return (printf("texture not found\n"), NULL);
+		return (NULL);
 	while (map[pos][i] && map[pos][i] != '.')
 		i++;
 	size = (ft_strlen(map[pos]) - i);
