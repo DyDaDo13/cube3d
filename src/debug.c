@@ -44,14 +44,10 @@ void	print_enemy_movement(t_data *data, int actual_enemy)
 		{
 			if (y == (int)data->pos.p_y
 				&& x == (int)data->pos.p_x)
-			{
 				printf("\e[1;92mP\e[0m");
-			}
 			else if (y == (int)data->enemy[actual_enemy].y
 				&& x == (int)data->enemy[actual_enemy].x)
-			{
 				printf("\e[1;91mV\e[0m");
-			}
 			else
 				printf("%c", data->map[y][x]);
 		}
