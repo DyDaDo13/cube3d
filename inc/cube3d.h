@@ -307,7 +307,7 @@ int				is_player_hitbox_touched(t_data *data, int actual_enemy);
 void			display_heart(t_data *data);
 int				check_extention(char *str, char *ext);
 int				ft_max_size(char **str);
-int				check_move(char **map, int y, int x);
+int				check_move(char **map, double y, double x);
 
 /*time*/
 double			get_time(void);
