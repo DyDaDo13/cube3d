@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   extra.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dylmarti <dylmarti@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dydado13 <dydado13@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 15:57:14 by ozone             #+#    #+#             */
-/*   Updated: 2024/04/25 09:00:35 by dylmarti         ###   ########.fr       */
+/*   Updated: 2024/04/25 14:31:53 by dydado13         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,9 @@ int	check_arg_2(t_data *data)
 		return (1);
 	if (check_extention(data->textures_path.we, ".xpm") != 0)
 		return (1);
+	if (data->textures_path.dor)
+		if (check_extention(data->textures_path.dor, ".xpm") != 0)
+			return (1);
 	data->info.live_ennemy = 0;
 	return (0);
 }
