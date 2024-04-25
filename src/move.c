@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lle-saul <lle-saul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dydado13 <dydado13@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 12:44:24 by lle-saul          #+#    #+#             */
-/*   Updated: 2024/04/23 10:24:46 by lle-saul         ###   ########.fr       */
+/*   Updated: 2024/04/25 07:34:51 by dydado13         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_move2(t_data *data, int dir)
 {
 	double	coef;
 
-	coef = 1.0;
+	coef = 1.01;
 	if (sqrt(sqr(data->pos.norm_camx) + sqr(data->pos.norm_camy)) != 1.0)
 		coef = 1 / sqrt(sqr(data->pos.norm_camx) + sqr(data->pos.norm_camy));
 	if (dir == 2)
