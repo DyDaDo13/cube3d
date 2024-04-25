@@ -12,6 +12,13 @@
 
 #include "../inc/cube3d.h"
 
+int	check_move(char **map, int y, int x)
+{
+	if (map[y][x] != '\0' && map[y][x] != '1' && map[y][x] != ' ')
+		return (1);
+	return (0);
+}
+
 int	get_trunc_size(t_data *data)
 {
 	int	i;

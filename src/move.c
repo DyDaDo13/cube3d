@@ -21,20 +21,20 @@ void	ft_move2(t_data *data, int dir)
 		coef = 1 / sqrt(sqr(data->pos.norm_camx) + sqr(data->pos.norm_camy));
 	if (dir == 2)
 	{
-		if (data->map[(int)(data->pos.p_y + ((data->pos.norm_camy * coef)
-					* data->move_speed) + 0.01)][(int)(data->pos.p_x)] != '1')
+		if (check_move(data->map, (int)(data->pos.p_y + ((data->pos.norm_camy * coef)
+					* data->move_speed)), (int)(data->pos.p_x)) == 1)
 			data->pos.p_y += (data->pos.norm_camy * coef) * data->move_speed;
-		if (data->map[(int)(data->pos.p_y)][(int)(data->pos.p_x +
-				((data->pos.norm_camx * coef) * data->move_speed))] != '1')
+		if (check_move(data->map, (int)(data->pos.p_y), (int)(data->pos.p_x +
+				((data->pos.norm_camx * coef) * data->move_speed))) == 1)
 			data->pos.p_x += (data->pos.norm_camx * coef) * data->move_speed;
 	}
 	else if (dir == 3)
 	{
-		if (data->map[(int)(data->pos.p_y - ((data->pos.norm_camy * coef)
-					* data->move_speed) - 0.01)][(int)(data->pos.p_x)] != '1')
+		if (check_move(data->map, (int)(data->pos.p_y - ((data->pos.norm_camy * coef)
+					* data->move_speed)), (int)(data->pos.p_x)) == 1)
 			data->pos.p_y -= (data->pos.norm_camy * coef) * data->move_speed;
-		if (data->map[(int)(data->pos.p_y)][(int)(data->pos.p_x -
-				((data->pos.norm_camx * coef) * data->move_speed))] != '1')
+		if (check_move(data->map, (int)(data->pos.p_y), (int)(data->pos.p_x -
+				((data->pos.norm_camx * coef) * data->move_speed)) == 1))
 			data->pos.p_x -= (data->pos.norm_camx * coef) * data->move_speed;
 	}
 }
@@ -43,20 +43,20 @@ void	ft_move(t_data *data, int dir)
 {
 	if (dir == 0)
 	{
-		if (data->map[(int)(data->pos.p_y + (data->pos.dir_camy
-					* data->move_speed) - 0.01)][(int)(data->pos.p_x)] != '1')
+		if (check_move(data->map, (int)(data->pos.p_y + (data->pos.dir_camy
+					* data->move_speed)), (int)(data->pos.p_x)) == 1)
 			data->pos.p_y += data->pos.dir_camy * data->move_speed;
-		if (data->map[(int)(data->pos.p_y)][(int)(data->pos.p_x +
-				(data->pos.dir_camx * data->move_speed))] != '1')
+		if (check_move(data->map, (int)(data->pos.p_y), (int)(data->pos.p_x +
+				(data->pos.dir_camx * data->move_speed))) == 1)
 			data->pos.p_x += data->pos.dir_camx * data->move_speed;
 	}
 	else if (dir == 1)
 	{
-		if (data->map[(int)(data->pos.p_y - (data->pos.dir_camy
-					* data->move_speed))][(int)(data->pos.p_x)] != '1')
+		if (check_move(data->map, (int)(data->pos.p_y - (data->pos.dir_camy
+					* data->move_speed)), (int)(data->pos.p_x)) == 1)
 			data->pos.p_y -= data->pos.dir_camy * data->move_speed;
-		if (data->map[(int)(data->pos.p_y)][(int)(data->pos.p_x -
-				(data->pos.dir_camx * data->move_speed))] != '1')
+		if (check_move(data->map, (int)(data->pos.p_y), (int)(data->pos.p_x -
+				(data->pos.dir_camx * data->move_speed)) == 1))
 			data->pos.p_x -= data->pos.dir_camx * data->move_speed;
 	}
 	else
